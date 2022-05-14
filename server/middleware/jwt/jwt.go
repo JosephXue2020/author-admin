@@ -40,17 +40,17 @@ func JWT() gin.HandlerFunc {
 
 		code = e.SUCCESS
 		// 跟前端适配，互动调整
-		// token := c.GetHeader("x-token")
-		authorization := c.GetHeader("Authorization")
-		token := ExtractToken(authorization)
+		token := c.GetHeader("token")
+		// authorization := c.GetHeader("Authorization")
+		// token := ExtractToken(authorization)
 		if token == "" {
-			code = e.ERROR_AUTH_TOKEN
+			code = e.ERROR_AUTH_TOKEN_ILLEGAL
 		} else {
 			claims, err := util.ParseToken(token)
 			if err != nil {
 				code = e.ERROR_AUTH_TOKEN_FAIL
 			} else if time.Now().Unix() > claims.ExpiresAt {
-				code = e.ERROR_AUTH_TOKEN_TIMEOUT
+				code = e.ERROR_AUTH_TOKEN_EXPIRED
 			}
 		}
 

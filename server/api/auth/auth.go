@@ -1,20 +1,22 @@
 package auth
 
 import (
+	"encoding/json"
 	"goweb/author-admin/server/models"
 	"goweb/author-admin/server/pkg/e"
 	"goweb/author-admin/server/pkg/util"
 	"log"
 	"net/http"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
 )
 
 type auth struct {
-	Username string `valid:"Required; MaxSize(50)"`
-	Password string `valid:"Required; MaxSize(50)"`
+	Username string `valid:"Required; MaxSize(50)" json:"username"`
+	Password string `valid:"Required; MaxSize(50)" json:"password"`
 }
 
 func validate(username, password string) bool {
@@ -40,9 +42,16 @@ func validate(username, password string) bool {
 	return ok && usernameFlag && passwordFlag
 }
 
-func GetAuth(c *gin.Context) {
-	username := c.Query("username")
-	password := c.Query("password")
+func Login(c *gin.Context) {
+	// username := c.PostForm("username")
+	// password := c.PostForm("password")
+
+	decoder := json.NewDecoder(c.Request.Body)
+	var au auth
+	decoder.Decode(&au)
+	username := au.Username
+	password := au.Password
+	log.Println(username, ":", password)
 
 	ok := validate(username, password)
 
@@ -53,7 +62,7 @@ func GetAuth(c *gin.Context) {
 		if isExist {
 			token, err := util.GenerateToken(username, password)
 			if err != nil {
-				code = e.ERROR_AUTH_TOKEN
+				code = e.ERROR_AUTH_TOKEN_FAIL
 			} else {
 				data["token"] = token
 				code = e.SUCCESS
@@ -70,48 +79,55 @@ func GetAuth(c *gin.Context) {
 	})
 }
 
-// login和logout不符合rest思想
-// func Logout(c *gin.Context) {
-// 	code := e.SUCCESS
-// 	data := ""
-// 	c.JSON(http.StatusOK, gin.H{
-// 		"code": code,
-// 		"msg":  e.GetMsg(code),
-// 		"data": data,
-// 	})
-// }
-
-func Regist(c *gin.Context) {
-	username := c.PostForm("username")
-	password := c.PostForm("password")
-
-	ok := validate(username, password)
-	var code int
-	if !ok {
-		code = e.INVALID_PARAMS
-		c.JSON(http.StatusOK, gin.H{
-			"code": code,
-			"msg":  e.GetMsg(code),
-			"data": "",
-		})
-		return
-	}
-
-	err := models.AddAuth(username, password)
-	if err != nil {
-		code = e.ERROR_AUTH_CREATE_FAIL
-		c.JSON(http.StatusOK, gin.H{
-			"code": code,
-			"msg":  e.GetMsg(code),
-			"data": "",
-		})
-		return
-	}
-
-	code = e.SUCCESS
+func Logout(c *gin.Context) {
+	code := e.SUCCESS
+	data := ""
 	c.JSON(http.StatusOK, gin.H{
 		"code": code,
 		"msg":  e.GetMsg(code),
-		"data": "",
+		"data": data,
 	})
 }
+
+func Info(c *gin.Context) {
+	token := c.Query("token")
+	code := e.SUCCESS
+
+	var claims *util.Claims
+	var err error
+	if token == "" {
+		code = e.ERROR_AUTH_TOKEN_ILLEGAL
+	} else {
+		claims, err = util.ParseToken(token)
+		if err != nil {
+			code = e.ERROR_AUTH_TOKEN_ILLEGAL
+		} else if time.Now().Unix() > claims.ExpiresAt {
+			code = e.ERROR_AUTH_TOKEN_EXPIRED
+		}
+	}
+
+	name := claims.Username
+	roles := []string{"admin"}
+	data := make(map[string]interface{})
+	data["roles"] = roles
+	data["introduction"] = ""
+	data["avatar"] = ""
+	data["name"] = name
+	var statusCode int
+	if code == e.SUCCESS {
+		statusCode = http.StatusOK
+	} else {
+		statusCode = http.StatusBadRequest
+	}
+	c.JSON(statusCode, gin.H{
+		"code": code,
+		"data": data,
+	})
+}
+
+// func Regist(c *gin.Context) {
+// 	username := c.PostForm("username")
+// 	password := c.PostForm("password")
+
+// 	ok := validate(username, password)
+// }
