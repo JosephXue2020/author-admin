@@ -93,18 +93,37 @@ export const constantRoutes = [
       path: 'upload',
       name: 'Upload',
       component: () => import('@/views/management/upload/index'),
-      meta: { title: '入库' }
+      meta: { title: '导入' }
     }]
   },
 
   {
     path: '/user',
     component: Layout,
+    redirect: '/user/list',
+    meta: { title: '用户管理', icon: 'el-icon-s-help' },
+    children: [{
+      path: 'list',
+      name: 'List',
+      component: () => import('@/views/user/list/index'),
+      meta: { title: '列表' }
+    },
+    {
+      path: 'add',
+      name: 'Adduser',
+      component: () => import('@/views/user/add/index'),
+      meta: { title: '创建' }
+    }]
+  },
+
+  {
+    path: '/contact',
+    component: Layout,
     children: [{
       path: '',
-      name: 'User',
-      component: () => import('@/views/user/index'),
-      meta: { title: '用户管理', icon: 'el-icon-s-help' }
+      name: 'Contact',
+      component: () => import('@/views/contact/index'),
+      meta: { title: '联系我们', icon: 'el-icon-s-help' }
     }]
   },
 

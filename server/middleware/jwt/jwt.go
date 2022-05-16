@@ -11,6 +11,7 @@ import (
 )
 
 // ExtractToken extracts token from header field Authorization.
+// 暂时不采用这种方式
 func ExtractToken(s string) string {
 	if s == "" {
 		return s
@@ -44,21 +45,21 @@ func JWT() gin.HandlerFunc {
 		// authorization := c.GetHeader("Authorization")
 		// token := ExtractToken(authorization)
 		if token == "" {
-			code = e.ERROR_AUTH_TOKEN_ILLEGAL
+			code = e.ERROR_TOKEN_ILLEGAL
 		} else {
 			claims, err := util.ParseToken(token)
 			if err != nil {
-				code = e.ERROR_AUTH_TOKEN_FAIL
+				code = e.ERROR_TOKEN_FAIL
 			} else if time.Now().Unix() > claims.ExpiresAt {
-				code = e.ERROR_AUTH_TOKEN_EXPIRED
+				code = e.ERROR_TOKEN_EXPIRED
 			}
 		}
 
 		if code != e.SUCCESS {
 			c.JSON(http.StatusUnauthorized, gin.H{
-				"code": code,
-				"msg":  e.GetMsg(code),
-				"data": data,
+				"code":    code,
+				"message": e.GetMsg(code),
+				"data":    data,
 			})
 
 			c.Abort()

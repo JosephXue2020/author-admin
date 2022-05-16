@@ -4,12 +4,12 @@ create database authoradmin default character set utf8mb4 collate utf8mb4_unicod
 # 创建auth表格。也可以用gorm的automigrate方法。
 
 # 插入auth表格数据
-INSERT INTO authoradmin_auth 
-(username, password)
+INSERT INTO authoradmin_user 
+(username, password, role)
 VALUES
-("test", "123");
+("test", "123456", "admin");
 
-INSERT INTO authoradmin_auth 
+INSERT INTO authoradmin_user 
 (id, username, password)
 VALUES
-(1, "test", "123");
+(1, "test", "123456");

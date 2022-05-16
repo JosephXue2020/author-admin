@@ -7,7 +7,7 @@ import (
 
 func AutoMigrate() {
 	log.Println(dao.DB)
-	dao.DB.AutoMigrate(&Auth{})
+	dao.DB.AutoMigrate(&User{})
 }
 
 // shared fields
