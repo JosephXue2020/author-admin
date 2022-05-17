@@ -6,6 +6,7 @@ import (
 	"goweb/author-admin/server/middleware/cors"
 	"goweb/author-admin/server/middleware/jwt"
 	"goweb/author-admin/server/pkg/setting"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
@@ -13,7 +14,7 @@ import (
 func InitRouter() *gin.Engine {
 	r := gin.New()
 
-	// 中间件
+	// 内置中间件
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
 
@@ -23,6 +24,16 @@ func InitRouter() *gin.Engine {
 	// 运行模式
 	gin.SetMode(setting.RunMode)
 
+	// 前端html框架和静态文件
+	r.Static("/static", "./frontend/static")
+	r.StaticFile("/favicon.ico", "./frontend/favicon.ico")
+	r.LoadHTMLFiles("./frontend/index.html")
+	r.GET("/", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "index.html", nil)
+		// c.String(http.StatusOK, "hello.")
+	})
+
+	// 测试路径
 	r.GET("/test", testFunc)
 
 	a := r.Group("/auth")

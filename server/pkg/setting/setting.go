@@ -16,9 +16,10 @@ var (
 	ReadTimeout  time.Duration
 	WriteTimeout time.Duration
 
-	PageSize  int
-	JwtIssuer string
-	JwtSecret string
+	PageSize    int
+	PageUpbound int
+	JwtIssuer   string
+	JwtSecret   string
 )
 
 type MysqlConf struct {
@@ -68,6 +69,7 @@ func LoadApp() {
 	JwtIssuer = sec.Key("JWT_ISSUER").MustString("abc")
 	JwtSecret = sec.Key("JWT_SECRET").MustString("!@)*#)!@U#@*!@!)@!)")
 	PageSize = sec.Key("PAGE_SIZE").MustInt(10)
+	PageUpbound = sec.Key("PAGE_UPBOUND").MustInt(1000)
 }
 
 func LoadMysql() {

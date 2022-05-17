@@ -2,11 +2,10 @@ package models
 
 import (
 	"goweb/author-admin/server/dao"
-	"log"
 )
 
 func AutoMigrate() {
-	log.Println(dao.DB)
+	// log.Println(dao.DB)
 	dao.DB.AutoMigrate(&User{})
 }
 

@@ -36,6 +36,8 @@ type User struct {
 	Username string `gorm:"unique" json:"username"`
 	Password string `json:"password"`
 	Role     string `json:"role"`
+	Creater  string `json:"creater"`
+	CreatOn  string `json:"creaton"`
 }
 
 func CheckUser(username, password string) bool {
@@ -59,17 +61,28 @@ func SelectUserByUsername(username string) (User, error) {
 	return temp, err
 }
 
+func SelectUser(start, limit int) ([]User, int) {
+	var count int
+	dao.DB.Model(&User{}).Count(&count)
+
+	var users []User
+	dao.DB.Order("id").Limit(limit).Offset(start).Find(&users)
+	return users, count
+}
+
 func SelectUserAll() []User {
 	var users []User
 	dao.DB.Find(&users)
 	return users
 }
 
-func AddUser(username, password, role string) error {
+func AddUser(username, password, role, creater string) error {
 	u := User{
 		Username: username,
 		Password: password,
 		Role:     role,
+		Creater:  creater,
+		CreatOn:  util.CurrentTimeStr(),
 	}
 
 	// 判断类型是否合法
@@ -87,6 +100,6 @@ func AddUser(username, password, role string) error {
 		return err
 	}
 
-	dao.DB.Select("Username", "Password", "Role").Create(&u)
+	dao.DB.Select("Username", "Password", "Role", "Creater", "CreatOn").Create(&u)
 	return nil
 }
