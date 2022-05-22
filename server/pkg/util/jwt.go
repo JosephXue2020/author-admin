@@ -1,6 +1,7 @@
 package util
 
 import (
+	"fmt"
 	"goweb/author-admin/server/pkg/setting"
 	"time"
 
@@ -45,5 +46,6 @@ func ParseToken(token string) (*Claims, error) {
 		}
 	}
 
+	err = fmt.Errorf("Failed to parse token.")
 	return nil, err
 }

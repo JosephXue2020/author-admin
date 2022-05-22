@@ -48,6 +48,9 @@ func InitRouter() *gin.Engine {
 	v1.Use(jwt.JWT())
 	{
 		v1.GET("/user/list", user.GetUserList)
+		v1.POST("/user/delete", user.DeleteUser)
+		v1.POST("/user/add", user.AddUser)
+		v1.POST("/user/update", user.UpdateUser)
 	}
 
 	return r

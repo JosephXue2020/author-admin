@@ -125,7 +125,8 @@ func Info(c *gin.Context) {
 		statusCode = http.StatusBadRequest
 	}
 	c.JSON(statusCode, gin.H{
-		"code": code,
-		"data": data,
+		"code":    code,
+		"message": e.GetMsg(code),
+		"data":    data,
 	})
 }

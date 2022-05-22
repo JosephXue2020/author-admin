@@ -20,6 +20,9 @@ var (
 	PageUpbound int
 	JwtIssuer   string
 	JwtSecret   string
+
+	SuperUserName     string
+	SuperUserPassword string
 )
 
 type MysqlConf struct {
@@ -43,6 +46,7 @@ func init() {
 	LoadServer()
 	LoadApp()
 	LoadMysql()
+	LoadUser()
 }
 
 func LoadMode() {
@@ -89,4 +93,14 @@ func LoadMysql() {
 	Mysql.Host = host
 	Mysql.Name = name
 	Mysql.TablePrefix = tablePrefix
+}
+
+func LoadUser() {
+	sec, err := Cfg.GetSection("user")
+	if err != nil {
+		log.Fatalf("Fail to get section 'user': %v", err)
+	}
+
+	SuperUserName = sec.Key("SUPERUSER").MustString("root")
+	SuperUserPassword = sec.Key("PASSWORD").MustString("root")
 }

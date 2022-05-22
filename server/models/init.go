@@ -5,8 +5,8 @@ import (
 )
 
 func AutoMigrate() {
-	// log.Println(dao.DB)
 	dao.DB.AutoMigrate(&User{})
+	addSuper()
 }
 
 // shared fields

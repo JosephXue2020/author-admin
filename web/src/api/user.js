@@ -30,3 +30,28 @@ export function getUserList(params) {
     params
   })
 }
+
+export function deleteUser(id) {
+  return request({
+    url: 'v1/user/delete',
+    method: 'post',
+    // headers: { 'Content-Type': 'application/json' },
+    data: { 'id': id }
+  })
+}
+
+export function addUser(data) {
+  return request({
+    url: 'v1/user/add',
+    method: 'post',
+    data
+  })
+}
+
+export function updateUser(data) {
+  return request({
+    url: 'v1/user/update',
+    method: 'post',
+    data
+  })
+}

@@ -3,41 +3,80 @@ package models
 import (
 	"fmt"
 	"goweb/author-admin/server/dao"
+	"goweb/author-admin/server/pkg/e"
+	"goweb/author-admin/server/pkg/setting"
 	"goweb/author-admin/server/pkg/util"
 )
 
-// 用户类型
+// User grade
 const (
 	GUEST = iota
-	NORM
+	NORMAL
 	ADMIN
 	SUPER
 )
 
-var RoleMap = map[int]string{
-	GUEST: "guest",
-	NORM:  "norm",
-	ADMIN: "admin",
-	SUPER: "super",
+var GradeMap = map[int]string{
+	GUEST:  "guest",
+	NORMAL: "normal",
+	ADMIN:  "admin",
+	SUPER:  "super",
 }
 
-// 所有用户类型描述
-func RoleSli() []string {
-	var sli []string
-	for _, v := range RoleMap {
-		sli = append(sli, v)
+var RoleMap = func() map[string]int {
+	m := make(map[string]int)
+	for k, v := range GradeMap {
+		m[v] = k
 	}
-	return sli
+	return m
+}()
+
+func RoleKeywords() []string {
+	var slc []string
+	for _, v := range GradeMap {
+		slc = append(slc, v)
+	}
+	return slc
 }
 
 type User struct {
 	// gorm.Model
-	ID       int    `gorm:"primaryKey" json:"id"`
-	Username string `gorm:"unique" json:"username"`
-	Password string `json:"password"`
-	Role     string `json:"role"`
-	Creater  string `json:"creater"`
-	CreatOn  string `json:"creaton"`
+	ID         int    `gorm:"primaryKey" json:"id"`
+	UUID       string `gorm:"unique" json:"uuid"`
+	Username   string `gorm:"unique" json:"username"` // 用户名要求唯一
+	Password   string `json:"password"`
+	Department string `json:"department"`
+	Role       string `json:"role"`
+	Creater    string `json:"creater"`
+	CreateOn   string `json:"createon"`
+}
+
+// 达到阈值则允许
+func (u *User) Permission(threshold int) bool {
+	if threshold < GUEST || threshold > SUPER {
+		return false
+	}
+
+	grade, ok := RoleMap[u.Role]
+	if !ok || grade < threshold {
+		return false
+	}
+
+	return true
+}
+
+// 低于阈值则允许
+func (u *User) LessPermission(threshold int) bool {
+	if threshold < GUEST || threshold > SUPER {
+		return false
+	}
+
+	grade, ok := RoleMap[u.Role]
+	if !ok || grade >= threshold {
+		return false
+	}
+
+	return true
 }
 
 func CheckUser(username, password string) bool {
@@ -49,7 +88,20 @@ func CheckUser(username, password string) bool {
 	return false
 }
 
+func SelectUserByID(id int) (User, error) {
+	temp := User{}
+	dao.DB.Where("id = ?", id).First(&temp)
+
+	if temp.ID > 0 {
+		return temp, nil
+	}
+
+	err := fmt.Errorf("User does not exist.")
+	return temp, err
+}
+
 func SelectUserByUsername(username string) (User, error) {
+	// 不验证唯一性
 	temp := User{}
 	dao.DB.Where("Username = ?", username).First(&temp)
 
@@ -61,45 +113,203 @@ func SelectUserByUsername(username string) (User, error) {
 	return temp, err
 }
 
-func SelectUser(start, limit int) ([]User, int) {
-	var count int
-	dao.DB.Model(&User{}).Count(&count)
-
+func SelectUserBatch(start, limit int, desc bool) []User {
 	var users []User
-	dao.DB.Order("id").Limit(limit).Offset(start).Find(&users)
-	return users, count
+	orderStr := "id"
+	if desc {
+		orderStr += " desc"
+	}
+	dao.DB.Order(orderStr).Limit(limit).Offset(start).Find(&users)
+	return users
 }
 
-func SelectUserAll() []User {
+func SelectUserAll(desc bool) []User {
 	var users []User
 	dao.DB.Find(&users)
 	return users
 }
 
-func AddUser(username, password, role, creater string) error {
-	u := User{
-		Username: username,
-		Password: password,
-		Role:     role,
-		Creater:  creater,
-		CreatOn:  util.CurrentTimeStr(),
+func CountUser() int {
+	var count int
+	dao.DB.Model(&User{}).Count(&count)
+	return count
+}
+
+func ValidateCreation(u User, creater string) (bool, int) {
+	code := e.SUCCESS
+	// 判断类型是否合法
+	roles := RoleKeywords()
+	if !util.ContainStr(roles, u.Role) {
+		// err := fmt.Errorf("Role type is illegal.")
+		code = e.ERROR_USER_INVALID
+		return false, code
 	}
 
-	// 判断类型是否合法
-	roleSli := RoleSli()
-	if !util.ContainStr(roleSli, role) {
-		err := fmt.Errorf("Role type is illegal.")
-		return err
+	// 判断是否有足够权限：只能创建权限小于自己的用户
+	createrObj, err := SelectUserByUsername(creater)
+	createrGrade, ok := RoleMap[createrObj.Role]
+	if err != nil || !ok {
+		// err := fmt.Errorf("Creater is illegal.")
+		code = e.ERROR_USER_INVALID
+		return false, code
+	}
+	if !u.LessPermission(createrGrade) {
+		// err := fmt.Errorf("Not enough authority.")
+		code = e.ERROR_USER_LACK_AUTHORITY
+		return false, code
 	}
 
 	// 判断是否存在
 	temp := User{}
-	dao.DB.Where("Username = ?", username).First(&temp)
+	dao.DB.Where("Username = ?", u.Username).First(&temp)
 	if temp.ID > 0 {
-		err := fmt.Errorf("Username already exists.")
+		// err := fmt.Errorf("Username already exists.")
+		code = e.ERROR_USER_ALREADY_EXIST
+		return false, code
+	}
+
+	return true, code
+}
+
+// 用户只能添加权限小于自己的用户
+func AddUser(username, password, department, role, creater string) error {
+	u := User{
+		UUID:       util.GenUUID(),
+		Username:   username,
+		Password:   password,
+		Department: department,
+		Role:       role,
+		Creater:    creater,
+		CreateOn:   util.CurrentTimeStr(),
+	}
+
+	if valid, code := ValidateCreation(u, creater); !valid {
+		err := fmt.Errorf(e.GetMsg(code))
 		return err
 	}
 
-	dao.DB.Select("Username", "Password", "Role", "Creater", "CreatOn").Create(&u)
+	dao.DB.Create(&u)
+	return nil
+}
+
+// 自动添加super用户：一生二、二生三、三生万物
+func addSuper() {
+	name := setting.SuperUserName
+	password := setting.SuperUserPassword
+
+	// 是否存在
+	u, err := SelectUserByUsername(name)
+	if err == nil {
+		if u.Password != password {
+			u.Password = password
+			dao.DB.Save(&u)
+		}
+		return
+	}
+
+	super := User{
+		UUID:       util.GenUUID(),
+		Username:   name,
+		Password:   password,
+		Department: "数据部",
+		Role:       GradeMap[SUPER],
+		Creater:    name,
+		CreateOn:   util.CurrentTimeStr(),
+	}
+	dao.DB.Create(&super)
+	return
+}
+
+func validateDeletion(id int, operator string) (bool, int) {
+	code := e.SUCCESS
+
+	userObj, err := SelectUserByID(id)
+	if err != nil {
+		code = e.ERROR_USER_NOT_EXIST
+		return false, code
+	}
+
+	operatorObj, err := SelectUserByUsername(operator)
+	if err != nil {
+		code = e.ERROR_USER_INVALID
+		return false, code
+	}
+
+	if !userObj.LessPermission(RoleMap[operatorObj.Role]) {
+		code = e.ERROR_USER_LACK_AUTHORITY
+		return false, code
+	}
+
+	return true, code
+}
+
+func DeleteUserByID(id int, operator string) error {
+	if ok, code := validateDeletion(id, operator); !ok {
+		err := fmt.Errorf(e.GetMsg(code))
+		return err
+	}
+
+	dao.DB.Delete(&User{}, id)
+	return nil
+}
+
+func DeleteUserByName(username, operator string) error {
+	userObj := User{}
+	dao.DB.Where("Username = ?", username).First(&userObj)
+
+	if userObj.ID < 0 {
+		err := fmt.Errorf("User to delete does not exist.")
+		return err
+	}
+
+	return DeleteUserByID(userObj.ID, operator)
+}
+
+func ValidateUpdate(u User, operator string) (bool, int) {
+	code := e.SUCCESS
+	// 判断类型是否合法
+	roles := RoleKeywords()
+	if !util.ContainStr(roles, u.Role) {
+		// err := fmt.Errorf("Role type is illegal.")
+		code = e.ERROR_USER_INVALID
+		return false, code
+	}
+
+	// 判断是否有足够权限：只能创建权限小于自己的用户
+	createrObj, err := SelectUserByUsername(operator)
+	createrGrade, ok := RoleMap[createrObj.Role]
+	if err != nil || !ok {
+		// err := fmt.Errorf("Creater is illegal.")
+		code = e.ERROR_USER_INVALID
+		return false, code
+	}
+	if !u.LessPermission(createrGrade) {
+		// err := fmt.Errorf("Not enough authority.")
+		code = e.ERROR_USER_LACK_AUTHORITY
+		return false, code
+	}
+
+	return true, code
+}
+
+func UpdateUser(id int, password, department, role, operator string) error {
+	var code int
+	u, err := SelectUserByID(id)
+	if err != nil {
+		code = e.ERROR_USER_NOT_EXIST
+		err := fmt.Errorf(e.GetMsg(code))
+		return err
+	}
+
+	u.Password = password
+	u.Department = department
+	u.Role = role
+
+	if ok, code := ValidateUpdate(u, operator); !ok {
+		err := fmt.Errorf(e.GetMsg(code))
+		return err
+	}
+
+	dao.DB.Save(&u)
 	return nil
 }

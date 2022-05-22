@@ -112,7 +112,7 @@ export const constantRoutes = [
       path: 'add',
       name: 'Adduser',
       component: () => import('@/views/user/add/index'),
-      meta: { title: '创建' }
+      meta: { title: '添加' }
     }]
   },
 

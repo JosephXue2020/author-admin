@@ -13,3 +13,5 @@ INSERT INTO authoradmin_user
 (id, username, password)
 VALUES
 (1, "test", "123456");
+
+INSERT INTO authoradmin_user (username, password, role) VALUES ("test6", "123456", "normal");
