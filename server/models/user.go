@@ -1,6 +1,7 @@
 package models
 
 import (
+	"errors"
 	"fmt"
 	"goweb/author-admin/server/dao"
 	"goweb/author-admin/server/pkg/e"
@@ -135,35 +136,56 @@ func CountUser() int {
 	return count
 }
 
+func AllowedRole(role string) bool {
+	roles := RoleKeywords()
+	return util.ContainStr(roles, role)
+}
+
+func GetGradeByName(username string) (int, error) {
+	obj, err := SelectUserByUsername(username)
+	if err != nil {
+		return -1, err
+	}
+
+	grade, ok := RoleMap[obj.Role]
+	if !ok {
+		err = errors.New("Failed to get the grade of the user.")
+		return -1, err
+	}
+
+	return grade, nil
+}
+
+func UserExist(username string) bool {
+	temp := User{}
+	dao.DB.Where("Username = ?", username).First(&temp)
+	if temp.ID > 0 {
+		return true
+	}
+	return false
+}
+
 func ValidateCreation(u User, creater string) (bool, int) {
 	code := e.SUCCESS
 	// 判断类型是否合法
-	roles := RoleKeywords()
-	if !util.ContainStr(roles, u.Role) {
-		// err := fmt.Errorf("Role type is illegal.")
+	if !AllowedRole(u.Role) {
 		code = e.ERROR_USER_INVALID
 		return false, code
 	}
 
 	// 判断是否有足够权限：只能创建权限小于自己的用户
-	createrObj, err := SelectUserByUsername(creater)
-	createrGrade, ok := RoleMap[createrObj.Role]
-	if err != nil || !ok {
-		// err := fmt.Errorf("Creater is illegal.")
+	createrGrade, err := GetGradeByName(creater)
+	if err != nil {
 		code = e.ERROR_USER_INVALID
 		return false, code
 	}
 	if !u.LessPermission(createrGrade) {
-		// err := fmt.Errorf("Not enough authority.")
 		code = e.ERROR_USER_LACK_AUTHORITY
 		return false, code
 	}
 
 	// 判断是否存在
-	temp := User{}
-	dao.DB.Where("Username = ?", u.Username).First(&temp)
-	if temp.ID > 0 {
-		// err := fmt.Errorf("Username already exists.")
+	if UserExist(u.Username) {
 		code = e.ERROR_USER_ALREADY_EXIST
 		return false, code
 	}
@@ -197,7 +219,7 @@ func addSuper() {
 	name := setting.SuperUserName
 	password := setting.SuperUserPassword
 
-	// 是否存在
+	// 判断是否存在。若存在，根据config更新密码
 	u, err := SelectUserByUsername(name)
 	if err == nil {
 		if u.Password != password {
@@ -229,13 +251,12 @@ func validateDeletion(id int, operator string) (bool, int) {
 		return false, code
 	}
 
-	operatorObj, err := SelectUserByUsername(operator)
+	operatorGrade, err := GetGradeByName(operator)
 	if err != nil {
 		code = e.ERROR_USER_INVALID
 		return false, code
 	}
-
-	if !userObj.LessPermission(RoleMap[operatorObj.Role]) {
+	if !userObj.LessPermission(operatorGrade) {
 		code = e.ERROR_USER_LACK_AUTHORITY
 		return false, code
 	}
@@ -267,24 +288,20 @@ func DeleteUserByName(username, operator string) error {
 
 func ValidateUpdate(u User, operator string) (bool, int) {
 	code := e.SUCCESS
+
 	// 判断类型是否合法
-	roles := RoleKeywords()
-	if !util.ContainStr(roles, u.Role) {
-		// err := fmt.Errorf("Role type is illegal.")
+	if !AllowedRole(u.Role) {
 		code = e.ERROR_USER_INVALID
 		return false, code
 	}
 
 	// 判断是否有足够权限：只能创建权限小于自己的用户
-	createrObj, err := SelectUserByUsername(operator)
-	createrGrade, ok := RoleMap[createrObj.Role]
-	if err != nil || !ok {
-		// err := fmt.Errorf("Creater is illegal.")
+	operatorGrade, err := GetGradeByName(operator)
+	if err != nil {
 		code = e.ERROR_USER_INVALID
 		return false, code
 	}
-	if !u.LessPermission(createrGrade) {
-		// err := fmt.Errorf("Not enough authority.")
+	if !u.LessPermission(operatorGrade) {
 		code = e.ERROR_USER_LACK_AUTHORITY
 		return false, code
 	}

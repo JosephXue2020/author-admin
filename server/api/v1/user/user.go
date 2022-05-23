@@ -56,7 +56,7 @@ func AddUser(c *gin.Context) {
 	var code int
 	form := struct {
 		Username   string `json:"username"`
-		Password   string `json:"passowrd"`
+		Password   string `json:"password"`
 		Role       string `json:"role"`
 		Department string `json:"department"`
 	}{}
