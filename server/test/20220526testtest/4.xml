@@ -1,0 +1,364 @@
+
+<neu:resource xmlns:neu="http://www.neusoft.com/">
+    <id>10051012000000103099201614278</id>
+    <mid>12</mid>
+    <sourceSystemId>1005</sourceSystemId>
+    <state>I</state>
+    <batchNo>202205261603516</batchNo>
+    <createUser>10144</createUser>
+    <createTime>2022-05-26 16:06:34</createTime>
+    <updateTime>2022-05-26 16:06:34</updateTime>
+    <datastream id="RELSUBCLAUSE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:06:34" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="COREMETA" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:06:34" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:coreMetaEntity">
+                <title>〔中国人才地理〕</title>
+                <subject></subject>
+                <creator></creator>
+                <identifier>40288c3580affd8a0180b291791b085b</identifier>
+                <source>中国百科编纂管理平台</source>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="CHRONOLOGYCONTENT" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:06:34" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="SOURCE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:06:34" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>sourceSystemId</name>
+                    <value>1002</value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="EXTMETA" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:06:34" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>latinname</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>firstname</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>itemen</name>
+                    <value>Chinese Talent Geography</value>
+                </extElement>
+                <extElement>
+                    <name>subcDescription</name>
+                    <value>&lt;p style=&quot;text-indent: 2em;&quot;&gt;人才指有杰出才能的人物。古往今来，对人才的定义随时代的变化而改变。人才的成长与当地的社会政治、经济环境、历史文化背景、教育制度和传统及人口密度等密切相关，因此形成了中国人才地理分布的特殊格局。&lt;/p&gt;</value>
+                </extElement>
+                <extElement>
+                    <name>itempy</name>
+                    <value>zhonɡɡuorencɑidili</value>
+                </extElement>
+                <extElement>
+                    <name>subid</name>
+                    <value>40288c3580affd8a0180b2917935085e</value>
+                </extElement>
+                <extElement>
+                    <name>compilationprocessname</name>
+                    <value>编纂流程-简化版(新)</value>
+                </extElement>
+                <extElement>
+                    <name>compilationprocessid</name>
+                    <value>CompileSimplifyProcess</value>
+                </extElement>
+                <extElement>
+                    <name>subcid</name>
+                    <value>40288c3580affd8a0180b291791b085b</value>
+                </extElement>
+                <extElement>
+                    <name>projectname</name>
+                    <value>《中国大百科全书》第三版</value>
+                </extElement>
+                <extElement>
+                    <name>datetime</name>
+                    <value>20220526160351766</value>
+                </extElement>
+                <extElement>
+                    <name>subname</name>
+                    <value>〔中国人才地理〕</value>
+                </extElement>
+                <extElement>
+                    <name>projectid</name>
+                    <value>00000000519ed0520151a3386d8b0016</value>
+                </extElement>
+                <extElement>
+                    <name>userid</name>
+                    <value>60a683f023514df6a7c519425f5a8e56</value>
+                </extElement>
+                <extElement>
+                    <name>subcname</name>
+                    <value>〔中国人才地理〕</value>
+                </extElement>
+                <extElement>
+                    <name>username</name>
+                    <value>731255226@qq.com</value>
+                </extElement>
+                <extElement>
+                    <name>text</name>
+                    <value>&lt;p&gt;&lt;/p&gt;&lt;p style=&quot;text-indent: 2em;&quot;&gt;中国人才地理阐述了从古至今中国人才分布的状况，包括了古代状元、书法家、文学家等的分布情况以及现代人才的分布情况，有助于中国制定更加合理的人才发展战略。&lt;/p&gt;</value>
+                </extElement>
+                <extElement>
+                    <name>classpath</name>
+                    <value>中国地理/〔中国人文地理〕/〔文化经济地理〕/〔中国人才地理〕</value>
+                </extElement>
+                <extElement>
+                    <name>classid</name>
+                    <value>40288c3580affd8a0180b2917935085e</value>
+                </extElement>
+                <extElement>
+                    <name>keywords</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>Project</name>
+                    <value>《中国大百科全书》第三版</value>
+                </extElement>
+                <extElement>
+                    <name>mark</name>
+                    <value></value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="VERSION" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:06:34" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>CompileProcess</name>
+                    <value>编纂流程-简化版(新)</value>
+                </extElement>
+                <extElement>
+                    <name>CompileProcessNode</name>
+                    <value>编纂</value>
+                </extElement>
+                <extElement>
+                    <name>OperatorAccount</name>
+                    <value>731255226@qq.com</value>
+                </extElement>
+                <extElement>
+                    <name>IfCompiled</name>
+                    <value>否</value>
+                </extElement>
+                <extElement>
+                    <name>CompileType</name>
+                    <value>全新编撰</value>
+                </extElement>
+                <extElement>
+                    <name>HistoryResTit</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>HistoryResID</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>ItemType</name>
+                    <value>长条目</value>
+                </extElement>
+                <extElement>
+                    <name>Operator</name>
+                    <value>任君</value>
+                </extElement>
+                <extElement>
+                    <name>EntryVersionNumber</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>CollaborativeProcess</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>CollabProcessNode</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>ItemNature</name>
+                    <value>实条</value>
+                </extElement>
+                <extElement>
+                    <name>UnitSeeAlsoItem</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>ReferenceItemcn</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>ReferenceItem</name>
+                    <value></value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="QUOTE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:06:34" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:quoteEntity">
+                <links type="image">
+                    <link>
+                        <ref></ref>
+                        <value></value>
+                    </link>
+                </links>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="CHRONOLOGY" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:06:34" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>chronologyTitle</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>imgS</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>imgT</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>imgcdoi</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>imgTitle</name>
+                    <value></value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="F_FACTSPHENOMENON" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:06:34" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>occurrenceTime</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>occurrenceLocation</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>alias</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>belongsubject</name>
+                    <value>中国地理</value>
+                </extElement>
+                <extElement>
+                    <name>otherDigest</name>
+                    <value>{&quot;list&quot;:[]}</value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="TEMPLATE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:06:34" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>abstractTemplateId</name>
+                    <value>fd0d0866-d0a4-421d-9575-930065038749</value>
+                </extElement>
+                <extElement>
+                    <name>abstractTemplateName</name>
+                    <value>----</value>
+                </extElement>
+                <extElement>
+                    <name>writeTemplateId</name>
+                    <value>ff8080815591e42101559ee2cf0508e2</value>
+                </extElement>
+                <extElement>
+                    <name>writeTemplate</name>
+                    <value>事实现象</value>
+                </extElement>
+                <extElement>
+                    <name>outlineTemplateId</name>
+                    <value>ff8080815591e42101559af597a707c5</value>
+                </extElement>
+                <extElement>
+                    <name>outlineTemplate</name>
+                    <value>通用条头</value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="AUTHOR" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:06:34" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>authorId</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>authorName</name>
+                    <value>史春云</value>
+                </extElement>
+                <extElement>
+                    <name>sex</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>birthday</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>professionalTitle</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>subject</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>researchFieldsDirect</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>personSynopsis</name>
+                    <value></value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="BIBLIOGRAPHYS" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:06:34" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="LITERATURE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:06:34" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="EXTENSIVES" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:06:34" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="FORMAT_XML_0" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:06:34" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:contentLocationEntity">
+                <contentElement appType="0" contentType="OBJDATAENTITY" name="40288c3580affd8a0180b291791b085b.xml" ref="/objectdata/4/40288c3580affd8a0180b291791b085b.xml" size="3161"/>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <subjectLib>thirdVersion</subjectLib>
+    <dataType>0</dataType>
+    <fileType>xml</fileType>
+    <fid>1</fid>
+</neu:resource>

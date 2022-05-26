@@ -1,0 +1,465 @@
+
+<neu:resource xmlns:neu="http://www.neusoft.com/">
+    <id>10051012000000103099687721023</id>
+    <mid>12</mid>
+    <sourceSystemId>1005</sourceSystemId>
+    <state>I</state>
+    <batchNo>202205261617244</batchNo>
+    <createUser>10144</createUser>
+    <createTime>2022-05-26 16:20:07</createTime>
+    <updateTime>2022-05-26 16:20:07</updateTime>
+    <datastream id="RELSUBCLAUSE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:20:07" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="COREMETA" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:20:07" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:coreMetaEntity">
+                <title>广告设计</title>
+                <subject></subject>
+                <creator></creator>
+                <identifier>ff80808168eb096e0168eee7bd842664</identifier>
+                <source>中国百科编纂管理平台</source>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="CHRONOLOGYCONTENT" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:20:07" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="SOURCE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:20:07" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>sourceSystemId</name>
+                    <value>1002</value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="EXTMETA" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:20:07" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>latinname</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>firstname</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>itemen</name>
+                    <value>advertise design</value>
+                </extElement>
+                <extElement>
+                    <name>subcDescription</name>
+                    <value>&lt;p style=&quot;text-indent: 2em;&quot;&gt;为了在不同的媒介进行展示、宣传某种商品，使广告主获取更多的利润，而通过科学的分析和创意进行策划的设计。&lt;/p&gt;</value>
+                </extElement>
+                <extElement>
+                    <name>itempy</name>
+                    <value>ɡuɑnɡɡɑosheji</value>
+                </extElement>
+                <extElement>
+                    <name>subid</name>
+                    <value>ff80808168eb096e0168eee7bd7f2660</value>
+                </extElement>
+                <extElement>
+                    <name>compilationprocessname</name>
+                    <value>编纂流程-简化版(新)</value>
+                </extElement>
+                <extElement>
+                    <name>compilationprocessid</name>
+                    <value>CompileSimplifyProcess</value>
+                </extElement>
+                <extElement>
+                    <name>subcid</name>
+                    <value>ff80808168eb096e0168eee7bd842664</value>
+                </extElement>
+                <extElement>
+                    <name>projectname</name>
+                    <value>《中国大百科全书》第三版</value>
+                </extElement>
+                <extElement>
+                    <name>datetime</name>
+                    <value>20220526161724574</value>
+                </extElement>
+                <extElement>
+                    <name>subname</name>
+                    <value>广告设计</value>
+                </extElement>
+                <extElement>
+                    <name>projectid</name>
+                    <value>00000000519ed0520151a3386d8b0016</value>
+                </extElement>
+                <extElement>
+                    <name>userid</name>
+                    <value>dbc2d74bafdc4f4b80d2c4af28dae5b5</value>
+                </extElement>
+                <extElement>
+                    <name>subcname</name>
+                    <value>广告设计</value>
+                </extElement>
+                <extElement>
+                    <name>username</name>
+                    <value>songxian720@163.com</value>
+                </extElement>
+                <extElement>
+                    <name>text</name>
+                    <value>&lt;p&gt;&lt;/p&gt;&lt;p style=&quot;text-indent: 2em; text-align: justify;&quot;&gt;广告设计一词由“广告”和“设计”两个词组成。“广告”一词源自拉丁语“advertise”，原义有注意、诱导、传播的意思，后引申为“唤起某人注意某事物”，或“通知别人某件事，以引起他人的注意”。“设计”一词源自拉丁语“designare”，有两层含义：设想和计划。17世纪末，英国开始进行大规模的商业活动，广告一词被广泛使用，逐渐通行于世界各地。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p style=&quot;text-indent: 2em; text-align: justify;&quot;&gt;广告设计的发展是由技术发展、文化发展以及日趋激烈的市场竞争所推动的。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p style=&quot;text-indent: 2em; text-align: justify;&quot;&gt;从远古到18世纪中叶，初期的广告设计以口头叫卖、实物陈列、招牌、幌子、传单等形式为主。18世纪中叶到19世纪末，随着经济发展，人们对商品和消费的需求不断增长，广告设计以招贴画和路牌广告为主，设计者多由画家兼任，与艺术的界限并不明显。20世纪初到20世纪八九十年代，广告设计随着印刷业的发展和成熟而得到更广泛的复制传播。随着电脑图文技术兴起，彻底改变了广告的设计手段，许多新的视觉风格得以诞生，广告逐渐由职业转变为产业，现代广告设计走向成熟。21世纪，人类社会进入网络科技时代，信息自由共享，新兴的网络广告市场成为新趋势，广告设计由独立的操作转向以策划为基础，讲求创意为先的设计执行，呈现出信息传达功能与审美情感的更佳融合状态。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p style=&quot;text-indent: 2em; text-align: justify;&quot;&gt;广告设计按信息载体不同可分为视觉广告设计、听觉广告设计和视听广告设计；按照表现形式不同可分为印刷媒体和电子媒体；按照广告诉求不同可分为硬广告和软广告；按照广告性质不同可分为商业广告、非商业广告、文化艺术娱乐广告。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p style=&quot;text-indent: 2em; text-align: justify;&quot;&gt;广告设计与世界经济、政治环境的关系极为密切，具有强烈的时代特征。当代广告设计，将会在不断运用高科技和新媒体中得到新的发展。数字化新媒体将越来越重要，移动网络广告、数字电影与电视广告，以及多媒体互动广告等新一代广告传播方式与媒介手段正在成为焦点。但同时，对新技术的过于依赖已经开始弱化人们的手绘能力，因此，当代广告设计也有义务保存良好的文化传统。&lt;/p&gt;</value>
+                </extElement>
+                <extElement>
+                    <name>classpath</name>
+                    <value>设计学/视觉传达设计/广告设计</value>
+                </extElement>
+                <extElement>
+                    <name>classid</name>
+                    <value>ff80808168eb096e0168eee7bd7f2660</value>
+                </extElement>
+                <extElement>
+                    <name>keywords</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>Project</name>
+                    <value>《中国大百科全书》第三版</value>
+                </extElement>
+                <extElement>
+                    <name>mark</name>
+                    <value></value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="VERSION" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:20:07" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>CompileProcess</name>
+                    <value>编纂流程-简化版(新)</value>
+                </extElement>
+                <extElement>
+                    <name>CompileProcessNode</name>
+                    <value>编纂</value>
+                </extElement>
+                <extElement>
+                    <name>OperatorAccount</name>
+                    <value>songxian720@163.com</value>
+                </extElement>
+                <extElement>
+                    <name>IfCompiled</name>
+                    <value>否</value>
+                </extElement>
+                <extElement>
+                    <name>CompileType</name>
+                    <value>全新编撰</value>
+                </extElement>
+                <extElement>
+                    <name>HistoryResTit</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>HistoryResID</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>ItemType</name>
+                    <value>短条目</value>
+                </extElement>
+                <extElement>
+                    <name>Operator</name>
+                    <value>宋娴</value>
+                </extElement>
+                <extElement>
+                    <name>EntryVersionNumber</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>CollaborativeProcess</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>CollabProcessNode</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>ItemNature</name>
+                    <value>实条</value>
+                </extElement>
+                <extElement>
+                    <name>UnitSeeAlsoItem</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>ReferenceItemcn</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>ReferenceItem</name>
+                    <value></value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="FORMAT_XML_0" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:20:07" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:contentLocationEntity">
+                <contentElement appType="0" contentType="OBJDATAENTITY" name="ff80808168eb096e0168eee7bd842664.xml" ref="/objectdata/0/ff80808168eb096e0168eee7bd842664.xml" size="7030"/>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="F_LANGUAGES" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:20:07" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>languageDepartment</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>character</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>user</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>distributionArea</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>representative</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>representWork</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>usedTime</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>numberOfUsers</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>languageDivition</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>basicWordOrder</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>numberOfVowels</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>numberOfInitials</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>createdMan</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>founder</name>
+                    <value>设计学</value>
+                </extElement>
+                <extElement>
+                    <name>otherDigest</name>
+                    <value>{&quot;list&quot;:[]}</value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="QUOTE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:20:07" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:quoteEntity">
+                <links type="image">
+                    <link>
+                        <ref></ref>
+                        <value></value>
+                    </link>
+                </links>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="TEMPLATE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:20:07" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>outlineTemplateId</name>
+                    <value>ff8080815591e42101559af597a707c5</value>
+                </extElement>
+                <extElement>
+                    <name>outlineTemplate</name>
+                    <value>通用条头</value>
+                </extElement>
+                <extElement>
+                    <name>abstractTemplateId</name>
+                    <value>7310a24c-1d8d-4664-a56d-5edd5b338970</value>
+                </extElement>
+                <extElement>
+                    <name>abstractTemplateName</name>
+                    <value>----</value>
+                </extElement>
+                <extElement>
+                    <name>writeTemplateId</name>
+                    <value>40288c357727aba301778976ccf33e05</value>
+                </extElement>
+                <extElement>
+                    <name>writeTemplate</name>
+                    <value>概念类条目（通用）</value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="LITERATURE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:20:07" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="EXTENSIVES" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:20:07" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>type</name>
+                    <value>2</value>
+                </extElement>
+                <extElement>
+                    <name>workMainPerson</name>
+                    <value>侯立平，郑建鹏</value>
+                </extElement>
+                <extElement>
+                    <name>workBookName</name>
+                    <value>现代广告设计</value>
+                </extElement>
+                <extElement>
+                    <name>workOtherPerson</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>workPublishAddress</name>
+                    <value>北京</value>
+                </extElement>
+                <extElement>
+                    <name>workPublishauthor</name>
+                    <value>首都经济贸易大学出版社</value>
+                </extElement>
+                <extElement>
+                    <name>workPublishYear</name>
+                    <value>2016</value>
+                </extElement>
+                <extElement>
+                    <name>workLinkAddress</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>workMainPerson</name>
+                    <value>梁哲，韩志孝</value>
+                </extElement>
+                <extElement>
+                    <name>workBookName</name>
+                    <value>商业美术设计</value>
+                </extElement>
+                <extElement>
+                    <name>workOtherPerson</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>workPublishAddress</name>
+                    <value>北京</value>
+                </extElement>
+                <extElement>
+                    <name>workPublishauthor</name>
+                    <value>中国铁道出版社</value>
+                </extElement>
+                <extElement>
+                    <name>workPublishYear</name>
+                    <value>2017</value>
+                </extElement>
+                <extElement>
+                    <name>workLinkAddress</name>
+                    <value></value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="BIBLIOGRAPHYS" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:20:07" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="CHRONOLOGY" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:20:07" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>chronologyTitle</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>imgS</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>imgT</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>imgcdoi</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>imgTitle</name>
+                    <value></value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="AUTHOR" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:20:07" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>authorId</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>authorName</name>
+                    <value>杨简茹</value>
+                </extElement>
+                <extElement>
+                    <name>sex</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>birthday</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>professionalTitle</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>subject</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>researchFieldsDirect</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>personSynopsis</name>
+                    <value></value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <subjectLib>thirdVersion</subjectLib>
+    <dataType>0</dataType>
+    <fileType>xml</fileType>
+    <fid>1</fid>
+</neu:resource>

@@ -126,7 +126,11 @@ func SelectUserBatch(start, limit int, desc bool) []User {
 
 func SelectUserAll(desc bool) []User {
 	var users []User
-	dao.DB.Find(&users)
+	orderStr := "id"
+	if desc {
+		orderStr += " desc"
+	}
+	dao.DB.Order(orderStr).Find(&users)
 	return users
 }
 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<index>
+  <info>
+    <packageName>仓储出库包</packageName>
+    <createTime>2022-05-26 16:28:07</createTime>
+  </info>
+  <content>
+    <resource name="0">
+      <metadata id="10051012000000103099687721023" ref="/0.xml"/>
+    </resource>
+    <resource name="1">
+      <metadata id="10051012000000103099562556536" ref="/1.xml"/>
+    </resource>
+    <resource name="2">
+      <metadata id="10051012000000103099422342540" ref="/2.xml"/>
+    </resource>
+    <resource name="3">
+      <metadata id="10051012000000103099372131551" ref="/3.xml"/>
+    </resource>
+    <resource name="4">
+      <metadata id="10051012000000103099201614278" ref="/4.xml"/>
+    </resource>
+    <resource name="5">
+      <metadata id="10051012000000103099111384506" ref="/5.xml"/>
+    </resource>
+    <resource name="6">
+      <metadata id="10051012000000103099046052554" ref="/6.xml"/>
+    </resource>
+    <resource name="7">
+      <metadata id="10051012000000103098987606456" ref="/7.xml"/>
+    </resource>
+    <resource name="8">
+      <metadata id="10051012000000103098712622236" ref="/8.xml"/>
+    </resource>
+    <resource name="9">
+      <metadata id="10051012000000103098685334601" ref="/9.xml"/>
+    </resource>
+  </content>
+</index>

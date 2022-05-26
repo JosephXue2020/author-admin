@@ -1,0 +1,458 @@
+
+<neu:resource xmlns:neu="http://www.neusoft.com/">
+    <id>10051012000000103098712622236</id>
+    <mid>12</mid>
+    <sourceSystemId>1005</sourceSystemId>
+    <state>I</state>
+    <batchNo>202205261548141</batchNo>
+    <createUser>10144</createUser>
+    <createTime>2022-05-26 15:50:57</createTime>
+    <updateTime>2022-05-26 15:50:57</updateTime>
+    <datastream id="RELSUBCLAUSE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 15:50:57" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="COREMETA" versionable="true">
+        <datastreamVersion createTime="2022-05-26 15:50:57" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:coreMetaEntity">
+                <title>细胞电化学分析</title>
+                <subject></subject>
+                <creator></creator>
+                <identifier>ff808081599bf276015a1baeafcd1b19</identifier>
+                <source>中国百科编纂管理平台</source>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="CHRONOLOGYCONTENT" versionable="true">
+        <datastreamVersion createTime="2022-05-26 15:50:57" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="SOURCE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 15:50:57" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>sourceSystemId</name>
+                    <value>1002</value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="EXTMETA" versionable="true">
+        <datastreamVersion createTime="2022-05-26 15:50:57" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>latinname</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>firstname</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>itemen</name>
+                    <value>electroanalytical chemistry of cell</value>
+                </extElement>
+                <extElement>
+                    <name>subcDescription</name>
+                    <value>&lt;p style=&quot;text-indent: 2em;&quot;&gt;以电化学的基本原理和实验方法从整体上对细胞进行分析和表征，研究或模拟研究细胞荷电粒子或电活性物质的电荷传递与能量交换的规律及其对细胞生理功能的影响，用来考察其生长、发育、衰老和死亡现象，以及受药物、环境的影响等，为生命科学和新药发现提供科学情报的学科。&lt;/p&gt;</value>
+                </extElement>
+                <extElement>
+                    <name>itempy</name>
+                    <value>xibaodianhuaxuefenxi</value>
+                </extElement>
+                <extElement>
+                    <name>subid</name>
+                    <value>ff808081599bf276015a1bab3b6a7f18</value>
+                </extElement>
+                <extElement>
+                    <name>compilationprocessname</name>
+                    <value>编纂流程-简化版(新)</value>
+                </extElement>
+                <extElement>
+                    <name>compilationprocessid</name>
+                    <value>CompileSimplifyProcess</value>
+                </extElement>
+                <extElement>
+                    <name>subcid</name>
+                    <value>ff808081599bf276015a1baeafcd1b19</value>
+                </extElement>
+                <extElement>
+                    <name>projectname</name>
+                    <value>《中国大百科全书》第三版</value>
+                </extElement>
+                <extElement>
+                    <name>datetime</name>
+                    <value>20220526154814140</value>
+                </extElement>
+                <extElement>
+                    <name>subname</name>
+                    <value>细胞传感器</value>
+                </extElement>
+                <extElement>
+                    <name>projectid</name>
+                    <value>00000000519ed0520151a3386d8b0016</value>
+                </extElement>
+                <extElement>
+                    <name>userid</name>
+                    <value>16c7bf96fca64096baed683d056be51c</value>
+                </extElement>
+                <extElement>
+                    <name>subcname</name>
+                    <value>细胞电化学分析</value>
+                </extElement>
+                <extElement>
+                    <name>username</name>
+                    <value>568193406@qq.com</value>
+                </extElement>
+                <extElement>
+                    <name>text</name>
+                    <value>&lt;h1&gt;研究内容&lt;/h1&gt;&lt;p style=&quot;text-indent: 2em;&quot;&gt;细胞是构成生命有机体的基本单元，对细胞质、胞外基质、单个&lt;e1 class=&quot;eCheckType&quot;&gt;全细胞&lt;/e1&gt;的组成分析和实时活体监测是全面了解单个细胞生物生理行为及其机制的重要基础。细胞内的各种生理活动多数伴随着电荷的定向传递、传导或者转移，可以认为细胞的基本生命活动是以电子传递为基础的。因此，&lt;e2 class=&quot;eCheckType&quot;&gt;电化学是&lt;/e2&gt;研究和探讨生命现象和本质最合适的手段之一。电化学技术如膜片钳技术的发展不仅可以作为基础生物学和医学研究的工具，也直接或间接为临床医学研究服务。细胞电分析化学的研究主要集中在以下几个方向。&lt;/p&gt;&lt;h2&gt;细胞内化学组成&lt;/h2&gt;&lt;p style=&quot;text-indent: 2em;&quot;&gt;细胞的组成和结构直接影响或决定细胞的状态和功能。测定细胞内自由离子活度可以通过离子敏微电极（ISME）。其超微尺寸探头刺入细胞可以对其不造成损伤。细胞内电活性物质的研究主要集中在儿茶酚胺类神经递质等易氧化物种上，多采用超微电极实时动态监测。细胞内肿瘤标记物如microRNA和端粒酶等的电化学检测方法也屡有报道，与传统方法如&lt;hotlink uuid=&quot;ff808081599bf276015a1bae78881992&quot; subname=&quot;聚合酶链式反应&quot; title=&quot;聚合酶链式反应&quot; hotlinkid=&quot;hotlinkEdt1neu0&quot; subpath=&quot;undefined&quot; urltype=&quot;1&quot; style=&quot;color:blue;&quot; unselectable=&quot;on&quot; onmouseover=&quot;window.parent.mouseTagOver('neuHotlinkList','hotlinkEdt1neu0','background:#FFD42C;');&quot; onmouseout=&quot;window.parent.mouseTagOut('neuHotlinkList','hotlinkEdt1neu0','background:#FFD42C;');&quot;&gt;聚合酶链式反应&lt;/hotlink&gt;（PCR）相比，电化学传感器具有灵敏度高、免标记等优点，但是检测前需要对细胞进行裂解。&lt;/p&gt;&lt;h2&gt;细胞膜表面生物分子行为的电化学传感&lt;/h2&gt;&lt;p style=&quot;text-indent: 2em;&quot;&gt;细胞膜有重要的生理功能，它既是细胞内维持稳定代谢的环境，又能调节和选择物质在胞内外的输送。在细胞识别、信号传递和能量转换和物质输运等方面发挥重要作用。在细胞膜中，膜蛋白发挥了重要的生物功能。恶性肿瘤细胞的很多生长特性及侵袭转移能力均与细胞膜的改变有关。对肿瘤细胞的电化学分析主要包括细胞表面糖类以及肿瘤标记物的检测，通常采用电化学酶联免疫法，通过循环伏安或差分脉冲等常用电分析技术进行检测。&lt;/p&gt;&lt;h2&gt;细胞内生物分子生理行为的电化学表征&lt;/h2&gt;&lt;p style=&quot;text-indent: 2em;&quot;&gt;细胞内部发生的一系列生物化学与生物物理变化和细胞的繁殖、生长、衰老、变异、配体与细胞受体相互作用及外界环境刺激（如施加电磁场、投放药物）对细胞活性的影响密切相关。这些变化可&lt;e3 class=&quot;eCheckType&quot;&gt;直接反映&lt;/e3&gt;在细胞物理化学、电化学等特性的变化上。因此，可通过细胞的电化学行为分析和表征细胞的状态、功能及其变化。其中细胞凋亡的电分析检测以膜联蛋白V或半胱氨酸天冬氨酸特异性蛋白酶为细胞凋亡的标记物，通过常规电分析手段如循环伏安法、阳极溶出伏安法或阻抗法识别凋亡细胞，不仅有助于提高病程判断的准确性，更可作为治疗干预效果判断的早期标志。直接测定细胞的峰值电流可反映细胞的活性变化。因此，可以采用电化学方法监测细胞生长的健康状况，这种方法还可用于抗癌药物的药敏检测，与传统的比色法相比，电化学方法免标记、成本低，操作简便且灵敏度高。&lt;/p&gt;&lt;h1&gt;仪器方法&lt;/h1&gt;&lt;p style=&quot;text-indent: 2em;&quot;&gt;传统电化学方法以及新技术的出现都极大地推动了细胞电分析化学的发展，以下为一些常用的细胞电分析方法。&lt;/p&gt;&lt;h2&gt;&amp;lt;t&amp;gt;循环伏安法&amp;lt;/t&amp;gt;&lt;/h2&gt;&lt;p style=&quot;text-indent: 2em;&quot;&gt;传统的循环伏安法通过细胞在电极表面的循环伏安行为，为体外研究细胞活性及评估药物的细胞毒性提供了一种快速、廉价和简便的方法。&lt;/p&gt;&lt;h2&gt;&amp;lt;t&amp;gt;电化学阻抗法&amp;lt;/t&amp;gt;&lt;/h2&gt;&lt;p style=&quot;text-indent: 2em;&quot;&gt;电化学阻抗法可以实时、定量、连续地反映贴壁细胞的生长和运动状态、细胞代谢和健康情况，并能反映药物对细胞的作用。&lt;/p&gt;&lt;h2&gt;&amp;lt;t&amp;gt;细胞电泳&amp;lt;/t&amp;gt;&lt;/h2&gt;&lt;p style=&quot;text-indent: 2em;&quot;&gt;基于细胞表面电荷的变化，通过细胞电泳对细胞进行分离、比较、统计，并提供细胞电动特性方面的信息。细胞电泳可辅助鉴定正常细胞是否癌变及癌细胞的体外侵袭能力，也可以用来判断正常细胞的活力强弱。&lt;/p&gt;&lt;h2&gt;&amp;lt;t&amp;gt;膜片钳技术&amp;lt;/t&amp;gt;&lt;/h2&gt;&lt;p style=&quot;text-indent: 2em;&quot;&gt;1976年德国细胞生物学家&lt;hotlink uuid=&quot;40288c367e2c429d017e2d5775a2007c&quot; subname=&quot;萨克曼，B.&quot; title=&quot;萨克曼，B.&quot; hotlinkid=&quot;hotlinkEdt1neu6&quot; subpath=&quot;undefined&quot; urltype=&quot;1&quot; style=&quot;color:blue;&quot; unselectable=&quot;on&quot; onmouseover=&quot;window.parent.mouseTagOver('neuHotlinkList','hotlinkEdt1neu6','background:#FFD42C;');&quot; onmouseout=&quot;window.parent.mouseTagOut('neuHotlinkList','hotlinkEdt1neu6','background:#FFD42C;');&quot;&gt;B.萨克曼&lt;/hotlink&gt;和&lt;hotlink uuid=&quot;40288c36809117520180922e39a90324&quot; subname=&quot;内尔，E.&quot; title=&quot;内尔，E.&quot; hotlinkid=&quot;hotlinkEdt1neu7&quot; subpath=&quot;undefined&quot; urltype=&quot;1&quot; style=&quot;color:blue;&quot; unselectable=&quot;on&quot; onmouseover=&quot;window.parent.mouseTagOver('neuHotlinkList','hotlinkEdt1neu7','background:#FFD42C;');&quot; onmouseout=&quot;window.parent.mouseTagOut('neuHotlinkList','hotlinkEdt1neu7','background:#FFD42C;');&quot;&gt;E.内尔&lt;/hotlink&gt;在青蛙肌细胞上用双电极钳制膜电位的同时，记录到细胞离子通道电流，从而产生了膜片钳技术。这两位科学家因此荣获&lt;ke0 class=&quot;keCheckType&quot;&gt;1991年&lt;/ke0&gt;诺贝尔生理学或医学奖。膜片钳技术可应用于细胞膜离子通道的性质鉴定及动力学研究，细胞分泌研究及信号传导研究等。&lt;/p&gt;&lt;h2&gt;&amp;lt;t&amp;gt;扫描电化学显微镜&amp;lt;/t&amp;gt;&lt;/h2&gt;&lt;p style=&quot;text-indent: 2em;&quot;&gt;扫描电化学显微镜通过单细胞成像，准确地反映了细胞表面化学性质和活性。该方法已被应用于细胞电荷转移反应的研究，以及药物筛选。&lt;/p&gt;&lt;h1&gt;前景展望&lt;/h1&gt;&lt;p style=&quot;text-indent: 2em;&quot;&gt;细胞电分析化学是一门由生物学、电化学、物理学、医学等多学科交叉渗透的学科。其未来的研究将有可能集中在以下5个方面：①分析技术的微型化为细胞微环境分析提供了强有力的手段。结合微电极技术、微操作技术、微分离技术和微进样技术等，建立单细胞原位检测方法。②将电分析技术与其他分析手段如质谱、光谱、显微镜等联用，研究细胞表面或细胞内生物分子间的通信和相互作用，实现单细胞尺度上时空分辨监测，揭示生命活动奥秘。③发展多组分、多样品同时顺序测定的电化学免疫分析新方法，为肿瘤标志物的自动化联合检测和肿瘤疾病的免疫学诊断提供新途径。④与超导材料、半导体材料结合研制各种类型的细胞电化学传感器，用于细胞生长状态、聚集状态、药物对细胞生理活性及生长代谢作用的评估与分析。⑤应用量子力学、非线性动力学等方法构建完善的细胞电化学理论模型，在细胞层次上探讨生命及其本质，为21世纪疾病的防治提供理论依据和指导。&lt;/p&gt;</value>
+                </extElement>
+                <extElement>
+                    <name>classpath</name>
+                    <value>化学/分析化学/生命分析化学/细胞分析/细胞传感器</value>
+                </extElement>
+                <extElement>
+                    <name>classid</name>
+                    <value>ff808081599bf276015a1bab3b6a7f18</value>
+                </extElement>
+                <extElement>
+                    <name>keywords</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>Project</name>
+                    <value>《中国大百科全书》第三版</value>
+                </extElement>
+                <extElement>
+                    <name>mark</name>
+                    <value></value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="VERSION" versionable="true">
+        <datastreamVersion createTime="2022-05-26 15:50:57" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>CompileProcess</name>
+                    <value>编纂流程-简化版(新)</value>
+                </extElement>
+                <extElement>
+                    <name>CompileProcessNode</name>
+                    <value>社内初审</value>
+                </extElement>
+                <extElement>
+                    <name>OperatorAccount</name>
+                    <value>568193406@qq.com</value>
+                </extElement>
+                <extElement>
+                    <name>IfCompiled</name>
+                    <value>否</value>
+                </extElement>
+                <extElement>
+                    <name>CompileType</name>
+                    <value>全新编撰</value>
+                </extElement>
+                <extElement>
+                    <name>HistoryResTit</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>HistoryResID</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>ItemType</name>
+                    <value>长条目</value>
+                </extElement>
+                <extElement>
+                    <name>Operator</name>
+                    <value>韩晓玲</value>
+                </extElement>
+                <extElement>
+                    <name>EntryVersionNumber</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>CollaborativeProcess</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>CollabProcessNode</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>ItemNature</name>
+                    <value>实条</value>
+                </extElement>
+                <extElement>
+                    <name>UnitSeeAlsoItem</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>ReferenceItemcn</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>ReferenceItem</name>
+                    <value></value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="CHRONOLOGY" versionable="true">
+        <datastreamVersion createTime="2022-05-26 15:50:57" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>chronologyTitle</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>imgS</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>imgT</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>imgcdoi</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>imgTitle</name>
+                    <value></value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="EXTENSIVES" versionable="true">
+        <datastreamVersion createTime="2022-05-26 15:50:57" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="LITERATURE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 15:50:57" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="BIBLIOGRAPHYS" versionable="true">
+        <datastreamVersion createTime="2022-05-26 15:50:57" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="TEMPLATE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 15:50:57" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>writeTemplateId</name>
+                    <value>ff8080815591e421015599fbbdff01dd</value>
+                </extElement>
+                <extElement>
+                    <name>writeTemplate</name>
+                    <value>理论学说</value>
+                </extElement>
+                <extElement>
+                    <name>abstractTemplateId</name>
+                    <value>7369eb55-ccde-4a36-9c57-a942cca8a7d0</value>
+                </extElement>
+                <extElement>
+                    <name>abstractTemplateName</name>
+                    <value>----</value>
+                </extElement>
+                <extElement>
+                    <name>outlineTemplateId</name>
+                    <value>ff8080815591e42101559af597a707c5</value>
+                </extElement>
+                <extElement>
+                    <name>outlineTemplate</name>
+                    <value>通用条头</value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="AUTHOR" versionable="true">
+        <datastreamVersion createTime="2022-05-26 15:50:57" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>authorId</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>authorName</name>
+                    <value>徐静娟</value>
+                </extElement>
+                <extElement>
+                    <name>sex</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>birthday</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>professionalTitle</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>subject</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>researchFieldsDirect</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>personSynopsis</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>authorId</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>authorName</name>
+                    <value>赵微</value>
+                </extElement>
+                <extElement>
+                    <name>sex</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>birthday</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>professionalTitle</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>subject</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>researchFieldsDirect</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>personSynopsis</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>authorId</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>authorName</name>
+                    <value>陈洪渊</value>
+                </extElement>
+                <extElement>
+                    <name>sex</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>birthday</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>professionalTitle</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>subject</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>researchFieldsDirect</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>personSynopsis</name>
+                    <value></value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="F_THEORIES" versionable="true">
+        <datastreamVersion createTime="2022-05-26 15:50:57" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>ownedBranch</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>mainRepresentative</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>presenter</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>popularTime</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>alias</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>masterWork</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>scope</name>
+                    <value>化学</value>
+                </extElement>
+                <extElement>
+                    <name>createTime</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>otherDigest</name>
+                    <value>{&quot;list&quot;:[]}</value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="FORMAT_XML_0" versionable="true">
+        <datastreamVersion createTime="2022-05-26 15:50:57" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:contentLocationEntity">
+                <contentElement appType="0" contentType="OBJDATAENTITY" name="ff808081599bf276015a1baeafcd1b19.xml" ref="/objectdata/8/ff808081599bf276015a1baeafcd1b19.xml" size="12831"/>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="QUOTE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 15:50:57" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:quoteEntity">
+                <links type="hotlink">
+                    <link>
+                        <ref></ref>
+                        <value>聚合酶链式反应</value>
+                    </link>
+                    <link>
+                        <ref></ref>
+                        <value>B.萨克曼</value>
+                    </link>
+                    <link>
+                        <ref></ref>
+                        <value>E.内尔</value>
+                    </link>
+                </links>
+                <links type="image">
+                    <link>
+                        <ref></ref>
+                        <value></value>
+                    </link>
+                </links>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <subjectLib>thirdVersion</subjectLib>
+    <dataType>0</dataType>
+    <fileType>xml</fileType>
+    <fid>1</fid>
+</neu:resource>

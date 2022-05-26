@@ -7,6 +7,8 @@ import (
 func AutoMigrate() {
 	dao.DB.AutoMigrate(&User{})
 	addSuper()
+
+	dao.DB.AutoMigrate(&Author{}, &Entry{})
 }
 
 // shared fields

@@ -1,0 +1,424 @@
+
+<neu:resource xmlns:neu="http://www.neusoft.com/">
+    <id>10051012000000103099422342540</id>
+    <mid>12</mid>
+    <sourceSystemId>1005</sourceSystemId>
+    <state>I</state>
+    <batchNo>202205261610136</batchNo>
+    <createUser>10144</createUser>
+    <createTime>2022-05-26 16:12:56</createTime>
+    <updateTime>2022-05-26 16:12:56</updateTime>
+    <datastream id="RELSUBCLAUSE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:12:56" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="COREMETA" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:12:56" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:coreMetaEntity">
+                <title>半抗原</title>
+                <subject></subject>
+                <creator></creator>
+                <identifier>40288c3580fd3ce90180ff622a4812f5</identifier>
+                <source>中国百科编纂管理平台</source>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="CHRONOLOGYCONTENT" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:12:56" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="SOURCE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:12:56" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>sourceSystemId</name>
+                    <value>1002</value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="EXTMETA" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:12:56" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>latinname</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>firstname</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>itemen</name>
+                    <value>hapten</value>
+                </extElement>
+                <extElement>
+                    <name>subcDescription</name>
+                    <value>&lt;p style=&quot;text-indent: 2em;&quot;&gt;能够与对应抗体结合发生免疫反应、而本身不能单独诱导免疫应答的小分子物质。又称&lt;knowledge comment=&quot;不完全抗原&quot; title=&quot;不完全抗原&quot; commentclass=&quot;术语&quot; uuid=&quot;undefined&quot; knowledgeid=&quot;knowledgeEdt0neu0&quot; style=&quot;color:#ff00ff;&quot; onmouseover=&quot;window.parent.mouseTagOver('neuKnowledgeList','knowledgeEdt0neu0','background:#FFD42C;');&quot; onmouseout=&quot;window.parent.mouseTagOut('neuKnowledgeList','knowledgeEdt0neu0','background:#FFD42C;');&quot;&gt;不完全抗原&lt;/knowledge&gt;。&lt;/p&gt;</value>
+                </extElement>
+                <extElement>
+                    <name>itempy</name>
+                    <value>bɑnkɑnɡyuɑn</value>
+                </extElement>
+                <extElement>
+                    <name>subid</name>
+                    <value>ff808081599bf276015a1bab35977ecc</value>
+                </extElement>
+                <extElement>
+                    <name>compilationprocessname</name>
+                    <value>编纂流程-简化版(新)</value>
+                </extElement>
+                <extElement>
+                    <name>compilationprocessid</name>
+                    <value>CompileSimplifyProcess</value>
+                </extElement>
+                <extElement>
+                    <name>subcid</name>
+                    <value>40288c3580fd3ce90180ff622a4812f5</value>
+                </extElement>
+                <extElement>
+                    <name>projectname</name>
+                    <value>《中国大百科全书》第三版</value>
+                </extElement>
+                <extElement>
+                    <name>datetime</name>
+                    <value>20220526161013715</value>
+                </extElement>
+                <extElement>
+                    <name>subname</name>
+                    <value>免疫分析</value>
+                </extElement>
+                <extElement>
+                    <name>projectid</name>
+                    <value>00000000519ed0520151a3386d8b0016</value>
+                </extElement>
+                <extElement>
+                    <name>userid</name>
+                    <value>16c7bf96fca64096baed683d056be51c</value>
+                </extElement>
+                <extElement>
+                    <name>subcname</name>
+                    <value>半抗原</value>
+                </extElement>
+                <extElement>
+                    <name>username</name>
+                    <value>568193406@qq.com</value>
+                </extElement>
+                <extElement>
+                    <name>text</name>
+                    <value>&lt;p&gt;&lt;/p&gt;&lt;p style=&quot;text-indent: 2em;&quot;&gt;半抗原本身不具备免疫原性，不能诱导免疫应答。但在动物体内或人工合成条件下，它与大分子蛋白质或非抗原性的多聚赖氨酸等载体结合形成半抗原-载体加合物，从而获得免疫原性，且自身可以与免疫应答产物即对应抗体结合，具有免疫反应性。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p style=&quot;text-indent: 2em;&quot;&gt;&lt;span style=&quot;font-size: 1em;&quot;&gt;半抗原的研究起源于&lt;hotlink uuid=&quot;ff8080815db252e7015dba839ece037e&quot; subname=&quot;兰德施泰纳，K.&quot; title=&quot;兰德施泰纳，K.&quot; hotlinkid=&quot;hotlinkEdt1neu1&quot; subpath=&quot;undefined&quot; urltype=&quot;1&quot; style=&quot;color:blue;&quot; unselectable=&quot;on&quot; onmouseover=&quot;window.parent.mouseTagOver('neuHotlinkList','hotlinkEdt1neu1','background:#FFD42C;');&quot; onmouseout=&quot;window.parent.mouseTagOut('neuHotlinkList','hotlinkEdt1neu1','background:#FFD42C;');&quot;&gt;K.兰德施泰纳&lt;/hotlink&gt;。在研究抗体结构的过程中，他引入了“半抗原”的概念，并将已知结构的半抗原与白蛋白相结合，证明了在半抗原结构中细微的变化都能够影响抗体的产生，从而论证了抗体的结构。&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p style=&quot;text-indent: 2em;&quot;&gt;&lt;span style=&quot;text-indent: 2em; font-size: 1em;&quot;&gt;一般将苯胺及其羰基衍生物、青霉素、磺胺剂等分子量比较小但具有特异结构的化学活性物质称为简单半抗原。&lt;knowledge comment=&quot;简单半抗原&quot; title=&quot;简单半抗原&quot; commentclass=&quot;术语&quot; uuid=&quot;undefined&quot; knowledgeid=&quot;knowledgeEdt1neu1&quot; style=&quot;color:#ff00ff&quot; onmouseover=&quot;window.parent.mouseTagOver('neuKnowledgeList','knowledgeEdt1neu1','background:#FFD42C;');&quot; onmouseout=&quot;window.parent.mouseTagOut('neuKnowledgeList','knowledgeEdt1neu1','background:#FFD42C;');&quot;&gt;简单半抗原&lt;/knowledge&gt;不具有免疫原性，但是进入过敏体质的机体，就会与体内某些组织蛋白结合，从而形成具有免疫原性的完全抗原，诱导免疫应答即引起过敏反应。此外简单半抗原通过合适的化学修饰，可以与载体偶联得到&lt;hotlink uuid=&quot;ff808081599bf276015a1bae9a401a81&quot; subname=&quot;人工抗原&quot; title=&quot;人工抗原&quot; hotlinkid=&quot;hotlinkEdt1neu2&quot; subpath=&quot;undefined&quot; urltype=&quot;1&quot; style=&quot;color:blue;&quot; unselectable=&quot;on&quot; onmouseover=&quot;window.parent.mouseTagOver('neuHotlinkList','hotlinkEdt1neu2','background:#FFD42C;');&quot; onmouseout=&quot;window.parent.mouseTagOut('neuHotlinkList','hotlinkEdt1neu2','background:#FFD42C;');&quot;&gt;人工抗原&lt;/hotlink&gt;，通过人工抗原诱导机体产生免疫反应从而获得针对简单半抗原的特异性抗体，这在简单半抗原的免疫分析方法的建立中发挥着重要的作用。动物体内大多数多糖和所有的类脂也属于半抗原，它们一旦与体内某些蛋白结合，就构成该蛋白质分子的一个抗原决定簇，从而具备引起免疫应答的能力。&lt;/span&gt;&lt;span style=&quot;text-indent: 2em; font-size: 1em;&quot;&gt;&lt;/span&gt;&lt;/p&gt;</value>
+                </extElement>
+                <extElement>
+                    <name>classpath</name>
+                    <value>化学/分析化学/生命分析化学/免疫分析</value>
+                </extElement>
+                <extElement>
+                    <name>classid</name>
+                    <value>ff808081599bf276015a1bab35977ecc</value>
+                </extElement>
+                <extElement>
+                    <name>keywords</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>Project</name>
+                    <value>《中国大百科全书》第三版</value>
+                </extElement>
+                <extElement>
+                    <name>mark</name>
+                    <value></value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="VERSION" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:12:56" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>CompileProcess</name>
+                    <value>编纂流程-简化版(新)</value>
+                </extElement>
+                <extElement>
+                    <name>CompileProcessNode</name>
+                    <value>社内初审</value>
+                </extElement>
+                <extElement>
+                    <name>OperatorAccount</name>
+                    <value>568193406@qq.com</value>
+                </extElement>
+                <extElement>
+                    <name>IfCompiled</name>
+                    <value>否</value>
+                </extElement>
+                <extElement>
+                    <name>CompileType</name>
+                    <value>全新编撰</value>
+                </extElement>
+                <extElement>
+                    <name>HistoryResTit</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>HistoryResID</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>ItemType</name>
+                    <value>中条目</value>
+                </extElement>
+                <extElement>
+                    <name>Operator</name>
+                    <value>韩晓玲</value>
+                </extElement>
+                <extElement>
+                    <name>EntryVersionNumber</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>CollaborativeProcess</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>CollabProcessNode</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>ItemNature</name>
+                    <value>实条</value>
+                </extElement>
+                <extElement>
+                    <name>UnitSeeAlsoItem</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>ReferenceItemcn</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>ReferenceItem</name>
+                    <value></value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="F_LANGUAGES" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:12:56" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>languageDepartment</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>character</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>user</name>
+                    <value>不完全抗原</value>
+                </extElement>
+                <extElement>
+                    <name>distributionArea</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>representative</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>representWork</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>usedTime</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>numberOfUsers</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>languageDivition</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>basicWordOrder</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>numberOfVowels</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>numberOfInitials</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>createdMan</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>founder</name>
+                    <value>化学</value>
+                </extElement>
+                <extElement>
+                    <name>otherDigest</name>
+                    <value>{&quot;list&quot;:[]}</value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="CHRONOLOGY" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:12:56" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>chronologyTitle</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>imgS</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>imgT</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>imgcdoi</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>imgTitle</name>
+                    <value></value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="BIBLIOGRAPHYS" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:12:56" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="TEMPLATE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:12:56" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>writeTemplateId</name>
+                    <value>40288c357727aba301778976ccf33e05</value>
+                </extElement>
+                <extElement>
+                    <name>writeTemplate</name>
+                    <value>概念类条目</value>
+                </extElement>
+                <extElement>
+                    <name>outlineTemplateId</name>
+                    <value>ff8080815591e42101559af597a707c5</value>
+                </extElement>
+                <extElement>
+                    <name>outlineTemplate</name>
+                    <value>通用条头</value>
+                </extElement>
+                <extElement>
+                    <name>abstractTemplateId</name>
+                    <value>c7f0ac5f-4558-43ad-8c7f-df9db2154d14</value>
+                </extElement>
+                <extElement>
+                    <name>abstractTemplateName</name>
+                    <value>----</value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="AUTHOR" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:12:56" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>authorId</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>authorName</name>
+                    <value>张新祥</value>
+                </extElement>
+                <extElement>
+                    <name>sex</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>birthday</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>professionalTitle</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>subject</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>researchFieldsDirect</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>personSynopsis</name>
+                    <value></value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="LITERATURE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:12:56" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="EXTENSIVES" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:12:56" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="QUOTE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:12:56" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:quoteEntity">
+                <links type="hotlink">
+                    <link>
+                        <ref></ref>
+                        <value>K.兰德施泰纳</value>
+                    </link>
+                    <link>
+                        <ref></ref>
+                        <value>人工抗原</value>
+                    </link>
+                </links>
+                <links type="image">
+                    <link>
+                        <ref></ref>
+                        <value></value>
+                    </link>
+                </links>
+                <links type="knowledge">
+                    <link>
+                        <ref></ref>
+                        <value>不完全抗原</value>
+                    </link>
+                    <link>
+                        <ref></ref>
+                        <value>简单半抗原</value>
+                    </link>
+                </links>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="FORMAT_XML_0" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:12:56" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:contentLocationEntity">
+                <contentElement appType="0" contentType="OBJDATAENTITY" name="40288c3580fd3ce90180ff622a4812f5.xml" ref="/objectdata/2/40288c3580fd3ce90180ff622a4812f5.xml" size="8116"/>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <subjectLib>thirdVersion</subjectLib>
+    <dataType>0</dataType>
+    <fileType>xml</fileType>
+    <fid>1</fid>
+</neu:resource>

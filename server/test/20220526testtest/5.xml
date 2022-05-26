@@ -1,0 +1,396 @@
+
+<neu:resource xmlns:neu="http://www.neusoft.com/">
+    <id>10051012000000103099111384506</id>
+    <mid>12</mid>
+    <sourceSystemId>1005</sourceSystemId>
+    <state>I</state>
+    <batchNo>202205261602123</batchNo>
+    <createUser>10144</createUser>
+    <createTime>2022-05-26 16:04:55</createTime>
+    <updateTime>2022-05-26 16:04:55</updateTime>
+    <datastream id="RELSUBCLAUSE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:04:55" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="COREMETA" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:04:55" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:coreMetaEntity">
+                <title>普罗剧团前进座</title>
+                <subject></subject>
+                <creator></creator>
+                <identifier>ff8080815b31fcff015b3d27eb603ec5</identifier>
+                <source>中国百科编纂管理平台</source>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="CHRONOLOGYCONTENT" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:04:55" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="SOURCE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:04:55" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>sourceSystemId</name>
+                    <value>1002</value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="EXTMETA" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:04:55" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>latinname</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>firstname</name>
+                    <value>劇団前進座</value>
+                </extElement>
+                <extElement>
+                    <name>itemen</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>subcDescription</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>itempy</name>
+                    <value>puluojutuanqianjinzuo</value>
+                </extElement>
+                <extElement>
+                    <name>subid</name>
+                    <value>ff8080815bdcd3ae015be6d0fd450798</value>
+                </extElement>
+                <extElement>
+                    <name>compilationprocessname</name>
+                    <value>编纂流程-简化版(新)</value>
+                </extElement>
+                <extElement>
+                    <name>compilationprocessid</name>
+                    <value>CompileSimplifyProcess</value>
+                </extElement>
+                <extElement>
+                    <name>subcid</name>
+                    <value>ff8080815b31fcff015b3d27eb603ec5</value>
+                </extElement>
+                <extElement>
+                    <name>projectname</name>
+                    <value>《中国大百科全书》第三版</value>
+                </extElement>
+                <extElement>
+                    <name>datetime</name>
+                    <value>20220526160212365</value>
+                </extElement>
+                <extElement>
+                    <name>subname</name>
+                    <value>机构、奖项及其他</value>
+                </extElement>
+                <extElement>
+                    <name>projectid</name>
+                    <value>00000000519ed0520151a3386d8b0016</value>
+                </extElement>
+                <extElement>
+                    <name>userid</name>
+                    <value>d8611f9f7106484da46e9de43b8f4b82</value>
+                </extElement>
+                <extElement>
+                    <name>subcname</name>
+                    <value>普罗剧团前进座</value>
+                </extElement>
+                <extElement>
+                    <name>username</name>
+                    <value>island99@163.com</value>
+                </extElement>
+                <extElement>
+                    <name>text</name>
+                    <value>&lt;p&gt;&lt;/p&gt;&lt;p&gt;劇団前進座&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;在新时代歌舞伎发展史上值得大书的一页，就是1931年前进座的创立。其背景首先是，1928年二世市川左团次、河原崎长十郎、市川团十郎等名优赴苏联和西欧访问演出，这是日本歌舞伎第一次走出国门，走向世界。他们在访苏期间，受到了无产阶级戏剧运动的影响，归国后，松竹会社社长担心他们被“赤化”，强调了应该介绍日本固有的国剧，宣传日本主义并借口当时面临全国的经济危机，采取了演员减薪的措施，首先直接威胁到一般下级演员的生活。市川猿之助（二代目 市川 猿之助，1888-1963）首先反对松竹这种意识形态，退出了松竹，成立了具有左翼色彩的“春秋座”，并与河原崎长十郎、中村翫右卫门（三代目 中村 翫右衛門，1901-1982）等人成立了“优志会”，由市川猿之助任会长，发起反对减薪运动。同时，中村翫右卫门、中村龟松（鹤松）于1930年创办《剧战》（「劇戦」）杂志，由中村翫右卫门等负责编辑，他们批判了歌舞伎的封建体制，呼吁进一步推动戏曲革新运动，并且由中村翫右卫门、市川猿之助之弟八百藏发起，成立了以革新戏曲为奋斗目标的“大众座”。不久，“大众座”与河原崎长十郎于此前成立的“心座”合并。其次是，1928年3月由“日本无产阶级艺术联盟（简称“普罗艺”）、“劳农艺术家同盟”（简称“劳艺”）等八团体，在反对日本帝国主义、反对资本主义的大前提下，实现大联合，成立了“日本左翼艺术家联合会”，并在这基础上诞生了“全日本无产者艺术联盟”（简称“纳普”），提出了左翼文艺统一战线和艺术大众化的任务，促使普罗文艺运动进入一个新阶段，也迎来了普罗戏剧运动的高涨期。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;此时，市川猿之助在右翼势力和已经完成托拉斯化的松助会社的压力下，加上公演有左翼色彩的《亚细亚风暴》以失败而落幕，便解散“春秋座”，回归松竹旗下。河原崎长十郎、中村翫右卫门没有屈服右翼势力，死守“春秋座”，并于1931年5月22日，与中村龟松、村山知义等一起召开“前进座”成立大会。会上推举河原崎长十郎、中村翫右卫门为负责人，通过了决议：“剧团经济透明化”、“废除歌舞伎分身等级制度”、“承认人的平等权利”、“努力创造适合广大民众进步要求的戏剧”，为歌舞伎的彻底改革，发展新国剧，创造“新大众剧”而奋斗。由此发展脉络可以看出，“前进座”成立的意义，不仅对抗松竹的资本主义，为俳优争取经济利益，而且具有反对歌舞伎界门阀制度的封建体制，乃至右翼政治的目的意识，这是民主、进步的剧团，是时代和历史赋予前进座的任务。正如中村翫右卫门所说的：“在欲罢不能的潮流的力量的推动下，‘前进座’诞生了。”&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;战后的前进座，在复杂的政治和社会文化的环境下，进行反思重新迈出坚实的步伐。1949年全体演职员集体参加日本共产党，它的排练场和宿舍合一，全剧团成员上下过着集体的生活，这是歌舞伎开创以来所没有的。同时，文部省下令禁止有关团体后援前进座，它一度被排斥在大剧场公演只好在地方巡回演出，或在公会堂公演，由于他们受到各阶层观众的广泛欢迎和支持，成功地实现了经济独立自主。他们的改革，首先，从改变演员中心主义开始，并将改革放在剧本创作上，主张现实主义的创作方法，在演技方面注重艺术性积极吸取俄国表演艺术理论家斯坦尼斯拉夫斯基的表演法，强调了写实的逼真的演技，让演员在舞台上的行动和感情表现，要显现出是真实世界的一部分，并使之运用在古典戏曲表演中。为此，他们成立了“前进座夜校”自主地培养新型的创作人员和年轻演员。河原崎长十郎和中村翫右卫门分别发表了《新演剧论》和《演剧论》，对歌舞伎重新诠释，进行理论上的指导；同时努力发掘、研究和上演四世鹤屋南北的剧作，在战后延续歌舞伎的生命。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;战后初期尤其是朝鲜战争时期的政治环境下，前进座的同人是艰难前行的。他们常常被拒绝租用剧场，在广场演出时，被以消防演习为借口切断电源，甚至本来已经获准在某小学礼堂演出，可是在演出前夕又被叫停。年轻演员不时遭逮捕和起诉。名优中村翫右卫门遭到政治迫害潜入地下，一度亡命中国，至1956年才返国，却遭到了当局的公审，判刑六个月，缓期两年。他重返舞台后，以其经过长期磨练的写实逼真的精湛演技，表演了《御滨御殿》、《俊宽》（「俊寛」）、《鱼屋宗五帝》等剧，获得广大观众的欢迎。戏剧界认为：“六世菊五郎殁后，说他（中村翫右卫门）是歌舞伎精巧演技的第一人，也不会言过其实。”&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;1956年前进座公演《俊宽》等剧，取得了很好的舞台效果，荣获该年度“东京演剧记者会奖”，同时在《读卖新闻》社社长正力松太郎的支持下，在新落成的“读卖会馆”公演保留剧目《劝进藏》，这是前进座时隔十四年后重返大剧场之始。这一年名优河原崎长十郎荣获“艺术节奖”。1960年，前进座剧团创立三十周年之际，实现了第一次访华，在北京、西安、武汉、南京、上海、广州等地，成功地演出了《佐仓宗五郎》（「佐倉宗五郎」）、《劝进藏》（「勧進帳」）、《俊宽》、《鸣神》等优秀歌舞伎剧目。同时，加强与中国京剧界的交流，改编京剧《野猪林》、《水浒传》等，搬上歌舞伎剧舞台。落合三郎改编的《水浒传》，由中村翫右卫门、河原崎长十郎分别担纲鲁智深、林冲的角色。中国戏剧家协会为此赠送了戏服、假发和小道具。还上演了根据郭沫若原作翻译、由土方与志导演的《屈原》，由河原崎长十郎饰屈原、和泉饰婵娟。前进座为中日文化交流和中日戏剧交流，做出了积极的贡献。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;前进座成立初时，只有三十二名同人 他们走过艰苦坎坷的道路。这时期，他们重返大剧场的同时，也不忘记到地方为大众进行巡回演出 采取大剧场演出和地方巡回演出的“两条腿走路”的方针 不断发展和壮大，拥有百余人的独立自主经营的大剧团。此时 ，前进座除了上演优秀的传统歌舞伎剧目之外，还改编了其他文学艺术作品公演 ，其中津上忠改编森鸥外的《阿部家族》（1913）（『阿部一族』）、幸田露伴的《五重塔》（1892）（『五重塔』），以歌舞伎的样式演出 ，获得了首届“日本演剧协会奖”。在1966年8月至10月前进座第二次访华期间，就公演了《五重塔》。这时期，河原崎长十郎由于受到我国“文化大革命论”的影响 在政治理念和艺术理念上与前进座产生分歧和对立，最后脱离日共，来到了热火朝天进行“文革”的中国。前进座宣布将河原崎长十郎除名，选举副干事长中村翫右卫门继任干事长。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;中村翫右卫门于1982年逝世后，由歌舞伎著名旦角、前进座台柱之一的河原崎国太郎继任前进座干事长的职务，率领全座同人沿着前辈开辟的道路，继续高举民主、进步的旗帜阔步前进。此时期，前进座完成了世代交替，国太郎健在，起着核心的作用，中村梅之助（四代目 中村梅之助，1930-2016）、岚芳三郎（六代目嵐芳三郎，1935-1996）的技艺走向成熟，岚圭史等新人辈出。三代人重演了阔别172年的鹤屋南北的名剧《解脱衣枫累》（「解脱衣楓累」），既传承传统又注入现代的创意，取得了很大的艺术成果，成为“纪念碑式的歌舞伎作品”。《法然》（「法然」）一剧，连续公演204场次，观众人数达25万人次。由本田英郎创作、津上忠导演的《空海》（「空海」）上演后博得观众的喝彩，盛况空前。前进座与各剧团合作上演加藤周一特地为他们而写作的《富永仲基异闻》（「富永仲基異聞」），更是多姿多彩，成为戏剧界的热门话题。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;前进座受到各阶层的大众爱戴。它的七十余年的历史，在日本戏剧史上留下了光辉的一页。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</value>
+                </extElement>
+                <extElement>
+                    <name>classpath</name>
+                    <value>戏剧学/外国戏剧/日本戏剧/机构、奖项及其他</value>
+                </extElement>
+                <extElement>
+                    <name>classid</name>
+                    <value>ff8080815bdcd3ae015be6d0fd450798</value>
+                </extElement>
+                <extElement>
+                    <name>keywords</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>Project</name>
+                    <value>《中国大百科全书》第三版</value>
+                </extElement>
+                <extElement>
+                    <name>mark</name>
+                    <value></value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="VERSION" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:04:55" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>CompileProcess</name>
+                    <value>编纂流程-简化版(新)</value>
+                </extElement>
+                <extElement>
+                    <name>CompileProcessNode</name>
+                    <value>编纂</value>
+                </extElement>
+                <extElement>
+                    <name>OperatorAccount</name>
+                    <value>island99@163.com</value>
+                </extElement>
+                <extElement>
+                    <name>IfCompiled</name>
+                    <value>否</value>
+                </extElement>
+                <extElement>
+                    <name>CompileType</name>
+                    <value>全新编撰</value>
+                </extElement>
+                <extElement>
+                    <name>HistoryResTit</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>HistoryResID</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>ItemType</name>
+                    <value>短条目</value>
+                </extElement>
+                <extElement>
+                    <name>Operator</name>
+                    <value>董淑芳</value>
+                </extElement>
+                <extElement>
+                    <name>EntryVersionNumber</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>CollaborativeProcess</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>CollabProcessNode</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>ItemNature</name>
+                    <value>实条</value>
+                </extElement>
+                <extElement>
+                    <name>UnitSeeAlsoItem</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>ReferenceItemcn</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>ReferenceItem</name>
+                    <value></value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="AUTHOR" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:04:55" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>authorId</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>authorName</name>
+                    <value>唐月梅</value>
+                </extElement>
+                <extElement>
+                    <name>sex</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>birthday</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>professionalTitle</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>subject</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>researchFieldsDirect</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>personSynopsis</name>
+                    <value></value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="CHRONOLOGY" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:04:55" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>chronologyTitle</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>imgS</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>imgT</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>imgcdoi</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>imgTitle</name>
+                    <value></value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="BIBLIOGRAPHYS" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:04:55" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="LITERATURE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:04:55" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="F_INSTITUTIONSANDORGANIZATIONSCOMPANY" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:04:55" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>fullName</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>abbreviation</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>alias</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>location</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>originalName</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>scale</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>member</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>founder</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>establishTime</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>establishPlace</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>covers</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>representatives</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>otherDigest</name>
+                    <value>{&quot;list&quot;:[]}</value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="EXTENSIVES" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:04:55" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="TEMPLATE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:04:55" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>writeTemplateId</name>
+                    <value>40288c357727aba3017780cd52dd38f0</value>
+                </extElement>
+                <extElement>
+                    <name>writeTemplate</name>
+                    <value>机构团体条目（通用）</value>
+                </extElement>
+                <extElement>
+                    <name>outlineTemplateId</name>
+                    <value>ff8080815591e42101559af597a707c5</value>
+                </extElement>
+                <extElement>
+                    <name>outlineTemplate</name>
+                    <value>通用条头</value>
+                </extElement>
+                <extElement>
+                    <name>abstractTemplateId</name>
+                    <value>9179a958-c5a3-4ea2-8736-39ecda09c408</value>
+                </extElement>
+                <extElement>
+                    <name>abstractTemplateName</name>
+                    <value>----</value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="FORMAT_XML_0" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:04:55" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:contentLocationEntity">
+                <contentElement appType="0" contentType="OBJDATAENTITY" name="ff8080815b31fcff015b3d27eb603ec5.xml" ref="/objectdata/5/ff8080815b31fcff015b3d27eb603ec5.xml" size="11880"/>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="QUOTE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:04:55" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:quoteEntity">
+                <links type="image">
+                    <link>
+                        <ref></ref>
+                        <value></value>
+                    </link>
+                </links>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <subjectLib>thirdVersion</subjectLib>
+    <dataType>0</dataType>
+    <fileType>xml</fileType>
+    <fid>1</fid>
+</neu:resource>

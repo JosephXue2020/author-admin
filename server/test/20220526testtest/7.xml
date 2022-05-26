@@ -1,0 +1,404 @@
+
+<neu:resource xmlns:neu="http://www.neusoft.com/">
+    <id>10051012000000103098987606456</id>
+    <mid>12</mid>
+    <sourceSystemId>1005</sourceSystemId>
+    <state>I</state>
+    <batchNo>202205261558472</batchNo>
+    <createUser>10144</createUser>
+    <createTime>2022-05-26 16:01:29</createTime>
+    <updateTime>2022-05-26 16:01:29</updateTime>
+    <datastream id="RELSUBCLAUSE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:01:30" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="COREMETA" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:01:29" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:coreMetaEntity">
+                <title>如画</title>
+                <subject></subject>
+                <creator></creator>
+                <identifier>40288c3780f2f03b0180f56e46090500</identifier>
+                <source>中国百科编纂管理平台</source>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="CHRONOLOGYCONTENT" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:01:30" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="SOURCE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:01:29" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>sourceSystemId</name>
+                    <value>1002</value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="EXTMETA" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:01:29" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>latinname</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>firstname</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>itemen</name>
+                    <value>Picturesque</value>
+                </extElement>
+                <extElement>
+                    <name>subcDescription</name>
+                    <value>&lt;p style=&quot;text-indent: 2em;&quot;&gt;主要流行于英国的一种风景美学观念。&lt;/p&gt;</value>
+                </extElement>
+                <extElement>
+                    <name>itempy</name>
+                    <value>ruhuɑ</value>
+                </extElement>
+                <extElement>
+                    <name>subid</name>
+                    <value>40288c3680c9bd3d0180cba4e85301a3</value>
+                </extElement>
+                <extElement>
+                    <name>compilationprocessname</name>
+                    <value>编纂流程-简化版(新)</value>
+                </extElement>
+                <extElement>
+                    <name>compilationprocessid</name>
+                    <value>CompileSimplifyProcess</value>
+                </extElement>
+                <extElement>
+                    <name>subcid</name>
+                    <value>40288c3780f2f03b0180f56e46090500</value>
+                </extElement>
+                <extElement>
+                    <name>projectname</name>
+                    <value>《中国大百科全书》第三版</value>
+                </extElement>
+                <extElement>
+                    <name>datetime</name>
+                    <value>20220526155847293</value>
+                </extElement>
+                <extElement>
+                    <name>subname</name>
+                    <value>英美文艺理论</value>
+                </extElement>
+                <extElement>
+                    <name>projectid</name>
+                    <value>00000000519ed0520151a3386d8b0016</value>
+                </extElement>
+                <extElement>
+                    <name>userid</name>
+                    <value>3c90a0af51564865a1a91c024ddd7038</value>
+                </extElement>
+                <extElement>
+                    <name>subcname</name>
+                    <value>如画</value>
+                </extElement>
+                <extElement>
+                    <name>username</name>
+                    <value>Wendy920813@163.com</value>
+                </extElement>
+                <extElement>
+                    <name>text</name>
+                    <value>&lt;p&gt;&lt;/p&gt;&lt;p style=&quot;text-indent: 2em; text-align: justify;&quot;&gt;产生于17世纪，繁荣于18世纪，衰落于19世纪。“如画”一词来自意大利语的pittoresco，意思是 “像画家一样”，而“如画”则指“像画一样”，词义重心挪到了视觉特质上。根据吉尔平《论如画美》，如画的视觉品质首先区别于美。实用的景物，如整洁的地面、对称的帕拉第奥式建筑，本身是优美怡人的，可一旦入画就呆板无趣。而另一些景物，如老树粗糙的树皮、参差嶙峋的山坡，则实物未必可爱，放入画中却有了迷人之处。因此，如画的景物就是适合入画的景物，是刨去实用性、功利性，纯粹体现理想的形式美的景物。普莱斯在《论如画》中进一步阐明如画美是从美“改造”而来：“时间是一切变化的始作俑者，它将优美的景物转化为如画美的景物，……通过天气使其污损、生霉、长出斑斑青苔等，剥蚀光洁的表面，除去均匀的色彩，使其呈现出一定程度的粗糙感和斑驳的色差。”古旧、粗糙、不规则、层次丰富、参差多态等视觉品质是如画视觉愉悦感的来源。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p style=&quot;text-indent: 2em; text-align: justify;&quot;&gt;通过欣赏和研究17世纪意大利和荷兰风景画，英国人掌握了如画美在画面上的形成规律，即把如画的景物进行前、中、后景严谨布局，再利用空气透视法及光影变化和色彩对照，由此整合为和谐悦目的整体，从而得到一幅合乎理想的风景画作。他们将其移植到本土，用于再现本土风景风貌，由此开启了英国风景画创作的历史。进入维多利亚时代，以J.&lt;hotlink uuid=&quot;40288c377f289a3f017f2a4c19a803d1&quot; subname=&quot;罗斯金，J.&quot; title=&quot;罗斯金，J.&quot; hotlinkid=&quot;hotlinkEdt1neu0&quot; subpath=&quot;undefined&quot; urltype=&quot;1&quot; style=&quot;color:blue;&quot; unselectable=&quot;on&quot; onmouseover=&quot;window.parent.mouseTagOver('neuHotlinkList','hotlinkEdt1neu0','background:#FFD42C;');&quot; onmouseout=&quot;window.parent.mouseTagOut('neuHotlinkList','hotlinkEdt1neu0','background:#FFD42C;');&quot;&gt;罗斯金&lt;/hotlink&gt;为代表的艺术批评家对如画美传统提出质疑，揭示出如画本质上是一种伪造的风景画形式，进而提倡准确真实描绘自然。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p style=&quot;text-indent: 2em; text-align: justify;&quot;&gt;“如画”观念在英国兴起，缘于文艺复兴直至新古典主义时期英国在绘画艺术方面相对于欧洲大陆的弱势地位。它的兴衰历程为19世纪英国风景画登上欧洲巅峰奠定了基础。&lt;/p&gt;</value>
+                </extElement>
+                <extElement>
+                    <name>classpath</name>
+                    <value>外国文学/英美文艺理论</value>
+                </extElement>
+                <extElement>
+                    <name>classid</name>
+                    <value>40288c3680c9bd3d0180cba4e85301a3</value>
+                </extElement>
+                <extElement>
+                    <name>keywords</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>Project</name>
+                    <value>《中国大百科全书》第三版</value>
+                </extElement>
+                <extElement>
+                    <name>mark</name>
+                    <value></value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="VERSION" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:01:29" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>CompileProcess</name>
+                    <value>编纂流程-简化版(新)</value>
+                </extElement>
+                <extElement>
+                    <name>CompileProcessNode</name>
+                    <value>编纂</value>
+                </extElement>
+                <extElement>
+                    <name>OperatorAccount</name>
+                    <value>Wendy920813@163.com</value>
+                </extElement>
+                <extElement>
+                    <name>IfCompiled</name>
+                    <value>否</value>
+                </extElement>
+                <extElement>
+                    <name>CompileType</name>
+                    <value>全新编撰</value>
+                </extElement>
+                <extElement>
+                    <name>HistoryResTit</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>HistoryResID</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>ItemType</name>
+                    <value>中条目</value>
+                </extElement>
+                <extElement>
+                    <name>Operator</name>
+                    <value>常文娟</value>
+                </extElement>
+                <extElement>
+                    <name>EntryVersionNumber</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>CollaborativeProcess</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>CollabProcessNode</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>ItemNature</name>
+                    <value>实条</value>
+                </extElement>
+                <extElement>
+                    <name>UnitSeeAlsoItem</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>ReferenceItemcn</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>ReferenceItem</name>
+                    <value></value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="BIBLIOGRAPHYS" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:01:29" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="QUOTE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:01:29" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:quoteEntity">
+                <links type="hotlink">
+                    <link>
+                        <ref></ref>
+                        <value>罗斯金</value>
+                    </link>
+                </links>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="F_LANGUAGES" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:01:29" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>languageDepartment</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>character</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>user</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>distributionArea</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>representative</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>representWork</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>usedTime</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>numberOfUsers</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>languageDivition</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>basicWordOrder</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>numberOfVowels</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>numberOfInitials</name>
+                    <value>17世纪</value>
+                </extElement>
+                <extElement>
+                    <name>createdMan</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>founder</name>
+                    <value>外国文学</value>
+                </extElement>
+                <extElement>
+                    <name>otherDigest</name>
+                    <value>{&quot;list&quot;:[]}</value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="EXTENSIVES" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:01:30" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="TEMPLATE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:01:30" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>writeTemplateId</name>
+                    <value>40288c357727aba301778976ccf33e05</value>
+                </extElement>
+                <extElement>
+                    <name>writeTemplate</name>
+                    <value>概念类条目</value>
+                </extElement>
+                <extElement>
+                    <name>outlineTemplateId</name>
+                    <value>ff8080815591e42101559af597a707c5</value>
+                </extElement>
+                <extElement>
+                    <name>outlineTemplate</name>
+                    <value>通用条头</value>
+                </extElement>
+                <extElement>
+                    <name>abstractTemplateId</name>
+                    <value>e348f544-671c-4551-ad5a-841fcada8c78</value>
+                </extElement>
+                <extElement>
+                    <name>abstractTemplateName</name>
+                    <value>----</value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="FORMAT_XML_0" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:01:30" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:contentLocationEntity">
+                <contentElement appType="0" contentType="OBJDATAENTITY" name="40288c3780f2f03b0180f56e46090500.xml" ref="/objectdata/7/40288c3780f2f03b0180f56e46090500.xml" size="6459"/>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="AUTHOR" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:01:29" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>authorId</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>authorName</name>
+                    <value>萧莎</value>
+                </extElement>
+                <extElement>
+                    <name>sex</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>birthday</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>professionalTitle</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>subject</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>researchFieldsDirect</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>personSynopsis</name>
+                    <value></value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="CHRONOLOGY" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:01:30" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity">
+                <extElement>
+                    <name>chronologyTitle</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>imgS</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>imgT</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>imgcdoi</name>
+                    <value></value>
+                </extElement>
+                <extElement>
+                    <name>imgTitle</name>
+                    <value></value>
+                </extElement>
+            </content>
+        </datastreamVersion>
+    </datastream>
+    <datastream id="LITERATURE" versionable="true">
+        <datastreamVersion createTime="2022-05-26 16:01:30" id="1.0">
+            <content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="neu:extMetaEntity"/>
+        </datastreamVersion>
+    </datastream>
+    <subjectLib>thirdVersion</subjectLib>
+    <dataType>0</dataType>
+    <fileType>xml</fileType>
+    <fid>1</fid>
+</neu:resource>
