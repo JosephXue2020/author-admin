@@ -2,7 +2,11 @@ package router
 
 import (
 	"goweb/author-admin/server/api/auth"
+	"goweb/author-admin/server/api/v1/author"
 	"goweb/author-admin/server/api/v1/user"
+	"goweb/author-admin/server/models"
+
+	"goweb/author-admin/server/middleware/authcontrol"
 	"goweb/author-admin/server/middleware/cors"
 	"goweb/author-admin/server/middleware/jwt"
 	"goweb/author-admin/server/pkg/setting"
@@ -46,11 +50,18 @@ func InitRouter() *gin.Engine {
 	v1 := r.Group("/v1")
 	// 自定义中间件：群组
 	v1.Use(jwt.JWT())
+	v1.Use(authcontrol.AuthControl(models.ADMIN))
 	{
 		v1.GET("/user/list", user.GetUserList)
 		v1.POST("/user/delete", user.DeleteUser)
 		v1.POST("/user/add", user.AddUser)
 		v1.POST("/user/update", user.UpdateUser)
+
+		ar := v1.Group("/author")
+		ar.Use(authcontrol.AuthControl(models.NORMAL))
+		{
+			ar.GET(("/list"), author.GetAuthorList)
+		}
 	}
 
 	return r

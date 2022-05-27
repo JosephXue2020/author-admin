@@ -25,3 +25,13 @@ func GetMsg(code int) string {
 	}
 	return msg
 }
+
+func FailedDict(code int) map[string]interface{} {
+	m := map[string]interface{}{
+		"code":    code,
+		"message": GetMsg(code),
+		"data":    map[string]interface{}{},
+	}
+	return m
+
+}

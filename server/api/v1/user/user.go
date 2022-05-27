@@ -9,21 +9,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func FailedDict(code int) map[string]interface{} {
-	m := map[string]interface{}{
-		"code":    code,
-		"message": e.GetMsg(code),
-		"data":    map[string]interface{}{},
-	}
-	return m
-
-}
-
 func GetUserList(c *gin.Context) {
 	q, err := util.GetSQLQuery(c)
 	if err != nil {
 		code := e.INVALID_PARAMS
-		c.JSON(http.StatusOK, gin.H(FailedDict(code)))
+		c.JSON(http.StatusOK, gin.H(e.FailedDict(code)))
 	}
 
 	data := make(map[string]interface{})
@@ -62,21 +52,21 @@ func AddUser(c *gin.Context) {
 	}{}
 	if err := c.ShouldBind(&form); err != nil {
 		code = e.INVALID_PARAMS
-		c.JSON(http.StatusOK, gin.H(FailedDict(code)))
+		c.JSON(http.StatusOK, gin.H(e.FailedDict(code)))
 		return
 	}
 
 	token := c.GetHeader("token")
 	if token == "" {
 		code = e.ERROR_TOKEN_ILLEGAL
-		c.JSON(http.StatusOK, gin.H(FailedDict(code)))
+		c.JSON(http.StatusOK, gin.H(e.FailedDict(code)))
 		return
 	}
 
 	claims, err := util.ParseToken(token)
 	if err != nil {
 		code = e.ERROR_TOKEN
-		c.JSON(http.StatusOK, gin.H(FailedDict(code)))
+		c.JSON(http.StatusOK, gin.H(e.FailedDict(code)))
 		return
 	}
 
@@ -105,21 +95,21 @@ func DeleteUser(c *gin.Context) {
 	}{}
 	if err := c.ShouldBind(&form); err != nil {
 		code = e.INVALID_PARAMS
-		c.JSON(http.StatusOK, gin.H(FailedDict(code)))
+		c.JSON(http.StatusOK, gin.H(e.FailedDict(code)))
 		return
 	}
 
 	token := c.GetHeader("token")
 	if token == "" {
 		code = e.ERROR_TOKEN_ILLEGAL
-		c.JSON(http.StatusOK, gin.H(FailedDict(code)))
+		c.JSON(http.StatusOK, gin.H(e.FailedDict(code)))
 		return
 	}
 
 	claims, err := util.ParseToken(token)
 	if err != nil {
 		code = e.ERROR_TOKEN
-		c.JSON(http.StatusOK, gin.H(FailedDict(code)))
+		c.JSON(http.StatusOK, gin.H(e.FailedDict(code)))
 		return
 	}
 
@@ -152,21 +142,21 @@ func UpdateUser(c *gin.Context) {
 	}{}
 	if err := c.ShouldBind(&form); err != nil {
 		code = e.INVALID_PARAMS
-		c.JSON(http.StatusOK, gin.H(FailedDict(code)))
+		c.JSON(http.StatusOK, gin.H(e.FailedDict(code)))
 		return
 	}
 
 	token := c.GetHeader("token")
 	if token == "" {
 		code = e.ERROR_TOKEN_ILLEGAL
-		c.JSON(http.StatusOK, gin.H(FailedDict(code)))
+		c.JSON(http.StatusOK, gin.H(e.FailedDict(code)))
 		return
 	}
 
 	claims, err := util.ParseToken(token)
 	if err != nil {
 		code = e.ERROR_TOKEN
-		c.JSON(http.StatusOK, gin.H(FailedDict(code)))
+		c.JSON(http.StatusOK, gin.H(e.FailedDict(code)))
 		return
 	}
 

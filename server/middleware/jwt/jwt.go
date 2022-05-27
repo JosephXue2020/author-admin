@@ -49,14 +49,14 @@ func JWT() gin.HandlerFunc {
 		} else {
 			claims, err := util.ParseToken(token)
 			if err != nil {
-				code = e.ERROR_TOKEN_FAIL
+				code = e.ERROR_TOKEN_ILLEGAL
 			} else if time.Now().Unix() > claims.ExpiresAt {
 				code = e.ERROR_TOKEN_EXPIRED
 			}
 		}
 
 		if code != e.SUCCESS {
-			c.JSON(http.StatusUnauthorized, gin.H{
+			c.JSON(http.StatusOK, gin.H{
 				"code":    code,
 				"message": e.GetMsg(code),
 				"data":    data,
