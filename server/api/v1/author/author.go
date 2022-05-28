@@ -28,9 +28,14 @@ func GetAuthorList(c *gin.Context) {
 	}
 	items := make([]map[string]interface{}, 0)
 	for _, author := range authors {
-		item := util.StructToMapWithTagKey(author)
-		if len(item) > 0 {
-			items = append(items, item)
+		item := make(map[string]interface{})
+		err := util.StructToMapWithTagKey(author, item)
+		if err != nil {
+			log.Println(err)
+		} else {
+			if len(item) > 0 {
+				items = append(items, item)
+			}
 		}
 	}
 	data["total"] = total
