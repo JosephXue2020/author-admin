@@ -42,6 +42,7 @@
       <el-table-column class-name="status-col" label="详情" width="160" align="center">
         <template slot-scope="scope">
           <el-button
+            type="primary"
             size="mini"
             @click="openDialog(scope.row)"
           >

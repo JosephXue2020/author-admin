@@ -42,12 +42,14 @@
       <el-table-column class-name="status-col" label="操作" width="160" align="center">
         <template slot-scope="scope">
           <el-button
+            type="primary"
             size="mini"
             @click="openDialog(scope.row)"
           >
             修改
           </el-button>
           <el-button
+            type="primary"
             size="mini"
             danger
             @click="deleteUser(scope.row)"

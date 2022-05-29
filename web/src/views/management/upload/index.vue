@@ -14,7 +14,7 @@
           <el-upload
             class="upload-demo"
             drag
-            action="/posts/"
+            action="/api/v1/author/upload"
             multiple
           >
             <i class="el-icon-upload" />
