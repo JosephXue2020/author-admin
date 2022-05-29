@@ -1,5 +1,13 @@
 <template>
   <div class="app-container">
+    <div>
+      <el-queryform />
+    </div>
+    <div style="margin-top: 20px; float:right">
+      <el-button type="primary" size="mini" @click="toggleSelection([tableData[1], tableData[2]])">全部上架</el-button>
+      <el-button type="primary" size="mini" @click="toggleSelection()">全部删除</el-button>
+    </div>
+    <br>
     <el-table
       v-loading="listLoading"
       :data="list"
@@ -66,10 +74,6 @@
         </template>
       </el-table-column>
     </el-table>
-    <!-- <div style="margin-top: 20px; float:right">
-      <el-button @click="toggleSelection([tableData[1], tableData[2]])">切换第二、第三行的选中状态</el-button>
-      <el-button @click="toggleSelection()">取消选择</el-button>
-    </div> -->
     <br>
     <div style="float:right">
       <el-pagination
@@ -83,14 +87,17 @@
         @current-change="handleCurrentChange"
       />
     </div>
-
   </div></template>
 
 <script>
 import { getAuthorList } from '@/api/author'
+import queryform from '@/components/queryform'
 
 export default {
   name: 'Management',
+  components: {
+    'el-queryform': queryform
+  },
   filters: {
     statusFilter(status) {
       const statusMap = {
