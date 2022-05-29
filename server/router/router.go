@@ -18,23 +18,18 @@ import (
 func InitRouter() *gin.Engine {
 	r := gin.New()
 
-	// 内置中间件
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
 
-	// 自定义中间件：全局
 	r.Use(cors.Cors())
 
-	// 运行模式
 	gin.SetMode(setting.RunMode)
 
-	// 前端html框架和静态文件
-	r.Static("/static", "./frontend/static")
-	r.StaticFile("/favicon.ico", "./frontend/favicon.ico")
-	r.LoadHTMLFiles("./frontend/index.html")
+	r.Static("/static", "./public/static")
+	r.StaticFile("/favicon.ico", "./public/favicon.ico")
+	r.LoadHTMLFiles("./public/index.html")
 	r.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", nil)
-		// c.String(http.StatusOK, "hello.")
 	})
 
 	// 测试路径
@@ -48,9 +43,8 @@ func InitRouter() *gin.Engine {
 	}
 
 	v1 := r.Group("/v1")
-	// 自定义中间件：群组
 	v1.Use(jwt.JWT())
-	v1.Use(authcontrol.AuthControl(models.ADMIN))
+	// v1.Use(authcontrol.AuthControl(models.ADMIN))
 	{
 		v1.GET("/user/list", user.GetUserList)
 		v1.POST("/user/delete", user.DeleteUser)

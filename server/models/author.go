@@ -30,39 +30,39 @@ type AuthorResume struct {
 }
 
 type AuthorStudy struct {
-	Subject     string `json:""`
-	Publication string `json:""`
-	DBKPosition string `json:""`
+	Subject     string `json:"subject"`
+	Publication string `json:"publication"`
+	DBKPosition string `json:"dbkposition"`
 }
 
 type Author struct {
 	gorm.Model
 	UUID string `json:"uuid"`
 
-	// AuthorNature
-	Name    string `json:"name"`
-	Gender  string `json:"gender"`
-	Nation  string `json:"nation"`
-	BornIn  string `json:"bornin"`
-	BornAt  string `json:"bornat"`
-	DeathAt string `json:"deathat"`
+	AuthorNature
+	// Name    string `json:"name"`
+	// Gender  string `json:"gender"`
+	// Nation  string `json:"nation"`
+	// BornIn  string `json:"bornin"`
+	// BornAt  string `json:"bornat"`
+	// DeathAt string `json:"deathat"`
 
-	// AuthorResume
-	GraduateAt string `json:"graduateat"`
-	Company    string `json:"company"`
-	Position   string `json:"position"`
-	JobTitle   string `json:"jobtitle"`
-	Honor      string `json:"honor"`
-	Telephone  string `json:"telephone"`
-	Cellphone  string `json:"cellphone"`
-	Email      string `json:"email"`
-	PostalAddr string `json:"postaladdr"`
-	Desc       string `json:"desc"`
+	AuthorResume
+	// GraduateAt string `json:"graduateat"`
+	// Company    string `json:"company"`
+	// Position   string `json:"position"`
+	// JobTitle   string `json:"jobtitle"`
+	// Honor      string `json:"honor"`
+	// Telephone  string `json:"telephone"`
+	// Cellphone  string `json:"cellphone"`
+	// Email      string `json:"email"`
+	// PostalAddr string `json:"postaladdr"`
+	// Desc       string `json:"desc"`
 
-	// AuthorStudy
-	Subject     string `json:""`
-	Publication string `json:""`
-	DBKPosition string `json:""`
+	AuthorStudy
+	// Subject     string `json:"subject"`
+	// Publication string `json:"publication"`
+	// DBKPosition string `json:"dbkposition"`
 
 	Entries []Entry `gorm:"many2many:author_entry;" json:"entries"`
 }

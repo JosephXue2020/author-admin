@@ -20,36 +20,38 @@ func IsStructOrStructPtr(t reflect.Type) bool {
 }
 
 func GetStructFieldName(structName interface{}) []string {
-	typ := reflect.TypeOf(structName)
-	if !IsStructOrStructPtr(typ) {
+	t := reflect.TypeOf(structName)
+	if !IsStructOrStructPtr(t) {
 		log.Println("Parameter should be struct or struct pointer type.")
 		return nil
 	}
 
 	var names []string
-	for i := 0; i < typ.NumField(); i++ {
-		name := typ.Field(i).Name
+	for i := 0; i < t.NumField(); i++ {
+		name := t.Field(i).Name
 		names = append(names, name)
 	}
 	return names
 }
 
 func GetStructTagName(structName interface{}) []string {
-	typ := reflect.TypeOf(structName)
-	if !IsStructOrStructPtr(typ) {
+	t := reflect.TypeOf(structName)
+	if !IsStructOrStructPtr(t) {
 		log.Println("Parameter should be struct or struct pointer type.")
 		return nil
 	}
 
 	var names []string
-	for i := 0; i < typ.NumField(); i++ {
-		name := typ.Field(i).Tag.Get("json")
+	for i := 0; i < t.NumField(); i++ {
+		name := t.Field(i).Tag.Get("json")
 		names = append(names, name)
 	}
 	return names
 }
 
-func GetStructFieldNameIter(x interface{}, names []string) error {
+// Iterative
+// depth<0 for no limit; depth>0 for finite iterative depth; depth=0 for no iteration.
+func GetStructFieldNameIter(x interface{}, names []string, depth int) error {
 	var err error
 	if names == nil {
 		err = fmt.Errorf("Slice parameter should not be nil before used.")
@@ -66,9 +68,13 @@ func GetStructFieldNameIter(x interface{}, names []string) error {
 	for i := 0; i < v.NumField(); i++ {
 		structField := t.Field(i)
 		ft := structField.Type
-		fv := v.Field(i).Interface()
-		if IsStructOrStructPtr(ft) {
-			err = GetStructFieldNameIter(fv, names)
+		vField := v.Field(i)
+		if !vField.CanInterface() {
+			continue
+		}
+		fv := vField.Interface()
+		if IsStructOrStructPtr(ft) && depth != 0 {
+			err = GetStructFieldNameIter(fv, names, depth-1)
 			continue
 		}
 		names = append(names, structField.Name)
@@ -77,7 +83,9 @@ func GetStructFieldNameIter(x interface{}, names []string) error {
 	return err
 }
 
-func GetStructTagNameIter(x interface{}, names []string) error {
+// Iterative
+// depth<0 for no limit; depth>0 for finite iterative depth; depth=0 for no iteration.
+func GetStructTagNameIter(x interface{}, names []string, depth int) error {
 	var err error
 	if names == nil {
 		err = fmt.Errorf("Slice parameter should not be nil before used.")
@@ -94,9 +102,13 @@ func GetStructTagNameIter(x interface{}, names []string) error {
 	for i := 0; i < v.NumField(); i++ {
 		structField := t.Field(i)
 		ft := structField.Type
-		fv := v.Field(i).Interface()
-		if IsStructOrStructPtr(ft) {
-			err = GetStructTagNameIter(fv, names)
+		vField := v.Field(i)
+		if !vField.CanInterface() {
+			continue
+		}
+		fv := vField.Interface()
+		if IsStructOrStructPtr(ft) && depth != 0 {
+			err = GetStructTagNameIter(fv, names, depth-1)
 			continue
 		}
 		name := structField.Tag.Get("json")
@@ -109,9 +121,12 @@ func GetStructTagNameIter(x interface{}, names []string) error {
 }
 
 // Iterative
-func StructToMapWithFieldKey(x interface{}, m map[string]interface{}) error {
+// depth<0 for no limit; depth>0 for finite iterative depth; depth=0 for no iteration.
+func StructToMapWithFieldKey(x interface{}, m map[string]interface{}, depth int) error {
+	var err error
 	if m == nil {
-		return fmt.Errorf("Map parameter should not be nil before used.")
+		err = fmt.Errorf("Map parameter should not be nil before used.")
+		return err
 	}
 
 	t := reflect.TypeOf(x)
@@ -124,9 +139,13 @@ func StructToMapWithFieldKey(x interface{}, m map[string]interface{}) error {
 	for i := 0; i < v.NumField(); i++ {
 		structField := t.Field(i)
 		ft := structField.Type
-		fv := v.Field(i).Interface()
-		if IsStructOrStructPtr(ft) {
-			StructToMapWithFieldKey(fv, m)
+		vField := v.Field(i)
+		if !vField.CanInterface() {
+			continue
+		}
+		fv := vField.Interface()
+		if IsStructOrStructPtr(ft) && depth != 0 {
+			err = StructToMapWithFieldKey(fv, m, depth-1)
 			continue
 		}
 		key := structField.Name
@@ -137,9 +156,12 @@ func StructToMapWithFieldKey(x interface{}, m map[string]interface{}) error {
 }
 
 // Iterative
-func StructToMapWithTagKey(x interface{}, m map[string]interface{}) error {
+// depth<0 for no limit; depth>0 for finite iterative depth; depth=0 for no iteration.
+func StructToMapWithTagKey(x interface{}, m map[string]interface{}, depth int) error {
+	var err error
 	if m == nil {
-		return fmt.Errorf("Map parameter should not be nil before used.")
+		err = fmt.Errorf("Map parameter should not be nil before used.")
+		return err
 	}
 
 	t := reflect.TypeOf(x)
@@ -152,9 +174,13 @@ func StructToMapWithTagKey(x interface{}, m map[string]interface{}) error {
 	for i := 0; i < v.NumField(); i++ {
 		structField := t.Field(i)
 		ft := structField.Type
-		fv := v.Field(i).Interface()
-		if IsStructOrStructPtr(ft) {
-			StructToMapWithTagKey(fv, m)
+		vField := v.Field(i)
+		if !vField.CanInterface() {
+			continue
+		}
+		fv := vField.Interface()
+		if IsStructOrStructPtr(ft) && depth != 0 {
+			err = StructToMapWithTagKey(fv, m, depth-1)
 			continue
 		}
 
@@ -165,5 +191,5 @@ func StructToMapWithTagKey(x interface{}, m map[string]interface{}) error {
 		m[key] = fv
 	}
 
-	return nil
+	return err
 }

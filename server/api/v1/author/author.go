@@ -29,7 +29,7 @@ func GetAuthorList(c *gin.Context) {
 	items := make([]map[string]interface{}, 0)
 	for _, author := range authors {
 		item := make(map[string]interface{})
-		err := util.StructToMapWithTagKey(author, item)
+		err := util.StructToMapWithTagKey(author, item, 1)
 		if err != nil {
 			log.Println(err)
 		} else {

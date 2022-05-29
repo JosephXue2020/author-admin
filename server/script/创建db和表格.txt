@@ -15,3 +15,8 @@ VALUES
 (1, "test", "123456");
 
 INSERT INTO authoradmin_user (username, password, role) VALUES ("test6", "123456", "normal");
+
+insert into authoradmin_author  
+(name, gender, nation, born_in, born_at, death_at, graduate_at, company) 
+values
+("薛钊", "男","汉族","唐山","1983","2083","南开大学","大百科");

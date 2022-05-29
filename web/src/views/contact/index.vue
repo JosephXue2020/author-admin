@@ -1,6 +1,31 @@
 <template>
   <div class="contact-container">
-    <div class="contact-text">管理员：xx</div>
+    <div class="contact-text">
+      <el-card class="box-card">
+        <div slot="header" class="clearfix">
+          <span>管理员</span>
+        <!-- <el-button style="float: right; padding: 3px 0" type="text">添加</el-button> -->
+        </div>
+        <div class="text item">
+          <p>联系人：Andrew NG</p>
+          <p>电  话：88390603</p>
+          <p>Email：AndrewNG@qq.com</p>
+        </div>
+      </el-card>
+    </div>
+    <div class="contact-text">
+      <el-card class="box-card">
+        <div slot="header" class="clearfix">
+          <span>管理员</span>
+        <!-- <el-button style="float: right; padding: 3px 0" type="text">添加</el-button> -->
+        </div>
+        <div class="text item">
+          <p>联系人：Hinton</p>
+          <p>电  话：88390603</p>
+          <p>Email：Hinton@qq.com</p>
+        </div>
+      </el-card>
+    </div>
   </div>
 </template>
 
@@ -17,8 +42,28 @@ export default {
     margin: 30px;
   }
   &-text {
-    font-size: 30px;
-    line-height: 46px;
+    padding: 18px;
+    width: 50%;
   }
+}
+.text {
+    font-size: 16px;
+  }
+
+.item {
+  margin-bottom: 18px;
+}
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+}
+.clearfix:after {
+  clear: both
+}
+
+.box-card {
+  width: 100%;
 }
 </style>
