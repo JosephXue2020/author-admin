@@ -60,7 +60,7 @@ service.interceptors.response.use(
         // MessageBox.confirm('You have been logged out, you can cancel to stay on this page, or log in again', 'Confirm logout', {
         //   confirmButtonText: 'Re-Login',
         //   cancelButtonText: 'Cancel',
-        MessageBox.confirm('您以登出，点击取消停留在当前页，或重新登录', 'Confirm logout', {
+        MessageBox.confirm('您已登出，点击取消停留在当前页，或重新登录', 'Confirm logout', {
           confirmButtonText: '重新登录',
           cancelButtonText: '取消',
           type: 'warning'

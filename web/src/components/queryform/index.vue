@@ -1,22 +1,19 @@
 <template>
   <div class="queryform">
-    <div class="demo-input-suffix">
-      姓名：
-      <el-input
-        v-model="input2"
-        placeholder="请输入内容"
-        prefix-icon="el-icon-search"
-      />
-    </div>
-    <div class="demo-input-suffix">
-      毕业院校：
-      <el-input
-        v-model="input4"
-        placeholder="请输入内容"
-      >
-        <i slot="prefix" class="el-input__icon el-icon-search" />
-      </el-input>
-    </div>
+    <el-form :inline="true" :model="formInline" class="demo-form-inline">
+      <el-form-item label="姓名">
+        <el-input v-model="formInline.user" placeholder="姓名" />
+      </el-form-item>
+      <el-form-item label="所属学科">
+        <el-select v-model="formInline.region" placeholder="所属学科">
+          <el-option label="区域一" value="shanghai" />
+          <el-option label="区域二" value="beijing" />
+        </el-select>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="onSubmit">查询</el-button>
+      </el-form-item>
+    </el-form>
   </div>
 </template>
 
@@ -25,10 +22,15 @@ export default {
   name: 'Queryform',
   data() {
     return {
-      input1: '',
-      input2: '',
-      input3: '',
-      input4: ''
+      formInline: {
+        user: '',
+        region: ''
+      }
+    }
+  },
+  methods: {
+    onSubmit() {
+      console.log('submit!')
     }
   }
 }

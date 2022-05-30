@@ -39,11 +39,13 @@ export default {
 <style lang="scss" scoped>
 .contact {
   &-container {
-    margin: 30px;
+    margin: 16px;
+    width: 100%;
   }
   &-text {
-    padding: 18px;
-    width: 50%;
+    margin: 3%;
+    width: 33%;
+    float: left;
   }
 }
 .text {
@@ -51,7 +53,7 @@ export default {
   }
 
 .item {
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .clearfix:before,

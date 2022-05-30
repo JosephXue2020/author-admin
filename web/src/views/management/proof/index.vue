@@ -15,30 +15,31 @@
       border
       fit
       highlight-current-row
+      :header-cell-style="{background:'#f5f7fa',color:'#606266'}"
     >
       <el-table-column type="selection" width="55" />
-      <el-table-column type="index" :index="getIndex" label="序号" width="130" align="center" />
+      <el-table-column type="index" :index="getIndex" label="序号" width="110" align="center" />
       <el-table-column label="姓名" width="130" align="center">
         <template slot-scope="scope">
           {{ scope.row.name }}
         </template>
       </el-table-column>
-      <el-table-column label="性别" width="130" align="center">
+      <el-table-column label="性别" width="110" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.gender }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="民族" width="130" align="center">
+      <el-table-column label="民族" width="110" align="center">
         <template slot-scope="scope">
           {{ scope.row.nation }}
         </template>
       </el-table-column>
-      <el-table-column label="出生地" width="130" align="center">
+      <el-table-column label="出生地" width="110" align="center">
         <template slot-scope="scope">
           {{ scope.row.bornin }}
         </template>
       </el-table-column>
-      <el-table-column label="出生时间" width="130" align="center">
+      <el-table-column label="出生时间" width="110" align="center">
         <template slot-scope="scope">
           {{ scope.row.bornat }}
         </template>

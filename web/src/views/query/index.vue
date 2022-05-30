@@ -1,5 +1,8 @@
 <template>
   <div class="app-container">
+    <div>
+      <el-queryform />
+    </div>
     <el-table
       v-loading="listLoading"
       :data="list"
@@ -7,6 +10,7 @@
       border
       fit
       highlight-current-row
+      :header-cell-style="{background:'#f5f7fa',color:'#606266'}"
     >
       <el-table-column type="index" :index="getIndex" label="序号" width="160" align="center" />
       <el-table-column label="姓名" width="130" align="center">
@@ -69,9 +73,13 @@
 
 <script>
 import { getAuthorList } from '@/api/author'
+import queryform from '@/components/queryform'
 
 export default {
   name: 'Query',
+  components: {
+    'el-queryform': queryform
+  },
   filters: {
     statusFilter(status) {
       const statusMap = {

@@ -7,6 +7,7 @@
       border
       fit
       highlight-current-row
+      :header-cell-style="{background:'#f5f7fa',color:'#606266'}"
     >
       <!-- <el-table-column align="center" label="序号" width="180">
         <template slot-scope="scope">
