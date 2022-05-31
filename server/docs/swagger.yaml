@@ -1,0 +1,165 @@
+basePath: /
+host: 127.0.0.1:20005
+info:
+  contact: {}
+  description: This is the backend of author-admin system.
+  title: author-admin restful API
+  version: 0.0.1
+paths:
+  /auth/info:
+    get:
+      description: 获取用户信息
+      parameters:
+      - description: token
+        in: query
+        name: token
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{"code": 200, "message": "ok", "data": {"roles": role, "introduction":
+            xxx, "avatar": xxx, "name": username} }'
+          schema:
+            type: string
+      summary: 获取信息
+  /auth/login:
+    post:
+      consumes:
+      - application/json
+      description: 登录
+      parameters:
+      - description: username
+        in: formData
+        name: '"username"'
+        required: true
+        type: string
+      - description: password
+        in: formData
+        name: '"password"'
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{"code": 200, "message": "ok", "data": null }'
+          schema:
+            type: string
+      summary: 登录
+  /auth/logout:
+    post:
+      consumes:
+      - application/json
+      description: 登出
+      responses:
+        "200":
+          description: '{"code": 200, "message": "ok", "data": null }'
+          schema:
+            type: string
+      summary: 登出
+  /v1/user/add:
+    post:
+      consumes:
+      - application/json
+      description: 添加单个用户
+      parameters:
+      - description: username
+        in: formData
+        name: '"username"'
+        required: true
+        type: string
+      - description: password
+        in: formData
+        name: '"password"'
+        required: true
+        type: string
+      - description: role
+        in: formData
+        name: '"role"'
+        required: true
+        type: string
+      - description: department
+        in: formData
+        name: '"department"'
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{"code": 200, "message": "ok", "data": null }'
+          schema:
+            type: string
+      summary: 添加单个用户
+  /v1/user/delete:
+    post:
+      consumes:
+      - application/json
+      description: 删除单个用户
+      parameters:
+      - description: id
+        in: formData
+        name: '"id"'
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "message": "ok", "data": null }'
+          schema:
+            type: string
+      summary: 删除单个用户
+  /v1/user/list:
+    get:
+      description: 获取所有用列表
+      parameters:
+      - description: pageSize
+        in: query
+        name: pageSize
+        required: true
+        type: integer
+      - description: pageNum
+        in: query
+        name: pageNum
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "message": "ok", "data": {"items": listObj,
+            "total": totalNum}}'
+          schema:
+            type: string
+      summary: 获取所有用户列表
+  /v1/user/update:
+    post:
+      consumes:
+      - application/json
+      description: 添加单个用户
+      parameters:
+      - description: id
+        in: formData
+        name: '"id"'
+        required: true
+        type: string
+      - description: username
+        in: formData
+        name: '"username"'
+        required: true
+        type: string
+      - description: password
+        in: formData
+        name: '"password"'
+        required: true
+        type: string
+      - description: role
+        in: formData
+        name: '"role"'
+        required: true
+        type: string
+      - description: department
+        in: formData
+        name: '"department"'
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{"code": 200, "message": "ok", "data": null }'
+          schema:
+            type: string
+      summary: 添加单个用户
+swagger: "2.0"

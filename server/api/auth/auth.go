@@ -42,6 +42,13 @@ func validate(username, password string) bool {
 	return ok && usernameFlag && passwordFlag
 }
 
+// @Summary 登录
+// @Description 登录
+// @accept application/json
+// @Param "username" formData string true "username"
+// @Param "password" formData string true "password"
+// @Success 200 {string} json "{"code": 200, "message": "ok", "data": null }""
+// @Router /auth/login [post]
 func Login(c *gin.Context) {
 	// username := c.PostForm("username")
 	// password := c.PostForm("password")
@@ -78,6 +85,11 @@ func Login(c *gin.Context) {
 	})
 }
 
+// @Summary 登出
+// @Description 登出
+// @accept application/json
+// @Success 200 {string} json "{"code": 200, "message": "ok", "data": null }""
+// @Router /auth/logout [post]
 func Logout(c *gin.Context) {
 	code := e.SUCCESS
 	data := ""
@@ -88,6 +100,11 @@ func Logout(c *gin.Context) {
 	})
 }
 
+// @Summary 获取信息
+// @Description 获取用户信息
+// @Param token query string true "token"
+// @Success 200 {string} json "{"code": 200, "message": "ok", "data": {"roles": role, "introduction": xxx, "avatar": xxx, "name": username} }""
+// @Router /auth/info [get]
 func Info(c *gin.Context) {
 	token := c.Query("token")
 	code := e.SUCCESS

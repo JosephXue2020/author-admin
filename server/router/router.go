@@ -12,7 +12,11 @@ import (
 	"goweb/author-admin/server/pkg/setting"
 	"net/http"
 
+	_ "goweb/author-admin/server/docs"
+
 	"github.com/gin-gonic/gin"
+	ginSwagger "github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
 func InitRouter() *gin.Engine {
@@ -34,6 +38,8 @@ func InitRouter() *gin.Engine {
 
 	// 测试路径
 	r.GET("/test", testFunc)
+
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	a := r.Group("/auth")
 	{

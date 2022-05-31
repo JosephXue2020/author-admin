@@ -9,6 +9,12 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @Summary 获取所有用户列表
+// @Description 获取所有用列表
+// @Param pageSize query int true "pageSize"
+// @Param pageNum query int true "pageNum"
+// @Success 200 {string} json "{"code": 200, "message": "ok", "data": {"items": listObj, "total": totalNum}}""
+// @Router /v1/user/list [get]
 func GetUserList(c *gin.Context) {
 	q, err := util.GetSQLQuery(c)
 	if err != nil {
@@ -42,6 +48,15 @@ func GetUserList(c *gin.Context) {
 	})
 }
 
+// @Summary 添加单个用户
+// @Description 添加单个用户
+// @accept application/json
+// @Param "username" formData string true "username"
+// @Param "password" formData string true "password"
+// @Param "role" formData string true "role"
+// @Param "department" formData string true "department"
+// @Success 200 {string} json "{"code": 200, "message": "ok", "data": null }""
+// @Router /v1/user/add [post]
 func AddUser(c *gin.Context) {
 	var code int
 	form := struct {
@@ -88,6 +103,12 @@ func AddUser(c *gin.Context) {
 	return
 }
 
+// @Summary 删除单个用户
+// @Description 删除单个用户
+// @accept application/json
+// @Param "id" formData int true "id"
+// @Success 200 {string} json "{"code": 200, "message": "ok", "data": null }""
+// @Router /v1/user/delete [post]
 func DeleteUser(c *gin.Context) {
 	var code int
 	form := struct {
@@ -131,6 +152,16 @@ func DeleteUser(c *gin.Context) {
 	return
 }
 
+// @Summary 添加单个用户
+// @Description 添加单个用户
+// @accept application/json
+// @Param "id" formData string true "id"
+// @Param "username" formData string true "username"
+// @Param "password" formData string true "password"
+// @Param "role" formData string true "role"
+// @Param "department" formData string true "department"
+// @Success 200 {string} json "{"code": 200, "message": "ok", "data": null }""
+// @Router /v1/user/update [post]
 func UpdateUser(c *gin.Context) {
 	var code int
 	form := struct {

@@ -11,6 +11,13 @@ import (
 	"net/http"
 )
 
+// @title author-admin restful API
+// @version 0.0.1
+// @description This is the backend of author-admin system.
+
+// @host 127.0.0.1:20005
+// @BasePath /
+
 func main() {
 	defer util.PressAnyKeyToExit()
 
