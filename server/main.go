@@ -30,7 +30,7 @@ func main() {
 	}
 	defer dao.Close()
 
-	// 初始化模型
+	// 初始化模型:测试
 	models.AutoMigrate()
 
 	// 初始化路由
