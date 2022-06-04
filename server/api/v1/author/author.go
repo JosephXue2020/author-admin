@@ -29,7 +29,8 @@ func GetAuthorList(c *gin.Context) {
 	items := make([]map[string]interface{}, 0)
 	for _, author := range authors {
 		item := make(map[string]interface{})
-		err := util.StructToMapWithTagKey(author, item, 1)
+		// err := util.StructToMapWithTagKey(author, item, 1) // 有1层嵌套
+		err := util.StructToMapWithTagKey(author, item, 0) // 无嵌套
 		if err != nil {
 			log.Println(err)
 		} else {
@@ -40,7 +41,6 @@ func GetAuthorList(c *gin.Context) {
 	}
 	data["total"] = total
 	data["items"] = items
-	log.Println(items)
 
 	code = e.SUCCESS
 	c.JSON(http.StatusOK, gin.H{

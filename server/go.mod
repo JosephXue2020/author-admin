@@ -7,6 +7,7 @@ require (
 	github.com/360EntSecGroup-Skylar/excelize v1.4.1
 	github.com/astaxie/beego v1.12.3
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
+	github.com/elastic/go-elasticsearch/v8 v8.0.0-20220512144501-db678f9b3507
 	github.com/gin-gonic/gin v1.7.7
 	github.com/go-ini/ini v1.66.2
 	github.com/google/uuid v1.3.0

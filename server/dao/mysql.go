@@ -42,7 +42,7 @@ func InitMySQL() error {
 	return err
 }
 
-func Close() error {
+func CloseDB() error {
 	err := DB.Close()
 	return err
 }

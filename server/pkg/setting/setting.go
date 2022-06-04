@@ -2,6 +2,7 @@ package setting
 
 import (
 	"log"
+	"strings"
 	"time"
 
 	"github.com/go-ini/ini"
@@ -23,6 +24,10 @@ var (
 
 	SuperUserName     string
 	SuperUserPassword string
+
+	ESUser     string
+	ESPassword string
+	ESHosts    []string
 )
 
 type MysqlConf struct {
@@ -47,6 +52,7 @@ func init() {
 	LoadApp()
 	LoadMysql()
 	LoadUser()
+	LoadES()
 }
 
 func LoadMode() {
@@ -103,4 +109,16 @@ func LoadUser() {
 
 	SuperUserName = sec.Key("SUPERUSER").MustString("root")
 	SuperUserPassword = sec.Key("PASSWORD").MustString("root")
+}
+
+func LoadES() {
+	sec, err := Cfg.GetSection("elasticsearch")
+	if err != nil {
+		log.Fatalf("Fail to get section 'elasticsearch': %v", err)
+	}
+
+	ESUser = sec.Key("ESUSER").MustString("elastic")
+	ESPassword = sec.Key("PASSWORD").MustString("elastic")
+	hosts := sec.Key("HOSTS").MustString("elastic")
+	ESHosts = strings.Split(hosts, ",")
 }

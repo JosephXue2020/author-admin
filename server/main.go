@@ -28,10 +28,24 @@ func main() {
 	} else {
 		log.Println("Success to connect sql database.")
 	}
-	defer dao.Close()
+	defer dao.CloseDB()
 
-	// 初始化模型:测试
-	models.AutoMigrate()
+	// 初始化ES连接
+	err = dao.InitES()
+	if err != nil {
+		log.Panic("Can not connect ES service.")
+	} else {
+		log.Println("Success to connect ES service.")
+	}
+
+	// 初始化DB和ES索引
+	// 必须在DB和ES连接建立之后
+	err = models.AutoMigrate()
+	if err != nil {
+		log.Panic("Can not migrate DB table and ES index.")
+	} else {
+		log.Println("Success to migrate DB table and ES index.")
+	}
 
 	// 初始化路由
 	r := router.InitRouter()
