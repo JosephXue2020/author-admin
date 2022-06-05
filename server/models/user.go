@@ -42,14 +42,14 @@ func RoleKeywords() []string {
 
 type User struct {
 	// gorm.Model
-	ID         int    `gorm:"primaryKey" json:"id"`
-	UUID       string `gorm:"unique" json:"uuid"`
-	Username   string `gorm:"unique" json:"username"` // 用户名要求唯一
-	Password   string `json:"password"`
-	Department string `json:"department"`
-	Role       string `json:"role"`
-	Creater    string `json:"creater"`
-	CreateOn   string `json:"createon"`
+	ID         int    `gorm:"primaryKey" json:"id" es:"id"`
+	UUID       string `gorm:"unique" json:"uuid" es:"uuid"`
+	Username   string `gorm:"unique" json:"username" es:"username"` // 用户名要求唯一
+	Password   string `json:"password" es:"password"`
+	Department string `json:"department" es:"department"`
+	Role       string `json:"role" es:"role"`
+	Creater    string `json:"creater" es:"creater"`
+	CreateOn   string `json:"createon" es:"createon"`
 }
 
 // 达到阈值则允许
@@ -169,7 +169,7 @@ func UserExist(username string) bool {
 	return false
 }
 
-func ValidateCreation(u User, creater string) (bool, int) {
+func ValidateUserCreation(u User, creater string) (bool, int) {
 	code := e.SUCCESS
 	// 判断类型是否合法
 	if !AllowedRole(u.Role) {
@@ -209,12 +209,16 @@ func AddUser(username, password, department, role, creater string) error {
 		CreateOn:   util.CurrentTimeStr(),
 	}
 
-	if valid, code := ValidateCreation(u, creater); !valid {
+	if valid, code := ValidateUserCreation(u, creater); !valid {
 		err := fmt.Errorf(e.GetMsg(code))
 		return err
 	}
 
 	dao.DB.Create(&u)
+	// err := DBES.Create(&u)
+	// if err != nil {
+	// 	return err
+	// }
 	return nil
 }
 
@@ -246,7 +250,7 @@ func addSuper() {
 	return
 }
 
-func validateDeletion(id int, operator string) (bool, int) {
+func validateUserDeletion(id int, operator string) (bool, int) {
 	code := e.SUCCESS
 
 	userObj, err := SelectUserByID(id)
@@ -269,7 +273,7 @@ func validateDeletion(id int, operator string) (bool, int) {
 }
 
 func DeleteUserByID(id int, operator string) error {
-	if ok, code := validateDeletion(id, operator); !ok {
+	if ok, code := validateUserDeletion(id, operator); !ok {
 		err := fmt.Errorf(e.GetMsg(code))
 		return err
 	}
@@ -290,7 +294,7 @@ func DeleteUserByName(username, operator string) error {
 	return DeleteUserByID(userObj.ID, operator)
 }
 
-func ValidateUpdate(u User, operator string) (bool, int) {
+func ValidateUserUpdate(u User, operator string) (bool, int) {
 	code := e.SUCCESS
 
 	// 判断类型是否合法
@@ -326,7 +330,7 @@ func UpdateUser(id int, password, department, role, operator string) error {
 	u.Department = department
 	u.Role = role
 
-	if ok, code := ValidateUpdate(u, operator); !ok {
+	if ok, code := ValidateUserUpdate(u, operator); !ok {
 		err := fmt.Errorf(e.GetMsg(code))
 		return err
 	}

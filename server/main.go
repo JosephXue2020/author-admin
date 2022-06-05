@@ -40,11 +40,11 @@ func main() {
 
 	// 初始化DB和ES索引
 	// 必须在DB和ES连接建立之后
-	err = models.AutoMigrate()
+	err = models.InitModels()
 	if err != nil {
-		log.Panic("Can not migrate DB table and ES index.")
+		log.Panic("Can not migrate DB table or ES index.")
 	} else {
-		log.Println("Success to migrate DB table and ES index.")
+		log.Println("Success to migrate DB table or ES index.")
 	}
 
 	// 初始化路由

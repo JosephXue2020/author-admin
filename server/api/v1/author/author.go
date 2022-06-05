@@ -51,7 +51,50 @@ func GetAuthorList(c *gin.Context) {
 }
 
 func AddAuthor(c *gin.Context) {
+	var code int
+	form := struct {
+		Name    string `json:"name"`
+		Gender  string `json:"gender"`
+		Nation  string `json:"nation"`
+		BornIn  string `json:"bornin"`
+		BornAt  string `json:"bornat"`
+		Company string `json:"company"`
+	}{}
+	if err := c.ShouldBind(&form); err != nil {
+		code = e.INVALID_PARAMS
+		c.JSON(http.StatusOK, gin.H(e.FailedDict(code)))
+		return
+	}
 
+	token := c.GetHeader("token")
+	if token == "" {
+		code = e.ERROR_TOKEN_ILLEGAL
+		c.JSON(http.StatusOK, gin.H(e.FailedDict(code)))
+		return
+	}
+
+	_, err := util.ParseToken(token)
+	if err != nil {
+		code = e.ERROR_TOKEN
+		c.JSON(http.StatusOK, gin.H(e.FailedDict(code)))
+		return
+	}
+
+	err = models.AddAuthor(form.Name, form.Gender, form.Nation, form.BornIn, form.BornAt, form.Company)
+	var msg string
+	if err != nil {
+		code = e.ERROR_USER
+		msg = err.Error()
+	} else {
+		code = e.SUCCESS
+		msg = e.GetMsg(code)
+	}
+	c.JSON(http.StatusOK, gin.H{
+		"code":    code,
+		"message": msg,
+		"data":    map[string]interface{}{},
+	})
+	return
 }
 
 func AddAuthorBatch(c *gin.Context) {

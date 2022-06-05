@@ -1,9 +1,12 @@
 package dao
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
+	"fmt"
 	"goweb/author-admin/server/pkg/setting"
+	"goweb/author-admin/server/pkg/util"
 	"log"
 	"net/http"
 	"reflect"
@@ -136,7 +139,41 @@ func CreateIndices(x ...interface{}) error {
 	return nil
 }
 
-func CreateToDBES(value interface{}) {
-	DB.Create(value)
-	// ES.Create()
+type ESType elasticsearch.Client
+
+func (es *ESType) CreateDoc(x interface{}) error {
+	t := reflect.TypeOf(x)
+	if t.Kind() == reflect.Ptr {
+		t = t.Elem()
+	}
+	if t.Kind() != reflect.Struct {
+		err := fmt.Errorf("Param should be struct or struct pointer type.")
+		return err
+	}
+
+	m := make(map[string]interface{})
+	err := util.StructToMapWithTagKey(x, m, 0)
+	if err != nil {
+		return err
+	}
+
+	var buf bytes.Buffer
+	if err := json.NewEncoder(&buf).Encode(m); err != nil {
+		return err
+	}
+
+	indexName := strings.ToLower(t.Name())
+	resp, err := es.Index(indexName, &buf)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusCreated {
+		err := fmt.Errorf("Wrong response code: %v\n", resp.StatusCode)
+		return err
+	}
+	// fmt.Println(resp.String())
+
+	return nil
 }

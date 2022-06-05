@@ -60,7 +60,8 @@ func InitRouter() *gin.Engine {
 		ar := v1.Group("/author")
 		ar.Use(authcontrol.AuthControl(models.NORMAL))
 		{
-			ar.GET(("/list"), author.GetAuthorList)
+			ar.GET("/list", author.GetAuthorList)
+			ar.POST("/add", author.AddAuthor)
 		}
 	}
 

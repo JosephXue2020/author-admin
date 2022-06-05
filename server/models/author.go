@@ -2,7 +2,8 @@ package models
 
 import (
 	"fmt"
-	"goweb/author-admin/server/dao"
+	"goweb/author-admin/server/pkg/e"
+	"goweb/author-admin/server/pkg/util"
 
 	"github.com/jinzhu/gorm"
 )
@@ -76,7 +77,7 @@ type Entry struct {
 
 func SelectAuthorByID(id int) (Author, error) {
 	temp := Author{}
-	dao.DB.Where("id = ?", id).First(&temp)
+	DBES.DB.Where("id = ?", id).First(&temp)
 
 	if temp.ID > 0 {
 		return temp, nil
@@ -92,7 +93,7 @@ func SelectAuthorBatch(start, limit int, desc bool) []Author {
 	if desc {
 		orderStr += " desc"
 	}
-	dao.DB.Order(orderStr).Limit(limit).Offset(start).Find(&authors)
+	DBES.DB.Order(orderStr).Limit(limit).Offset(start).Find(&authors)
 	return authors
 }
 
@@ -102,12 +103,53 @@ func SelectAuthorAll(desc bool) []Author {
 	if desc {
 		orderStr += " desc"
 	}
-	dao.DB.Order(orderStr).Find(&authors)
+	DBES.DB.Order(orderStr).Find(&authors)
 	return authors
 }
 
 func CountAuthor() int {
 	var count int
-	dao.DB.Model(&Author{}).Count(&count)
+	DBES.DB.Model(&Author{}).Count(&count)
 	return count
+}
+
+func AuthorExist(name string) bool {
+	temp := Author{}
+	DBES.DB.Where("Username = ?", name).First(&temp)
+	if temp.ID > 0 {
+		return true
+	}
+	return false
+}
+
+func ValidateAuthorCreation(a Author) (bool, int) {
+	code := e.SUCCESS
+
+	// 判断是否存在
+	if AuthorExist(a.Name) {
+		code = e.ERROR_USER_ALREADY_EXIST
+		return false, code
+	}
+
+	return true, code
+}
+
+func AddAuthor(name, gender, nation, bornin, bornat, company string) error {
+	a := Author{
+		UUID:    util.GenUUID(),
+		Name:    name,
+		Gender:  gender,
+		Nation:  nation,
+		BornIn:  bornin,
+		BornAt:  bornat,
+		Company: company,
+	}
+
+	if valid, code := ValidateAuthorCreation(a); !valid {
+		err := fmt.Errorf(e.GetMsg(code))
+		return err
+	}
+
+	DBES.Create(&a)
+	return nil
 }
