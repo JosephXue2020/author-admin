@@ -42,8 +42,9 @@ func InitES() error {
 		return err
 	}
 	defer resp.Body.Close()
-	// resp, _ = ES.Cat.Health()
-	// log.Println(resp)
+
+	resp, _ = ES.Cat.Health()
+	log.Println("ES cluster health status: ", resp)
 
 	return nil
 }
@@ -120,10 +121,15 @@ func CreateIndex(x interface{}) error {
 			return err
 		}
 		s := string(byteData)
-		_, err = ES.Indices.Create(indexName, ES.Indices.Create.WithBody(strings.NewReader(s)))
+		resp, err := ES.Indices.Create(indexName, ES.Indices.Create.WithBody(strings.NewReader(s)))
 		if err != nil {
 			return err
 		}
+
+		if resp.StatusCode == http.StatusUnauthorized {
+			return fmt.Errorf("Failed to authorize to ES: %d\n", resp.StatusCode)
+		}
+		return nil
 	}
 
 	return nil
@@ -173,7 +179,6 @@ func (es *ESType) CreateDoc(x interface{}) error {
 		err := fmt.Errorf("Wrong response code: %v\n", resp.StatusCode)
 		return err
 	}
-	// fmt.Println(resp.String())
 
 	return nil
 }

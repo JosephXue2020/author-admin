@@ -42,14 +42,14 @@ func RoleKeywords() []string {
 
 type User struct {
 	// gorm.Model
-	ID         int    `gorm:"primaryKey" json:"id" es:"id"`
-	UUID       string `gorm:"unique" json:"uuid" es:"uuid"`
-	Username   string `gorm:"unique" json:"username" es:"username"` // 用户名要求唯一
-	Password   string `json:"password" es:"password"`
-	Department string `json:"department" es:"department"`
-	Role       string `json:"role" es:"role"`
-	Creater    string `json:"creater" es:"creater"`
-	CreateOn   string `json:"createon" es:"createon"`
+	ID         int    `gorm:"primaryKey" json:"id" es:"keyword"`
+	UUID       string `gorm:"unique" json:"uuid" es:"keyword"`
+	Username   string `gorm:"unique" json:"username" es:"keyword"` // 用户名要求唯一
+	Password   string `json:"password" es:"keyword"`
+	Department string `json:"department" es:"text"`
+	Role       string `json:"role" es:"keyword"`
+	Creater    string `json:"creater" es:"keyword"`
+	CreateOn   string `json:"createon" es:"keyword"`
 }
 
 // 达到阈值则允许

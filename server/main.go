@@ -24,7 +24,7 @@ func main() {
 	// 初始化数据库连接
 	err := dao.InitMySQL()
 	if err != nil {
-		log.Panic("Can not connect sql database.")
+		log.Panic("Can not connect sql database: ", err)
 	} else {
 		log.Println("Success to connect sql database.")
 	}
@@ -33,7 +33,7 @@ func main() {
 	// 初始化ES连接
 	err = dao.InitES()
 	if err != nil {
-		log.Panic("Can not connect ES service.")
+		log.Panic("Can not connect ES service: ", err)
 	} else {
 		log.Println("Success to connect ES service.")
 	}
@@ -42,7 +42,7 @@ func main() {
 	// 必须在DB和ES连接建立之后
 	err = models.InitModels()
 	if err != nil {
-		log.Panic("Can not migrate DB table or ES index.")
+		log.Panic("Can not migrate DB table or ES index: ", err)
 	} else {
 		log.Println("Success to migrate DB table or ES index.")
 	}

@@ -11,21 +11,6 @@ type Model struct {
 	ModifiedOn int `json:"modified_on"`
 }
 
-var DBES *dao.DBES
-
-func InitModels() error {
-	AutoMigrate()
-
-	err := RegistToES()
-	if err != nil {
-		return err
-	}
-
-	DBES = dao.NewDBES(ESModels)
-
-	return nil
-}
-
 func AutoMigrate() {
 	dao.DB.AutoMigrate(&User{})
 	addSuper()
@@ -50,5 +35,20 @@ func RegistToES() error {
 	if err != nil {
 		return err
 	}
+	return nil
+}
+
+var DBES *dao.DBWrapper
+
+func InitModels() error {
+	AutoMigrate()
+
+	err := RegistToES()
+	if err != nil {
+		return err
+	}
+
+	DBES = dao.NewDBES(ESModels)
+
 	return nil
 }
