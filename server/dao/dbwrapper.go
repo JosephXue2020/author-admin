@@ -43,7 +43,7 @@ func (wrapper *DBWrapper) Create(value interface{}) error {
 	return nil
 }
 
-func NewDBES(models []string) *DBWrapper {
+func NewDBWrapper(models []string) *DBWrapper {
 	return &DBWrapper{
 		DB:           DB,
 		ES:           (*ESType)(ES),

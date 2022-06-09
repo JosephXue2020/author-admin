@@ -38,7 +38,7 @@ func main() {
 		log.Println("Success to connect ES service.")
 	}
 
-	// 初始化DB和ES索引
+	// 初始化DB表格和ES索引
 	// 必须在DB和ES连接建立之后
 	err = models.InitModels()
 	if err != nil {

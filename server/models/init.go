@@ -20,15 +20,15 @@ func AutoMigrate() {
 
 var ESModels []string
 
-func RegistToES() error {
+func ESRegist() error {
 	var err error
 
-	// // 以User测试，正式版本不对User建索引
-	// ESModels = append(ESModels, "User")
-	// err = dao.CreateIndices(&User{})
-	// if err != nil {
-	// 	return err
-	// }
+	// 以User测试，正式版本不对User建索引
+	ESModels = append(ESModels, "User")
+	err = dao.CreateIndices(&User{})
+	if err != nil {
+		return err
+	}
 
 	ESModels = append(ESModels, "Author", "Entry")
 	err = dao.CreateIndices(&Author{}, &Entry{})
@@ -43,12 +43,12 @@ var DBES *dao.DBWrapper
 func InitModels() error {
 	AutoMigrate()
 
-	err := RegistToES()
+	err := ESRegist()
 	if err != nil {
 		return err
 	}
 
-	DBES = dao.NewDBES(ESModels)
+	DBES = dao.NewDBWrapper(ESModels)
 
 	return nil
 }

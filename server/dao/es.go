@@ -169,7 +169,17 @@ func (es *ESType) CreateDoc(x interface{}) error {
 	}
 
 	indexName := strings.ToLower(t.Name())
-	resp, err := es.Index(indexName, &buf)
+	id, ok := m["id"]
+	if !ok {
+		err = fmt.Errorf("db table lacks id field.")
+		return err
+	}
+	idStr, err := util.ItfToStr(id)
+	if err != nil {
+		return err
+	}
+
+	resp, err := es.Create(indexName, idStr, &buf)
 	if err != nil {
 		return err
 	}
@@ -181,4 +191,8 @@ func (es *ESType) CreateDoc(x interface{}) error {
 	}
 
 	return nil
+}
+
+func (es *ESType) DeleteDocByID() {
+
 }

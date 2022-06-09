@@ -1,9 +1,12 @@
 package util
 
 import (
+	"bytes"
+	"encoding/json"
 	"fmt"
 	"log"
 	"reflect"
+	"strconv"
 	"time"
 
 	"github.com/google/uuid"
@@ -67,4 +70,32 @@ func GenUUID() string {
 	u, _ := uuid.NewUUID() // v1 uuid
 	s := u.String()
 	return s
+}
+
+func MapToJsonWithStrKey(m map[string]interface{}) ([]byte, error) {
+	var byteData []byte
+	if m == nil {
+		err := fmt.Errorf("The input map is nil.")
+		return byteData, err
+	}
+
+	var buf bytes.Buffer
+	if err := json.NewEncoder(&buf).Encode(m); err != nil {
+		return byteData, err
+	}
+
+	return byteData, nil
+}
+
+func ItfToStr(x interface{}) (string, error) {
+	switch x.(type) {
+	case string:
+		return x.(string), nil
+	case int, int8, int16, int32, int64, uint, uint8, uint16, uint32, uint64:
+		i := x.(int)
+		return strconv.Itoa(i), nil
+	default:
+		err := fmt.Errorf("Failed to convert.")
+		return "", err
+	}
 }
