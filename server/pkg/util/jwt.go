@@ -49,3 +49,12 @@ func ParseToken(token string) (*Claims, error) {
 	err = fmt.Errorf("Failed to parse token.")
 	return nil, err
 }
+
+func GetUsernameFromToken(token string) (string, error) {
+	claims, err := ParseToken(token)
+	if err != nil {
+		return "", err
+	}
+
+	return claims.Username, nil
+}

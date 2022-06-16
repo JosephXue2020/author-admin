@@ -9,10 +9,10 @@ import (
 )
 
 type Page struct {
-	PageNum  int    `form:"pageNum"`
-	PageSize int    `form:"pageSize"`
-	Keyword  string `form:"keyword"`
-	Desc     bool   `form:"desc"`
+	PageNum  int    `form:"pageNum" json:"pageNum"`
+	PageSize int    `form:"pageSize" json:"pageSize"`
+	Keyword  string `form:"keyword" json:"keyword"`
+	Desc     bool   `form:"desc" json:"desc"`
 }
 
 type SQLQuery struct {

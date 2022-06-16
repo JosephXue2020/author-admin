@@ -138,18 +138,25 @@ func StructToMapWithFieldKey(x interface{}, m map[string]interface{}, depth int)
 
 	for i := 0; i < v.NumField(); i++ {
 		structField := t.Field(i)
+		key := structField.Name
 		ft := structField.Type
+
 		vField := v.Field(i)
 		if !vField.CanInterface() {
 			continue
 		}
 		fv := vField.Interface()
+
 		if IsStructOrStructPtr(ft) && depth != 0 {
-			err = StructToMapWithFieldKey(fv, m, depth-1)
-			continue
+			subm := make(map[string]interface{})
+			err = StructToMapWithFieldKey(fv, subm, depth-1)
+			if err != nil {
+				return err
+			}
+			m[key] = subm
+		} else {
+			m[key] = fv
 		}
-		key := structField.Name
-		m[key] = fv
 	}
 
 	return nil
@@ -157,7 +164,7 @@ func StructToMapWithFieldKey(x interface{}, m map[string]interface{}, depth int)
 
 // Iterative
 // depth<0 for no limit; depth>0 for finite iterative depth; depth=0 for no iteration.
-func StructToMapWithTagKey(x interface{}, m map[string]interface{}, depth int) error {
+func StructToMapWithJSONKey(x interface{}, m map[string]interface{}, depth int) error {
 	var err error
 	if m == nil {
 		err = fmt.Errorf("Map parameter should not be nil before used.")
@@ -174,22 +181,28 @@ func StructToMapWithTagKey(x interface{}, m map[string]interface{}, depth int) e
 	for i := 0; i < v.NumField(); i++ {
 		structField := t.Field(i)
 		ft := structField.Type
+		key := structField.Tag.Get("json")
+		if key == "" {
+			continue
+		}
+
 		vField := v.Field(i)
 		if !vField.CanInterface() {
 			continue
 		}
 		fv := vField.Interface()
-		if IsStructOrStructPtr(ft) && depth != 0 {
-			err = StructToMapWithTagKey(fv, m, depth-1)
-			continue
-		}
 
-		key := structField.Tag.Get("json")
-		if key == "" {
-			continue
+		if IsStructOrStructPtr(ft) && depth != 0 {
+			subm := make(map[string]interface{})
+			err = StructToMapWithJSONKey(fv, subm, depth-1)
+			if err != nil {
+				return err
+			}
+			m[key] = subm
+		} else {
+			m[key] = fv
 		}
-		m[key] = fv
 	}
 
-	return err
+	return nil
 }

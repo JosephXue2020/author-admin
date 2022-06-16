@@ -91,11 +91,22 @@ func ItfToStr(x interface{}) (string, error) {
 	switch x.(type) {
 	case string:
 		return x.(string), nil
-	case int, int8, int16, int32, int64, uint, uint8, uint16, uint32, uint64:
+	case int, int8, int16, int32, int64:
 		i := x.(int)
 		return strconv.Itoa(i), nil
+	case uint, uint8, uint16, uint32, uint64:
+		i := x.(uint)
+		return strconv.Itoa(int(i)), nil
 	default:
 		err := fmt.Errorf("Failed to convert.")
 		return "", err
 	}
+}
+
+func MapKeys(m map[string]interface{}) []string {
+	var keys []string
+	for k := range m {
+		keys = append(keys, k)
+	}
+	return keys
 }

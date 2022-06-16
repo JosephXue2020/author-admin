@@ -65,6 +65,7 @@ type Author struct {
 	Publication string `json:"publication" es:"text"`
 	DBKPosition string `json:"dbkposition" es:"keyword"`
 
+	// many to man foreign key
 	Entries []Entry `gorm:"many2many:author_entry;" json:"entries" es:"object"`
 }
 
@@ -115,7 +116,7 @@ func CountAuthor() int {
 
 func AuthorExist(name string) bool {
 	temp := Author{}
-	DBES.DB.Where("Username = ?", name).First(&temp)
+	DBES.DB.Where("Name = ?", name).First(&temp)
 	if temp.ID > 0 {
 		return true
 	}
@@ -150,6 +151,21 @@ func AddAuthor(name, gender, nation, bornin, bornat, company string) error {
 		return err
 	}
 
-	DBES.Create(&a)
+	err := DBES.Create(&a)
+	if err != nil {
+		return err
+	}
 	return nil
+}
+
+func DeleteAuthorByID(id int) error {
+	err := DBES.DeleteByID(&Author{}, id)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func UpdateAuthor() {
+
 }

@@ -16,7 +16,7 @@ func GetAuthorList(c *gin.Context) {
 	q, err := util.GetSQLQuery(c)
 	if err != nil {
 		code = e.INVALID_PARAMS
-		c.JSON(http.StatusOK, gin.H(e.FailedDict(code)))
+		c.JSON(http.StatusOK, gin.H(util.FailedResponseMap(code)))
 		return
 	}
 
@@ -30,7 +30,7 @@ func GetAuthorList(c *gin.Context) {
 	for _, author := range authors {
 		item := make(map[string]interface{})
 		// err := util.StructToMapWithTagKey(author, item, 1) // 有1层嵌套
-		err := util.StructToMapWithTagKey(author, item, 0) // 无嵌套
+		err := util.StructToMapWithJSONKey(author, item, 0) // 无嵌套
 		if err != nil {
 			log.Println(err)
 		} else {
@@ -52,6 +52,66 @@ func GetAuthorList(c *gin.Context) {
 
 func AddAuthor(c *gin.Context) {
 	var code int
+	form := models.Author{}
+	if err := c.ShouldBind(&form); err != nil {
+		code = e.INVALID_PARAMS
+		c.JSON(http.StatusOK, gin.H(util.FailedResponseMap(code)))
+		return
+	}
+
+	err := models.AddAuthor(form.Name, form.Gender, form.Nation, form.BornIn, form.BornAt, form.Company)
+	var msg string
+	if err != nil {
+		code = e.ERROR_USER
+		msg = err.Error()
+	} else {
+		code = e.SUCCESS
+		msg = e.GetMsg(code)
+	}
+
+	resp := util.NeWReponseWithCode(code)
+	resp.Message = msg
+	c.JSON(http.StatusOK, gin.H(resp.ToMap(0)))
+	return
+}
+
+func AddAuthorBatch(c *gin.Context) {
+
+}
+
+func DeleteAuthor(c *gin.Context) {
+	var code int
+	form := struct {
+		ID int `json:"id"`
+	}{}
+	if err := c.ShouldBind(&form); err != nil {
+		code = e.INVALID_PARAMS
+		c.JSON(http.StatusOK, gin.H(util.FailedResponseMap(code)))
+		return
+	}
+
+	err := models.DeleteAuthorByID(form.ID)
+	var msg string
+	if err != nil {
+		code = e.ERROR_USER
+		msg = err.Error()
+	} else {
+		code = e.SUCCESS
+		msg = e.GetMsg(code)
+	}
+
+	resp := util.NeWReponseWithCode(code)
+	resp.Message = msg
+	c.JSON(http.StatusOK, gin.H(resp.ToMap(0)))
+	return
+}
+
+func DeleteAuthorBatch(c *gin.Context) {
+
+}
+
+func UpdateAuthor(c *gin.Context) {
+	var code int
 	form := struct {
 		Name    string `json:"name"`
 		Gender  string `json:"gender"`
@@ -62,25 +122,11 @@ func AddAuthor(c *gin.Context) {
 	}{}
 	if err := c.ShouldBind(&form); err != nil {
 		code = e.INVALID_PARAMS
-		c.JSON(http.StatusOK, gin.H(e.FailedDict(code)))
+		c.JSON(http.StatusOK, gin.H(util.FailedResponseMap(code)))
 		return
 	}
 
-	token := c.GetHeader("token")
-	if token == "" {
-		code = e.ERROR_TOKEN_ILLEGAL
-		c.JSON(http.StatusOK, gin.H(e.FailedDict(code)))
-		return
-	}
-
-	_, err := util.ParseToken(token)
-	if err != nil {
-		code = e.ERROR_TOKEN
-		c.JSON(http.StatusOK, gin.H(e.FailedDict(code)))
-		return
-	}
-
-	err = models.AddAuthor(form.Name, form.Gender, form.Nation, form.BornIn, form.BornAt, form.Company)
+	err := models.AddAuthor(form.Name, form.Gender, form.Nation, form.BornIn, form.BornAt, form.Company)
 	var msg string
 	if err != nil {
 		code = e.ERROR_USER
@@ -89,28 +135,11 @@ func AddAuthor(c *gin.Context) {
 		code = e.SUCCESS
 		msg = e.GetMsg(code)
 	}
-	c.JSON(http.StatusOK, gin.H{
-		"code":    code,
-		"message": msg,
-		"data":    map[string]interface{}{},
-	})
+
+	resp := util.NeWReponseWithCode(code)
+	resp.Message = msg
+	c.JSON(http.StatusOK, gin.H(resp.ToMap(0)))
 	return
-}
-
-func AddAuthorBatch(c *gin.Context) {
-
-}
-
-func DeleteAuthor(c *gin.Context) {
-
-}
-
-func DeleteAuthorBatch(c *gin.Context) {
-
-}
-
-func UpdateAuthor(c *gin.Context) {
-
 }
 
 func UpdateAuthorBatch(c *gin.Context) {
