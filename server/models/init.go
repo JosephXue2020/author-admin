@@ -2,14 +2,10 @@ package models
 
 import (
 	"goweb/author-admin/server/dao"
-)
+	"goweb/author-admin/server/pkg/util"
 
-// shared fields
-type Model struct {
-	ID         int `gorm:"primary_key" json:"id"`
-	CreatedOn  int `json:"created_on"`
-	ModifiedOn int `json:"modified_on"`
-}
+	"github.com/jinzhu/gorm"
+)
 
 func AutoMigrate() {
 	dao.DB.AutoMigrate(&User{})
@@ -18,37 +14,38 @@ func AutoMigrate() {
 	dao.DB.AutoMigrate(&Author{}, &Entry{})
 }
 
-var ESModels []string
-
-func ESRegist() error {
-	var err error
-
-	// 以User测试，正式版本不对User建索引
-	ESModels = append(ESModels, "User")
-	err = dao.CreateIndices(&User{})
-	if err != nil {
-		return err
-	}
-
-	ESModels = append(ESModels, "Author", "Entry")
-	err = dao.CreateIndices(&Author{}, &Entry{})
-	if err != nil {
-		return err
-	}
+func InitModels() error {
+	AutoMigrate()
 	return nil
 }
 
-var DBES *dao.DBWrapper
+// shared fields for ES
+type Model struct {
+	ID        int  `gorm:"primary_key" json:"id" es:"keyword"`
+	CreatedAt int  `json:"createdat" es:"keyword"`
+	UpdatedAt int  `json:"updatedat" es:"keyword"`
+	DeletedAt *int `sql:"index" json:"deletedat" es:"keyword"`
+}
 
-func InitModels() error {
-	AutoMigrate()
+func (m *Model) BeforeCreate(tx *gorm.DB) (err error) {
+	timestamp := util.CurrentTimestamp()
+	m.CreatedAt = timestamp
+	m.UpdatedAt = timestamp
 
-	err := ESRegist()
-	if err != nil {
-		return err
-	}
+	return nil
+}
 
-	DBES = dao.NewDBWrapper(ESModels)
+func (m *Model) BeforeUpdate(tx *gorm.DB) (err error) {
+	timestamp := util.CurrentTimestamp()
+	m.UpdatedAt = timestamp
+
+	return nil
+}
+
+func (m *Model) BeforeDelete(tx *gorm.DB) (err error) {
+	timestamp := util.CurrentTimestamp()
+	m.UpdatedAt = timestamp
+	m.DeletedAt = &timestamp
 
 	return nil
 }

@@ -7,7 +7,6 @@ import (
 	"goweb/author-admin/server/pkg/e"
 	"goweb/author-admin/server/pkg/setting"
 	"goweb/author-admin/server/pkg/util"
-	"log"
 )
 
 // User grade
@@ -215,12 +214,7 @@ func AddUser(username, password, department, role, creater string) error {
 		return err
 	}
 
-	// dao.DB.Create(&u)
-	err := DBES.Create(&u)
-	if err != nil {
-		log.Println("Failed to create db row.")
-		return err
-	}
+	dao.DB.Create(&u)
 	return nil
 }
 

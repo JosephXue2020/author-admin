@@ -66,25 +66,14 @@ func CurrentTimeStr() string {
 	return time.Now().Format("2006-01-02 15:04:05")
 }
 
+func CurrentTimestamp() int {
+	return int(time.Now().Unix())
+}
+
 func GenUUID() string {
 	u, _ := uuid.NewUUID() // v1 uuid
 	s := u.String()
 	return s
-}
-
-func MapToJsonWithStrKey(m map[string]interface{}) ([]byte, error) {
-	var byteData []byte
-	if m == nil {
-		err := fmt.Errorf("The input map is nil.")
-		return byteData, err
-	}
-
-	var buf bytes.Buffer
-	if err := json.NewEncoder(&buf).Encode(m); err != nil {
-		return byteData, err
-	}
-
-	return byteData, nil
 }
 
 func ItfToStr(x interface{}) (string, error) {
@@ -103,10 +92,62 @@ func ItfToStr(x interface{}) (string, error) {
 	}
 }
 
-func MapKeys(m map[string]interface{}) []string {
+func MapToJsonWithStrKey(m map[string]interface{}) ([]byte, error) {
+	var byteData []byte
+	if m == nil {
+		err := fmt.Errorf("The input map is nil.")
+		return byteData, err
+	}
+
+	var buf bytes.Buffer
+	if err := json.NewEncoder(&buf).Encode(m); err != nil {
+		return byteData, err
+	}
+
+	return byteData, nil
+}
+
+func MapKeysWithStr(x interface{}) []string {
 	var keys []string
+
+	t := reflect.TypeOf(x)
+	if t.Kind() != reflect.Map {
+		log.Println("Input param is not a map.")
+		return keys
+	}
+
+	keyStructs := reflect.ValueOf(x).MapKeys()
+	if len(keyStructs) == 0 {
+		return keys
+	}
+
+	kt := keyStructs[0].Type()
+	if kt.Kind() != reflect.String {
+		log.Println("Keys are not string type.")
+		return keys
+	}
+
+	for _, v := range keyStructs {
+		keys = append(keys, v.String())
+	}
+	return keys
+}
+
+func MapKeysWithStrIter(x interface{}, depth int) []string {
+	var keys []string
+
+	t := reflect.TypeOf(x)
+	if t.Kind() != reflect.Map {
+		log.Println("Input param is not a map.")
+		return keys
+	}
+
 	for k := range m {
 		keys = append(keys, k)
 	}
 	return keys
+}
+
+func FlattenMap(m map[string]interface{}, depth int) map[string]interface{} {
+
 }

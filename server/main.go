@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"goweb/author-admin/server/dao"
+	"goweb/author-admin/server/indices"
 	"goweb/author-admin/server/models"
 	"goweb/author-admin/server/pkg/setting"
 	"goweb/author-admin/server/pkg/util"
@@ -38,13 +39,20 @@ func main() {
 		log.Println("Success to connect ES service.")
 	}
 
-	// 初始化DB表格和ES索引
-	// 必须在DB和ES连接建立之后
+	// 初始化DB表格
 	err = models.InitModels()
 	if err != nil {
-		log.Panic("Can not migrate DB table or ES index: ", err)
+		log.Panic("Can not migrate DB tables: ", err)
 	} else {
-		log.Println("Success to migrate DB table or ES index.")
+		log.Println("Success to migrate DB tables.")
+	}
+
+	// 初始化ES索引
+	err = indices.InitIndices()
+	if err != nil {
+		log.Panic("Can not migrate ES indices: ", err)
+	} else {
+		log.Println("Success to migrate ES indices.")
 	}
 
 	// 初始化路由

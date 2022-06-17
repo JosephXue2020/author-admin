@@ -37,7 +37,7 @@ func InitMySQL() error {
 	err = DB.DB().Ping()
 
 	// gorm调试模式：显示sql语句
-	// DB.LogMode(true)
+	DB.LogMode(true)
 
 	return err
 }

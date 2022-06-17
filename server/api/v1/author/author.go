@@ -26,11 +26,13 @@ func GetAuthorList(c *gin.Context) {
 	if total > 0 {
 		authors = models.SelectAuthorBatch(q.Offset, q.Limit, q.Desc)
 	}
+
 	items := make([]map[string]interface{}, 0)
 	for _, author := range authors {
 		item := make(map[string]interface{})
-		// err := util.StructToMapWithTagKey(author, item, 1) // 有1层嵌套
-		err := util.StructToMapWithJSONKey(author, item, 0) // 无嵌套
+		err := util.StructToMapWithJSONKey(author, item, 1) // 有1层嵌套
+		// err := util.StructToMapWithJSONKey(author, item, 0) // 无嵌套
+		log.Println(item)
 		if err != nil {
 			log.Println(err)
 		} else {

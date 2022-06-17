@@ -2,43 +2,17 @@ package models
 
 import (
 	"fmt"
+	"goweb/author-admin/server/dao"
 	"goweb/author-admin/server/pkg/e"
 	"goweb/author-admin/server/pkg/util"
 
 	"github.com/jinzhu/gorm"
 )
 
-type AuthorNature struct {
-	Name    string `json:"name"`
-	Gender  string `json:"gender"`
-	Nation  string `json:"nation"`
-	BornIn  string `json:"bornin"`
-	BornAt  string `json:"bornat"`
-	DeathAt string `json:"deathat"`
-}
-
-type AuthorResume struct {
-	GraduateAt string `json:"graduateat"`
-	Company    string `json:"company"`
-	Position   string `json:"position"`
-	JobTitle   string `json:"jobtitle"`
-	Honor      string `json:"honor"`
-	Telephone  string `json:"telephone"`
-	Cellphone  string `json:"cellphone"`
-	Email      string `json:"email"`
-	PostalAddr string `json:"postaladdr"`
-	Desc       string `json:"desc"`
-}
-
-type AuthorStudy struct {
-	Subject     string `json:"subject"`
-	Publication string `json:"publication"`
-	DBKPosition string `json:"dbkposition"`
-}
-
 type Author struct {
-	gorm.Model
-	UUID string `json:"uuid" es:"keyword"`
+	// gorm.Model
+	Model `json:"model"`
+	UUID  string `json:"uuid" es:"keyword"`
 
 	// AuthorNature
 	Name    string `json:"name" es:"keyword"`
@@ -73,12 +47,12 @@ type Entry struct {
 	gorm.Model
 	CDOI    string   `json:"cdoi" es:"keyword"`
 	Authors []Author `gorm:"many2many:author_entry;" json:"authors" es:"object"`
-	XMLText string   `json:"xmltext" es:"text"`
+	RawText string   `json:"rawtext" es:"text"`
 }
 
 func SelectAuthorByID(id int) (Author, error) {
 	temp := Author{}
-	DBES.DB.Where("id = ?", id).First(&temp)
+	dao.DB.Where("id = ?", id).First(&temp)
 
 	if temp.ID > 0 {
 		return temp, nil
@@ -94,7 +68,7 @@ func SelectAuthorBatch(start, limit int, desc bool) []Author {
 	if desc {
 		orderStr += " desc"
 	}
-	DBES.DB.Order(orderStr).Limit(limit).Offset(start).Find(&authors)
+	dao.DB.Order(orderStr).Limit(limit).Offset(start).Find(&authors)
 	return authors
 }
 
@@ -104,19 +78,19 @@ func SelectAuthorAll(desc bool) []Author {
 	if desc {
 		orderStr += " desc"
 	}
-	DBES.DB.Order(orderStr).Find(&authors)
+	dao.DB.Order(orderStr).Find(&authors)
 	return authors
 }
 
 func CountAuthor() int {
 	var count int
-	DBES.DB.Model(&Author{}).Count(&count)
+	dao.DB.Model(&Author{}).Count(&count)
 	return count
 }
 
 func AuthorExist(name string) bool {
 	temp := Author{}
-	DBES.DB.Where("Name = ?", name).First(&temp)
+	dao.DB.Where("Name = ?", name).First(&temp)
 	if temp.ID > 0 {
 		return true
 	}
@@ -151,18 +125,12 @@ func AddAuthor(name, gender, nation, bornin, bornat, company string) error {
 		return err
 	}
 
-	err := DBES.Create(&a)
-	if err != nil {
-		return err
-	}
+	dao.DB.Create(&a)
 	return nil
 }
 
 func DeleteAuthorByID(id int) error {
-	err := DBES.DeleteByID(&Author{}, id)
-	if err != nil {
-		return err
-	}
+	dao.DB.Delete(&Author{}, id)
 	return nil
 }
 
