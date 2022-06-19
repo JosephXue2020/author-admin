@@ -34,7 +34,7 @@ func GetStructFieldName(structName interface{}) []string {
 	return names
 }
 
-func GetStructTagName(structName interface{}) []string {
+func GetStructJSONName(structName interface{}) []string {
 	t := reflect.TypeOf(structName)
 	if !IsStructOrStructPtr(t) {
 		log.Println("Parameter should be struct or struct pointer type.")
@@ -85,7 +85,7 @@ func GetStructFieldNameIter(x interface{}, names []string, depth int) error {
 
 // Iterative
 // depth<0 for no limit; depth>0 for finite iterative depth; depth=0 for no iteration.
-func GetStructTagNameIter(x interface{}, names []string, depth int) error {
+func GetStructJSONNameIter(x interface{}, names []string, depth int) error {
 	var err error
 	if names == nil {
 		err = fmt.Errorf("Slice parameter should not be nil before used.")
@@ -108,7 +108,7 @@ func GetStructTagNameIter(x interface{}, names []string, depth int) error {
 		}
 		fv := vField.Interface()
 		if IsStructOrStructPtr(ft) && depth != 0 {
-			err = GetStructTagNameIter(fv, names, depth-1)
+			err = GetStructJSONNameIter(fv, names, depth-1)
 			continue
 		}
 		name := structField.Tag.Get("json")
@@ -199,6 +199,115 @@ func StructToMapWithJSONKey(x interface{}, m map[string]interface{}, depth int) 
 				return err
 			}
 			m[key] = subm
+		} else {
+			m[key] = fv
+		}
+	}
+
+	return nil
+}
+
+// Iterative
+// depth<0 for no limit; depth>0 for finite iterative depth; depth=0 for no iteration.
+func StructToFlattenMapWithFieldKey(x interface{}, m map[string]interface{}, depth int) error {
+	var err error
+	if m == nil {
+		err = fmt.Errorf("Map parameter should not be nil before used.")
+		return err
+	}
+
+	t := reflect.TypeOf(x)
+	v := reflect.ValueOf(x)
+	if t.Kind() == reflect.Ptr {
+		t = t.Elem()
+		v = v.Elem()
+	}
+
+	for i := 0; i < v.NumField(); i++ {
+		structField := t.Field(i)
+		key := structField.Name
+		ft := structField.Type
+
+		vField := v.Field(i)
+		if !vField.CanInterface() {
+			continue
+		}
+		fv := vField.Interface()
+
+		if IsStructOrStructPtr(ft) && depth != 0 {
+			subm := make(map[string]interface{})
+			err = StructToFlattenMapWithFieldKey(fv, subm, depth-1)
+			if err != nil {
+				return err
+			}
+
+			mKeys := MapKeysWithStr(m)
+			for k := range subm {
+				if ContainStr(mKeys, k) {
+					err := fmt.Errorf("Failed to convert struct to map iterablely of conflict keys.")
+					return err
+				}
+			}
+
+			for subk, subv := range subm {
+				m[subk] = subv
+			}
+		} else {
+			m[key] = fv
+		}
+	}
+
+	return nil
+}
+
+// Iterative
+// depth<0 for no limit; depth>0 for finite iterative depth; depth=0 for no iteration.
+func StructToFlattenMapWithJSONKey(x interface{}, m map[string]interface{}, depth int) error {
+	var err error
+	if m == nil {
+		err = fmt.Errorf("Map parameter should not be nil before used.")
+		return err
+	}
+
+	t := reflect.TypeOf(x)
+	v := reflect.ValueOf(x)
+	if t.Kind() == reflect.Ptr {
+		t = t.Elem()
+		v = v.Elem()
+	}
+
+	for i := 0; i < v.NumField(); i++ {
+		structField := t.Field(i)
+		ft := structField.Type
+		key := structField.Tag.Get("json")
+		if key == "" {
+			continue
+		}
+
+		vField := v.Field(i)
+		if !vField.CanInterface() {
+			continue
+		}
+		fv := vField.Interface()
+
+		if IsStructOrStructPtr(ft) && depth != 0 {
+			subm := make(map[string]interface{})
+			err = StructToFlattenMapWithJSONKey(fv, subm, depth-1)
+			if err != nil {
+				return err
+			}
+
+			mKeys := MapKeysWithStr(m)
+			for k := range subm {
+				if ContainStr(mKeys, k) {
+					err := fmt.Errorf("Failed to convert struct to map iterablely of conflict keys.")
+					return err
+				}
+			}
+
+			for subk, subv := range subm {
+				m[subk] = subv
+			}
 		} else {
 			m[key] = fv
 		}

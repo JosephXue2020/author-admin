@@ -5,7 +5,10 @@ import (
 	"goweb/author-admin/server/dao"
 	"goweb/author-admin/server/pkg/e"
 	"goweb/author-admin/server/pkg/util"
+	"log"
+	"regexp"
 
+	"github.com/astaxie/beego/validation"
 	"github.com/jinzhu/gorm"
 )
 
@@ -48,6 +51,21 @@ type Entry struct {
 	CDOI    string   `json:"cdoi" es:"keyword"`
 	Authors []Author `gorm:"many2many:author_entry;" json:"authors" es:"object"`
 	RawText string   `json:"rawtext" es:"text"`
+}
+
+func ValidateAuthor(a Author) bool {
+	valid := validation.Validation{}
+	valid.Required(a.Name, "name").Message("Name field of Author struct can not be empty.")
+	valid.Match(a.Gender, regexp.MustCompile(`^[男|女]$`), "gender").Message("Gender field of Author struct must be 男 or 女.")
+
+	if !valid.HasErrors() {
+		return true
+	}
+
+	for _, err := range valid.Errors {
+		log.Println("Author struct has error: ", err)
+	}
+	return false
 }
 
 func SelectAuthorByID(id int) (Author, error) {
@@ -100,6 +118,12 @@ func AuthorExist(name string) bool {
 func ValidateAuthorCreation(a Author) (bool, int) {
 	code := e.SUCCESS
 
+	// 调用Author的Valid
+	if !ValidateAuthor(a) {
+		code := e.INVALID_PARAMS
+		return false, code
+	}
+
 	// 判断是否存在
 	if AuthorExist(a.Name) {
 		code = e.ERROR_USER_ALREADY_EXIST
@@ -109,16 +133,8 @@ func ValidateAuthorCreation(a Author) (bool, int) {
 	return true, code
 }
 
-func AddAuthor(name, gender, nation, bornin, bornat, company string) error {
-	a := Author{
-		UUID:    util.GenUUID(),
-		Name:    name,
-		Gender:  gender,
-		Nation:  nation,
-		BornIn:  bornin,
-		BornAt:  bornat,
-		Company: company,
-	}
+func AddAuthor(a Author) error {
+	a.UUID = util.GenUUID()
 
 	if valid, code := ValidateAuthorCreation(a); !valid {
 		err := fmt.Errorf(e.GetMsg(code))

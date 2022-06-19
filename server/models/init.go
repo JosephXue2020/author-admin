@@ -44,7 +44,7 @@ func (m *Model) BeforeUpdate(tx *gorm.DB) (err error) {
 
 func (m *Model) BeforeDelete(tx *gorm.DB) (err error) {
 	timestamp := util.CurrentTimestamp()
-	m.UpdatedAt = timestamp
+	// m.UpdatedAt = timestamp
 	m.DeletedAt = &timestamp
 
 	return nil

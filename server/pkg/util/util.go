@@ -12,6 +12,7 @@ import (
 	"github.com/google/uuid"
 )
 
+// PressAnyKeyToExit used to stop the exits of main process.
 func PressAnyKeyToExit() {
 	var x string
 	fmt.Println("Press any key to exit.")
@@ -36,6 +37,8 @@ func ContainInt(set []int, v int) bool {
 	return false
 }
 
+// ContainRefl returns whether an element of any type contained in a slice.
+// It uses reflect and empty interface.
 func ContainRefl(set interface{}, v interface{}) bool {
 	setT := reflect.TypeOf(set)
 	if setT.Kind() != reflect.Slice {
@@ -80,11 +83,35 @@ func ItfToStr(x interface{}) (string, error) {
 	switch x.(type) {
 	case string:
 		return x.(string), nil
-	case int, int8, int16, int32, int64:
+	case int:
 		i := x.(int)
 		return strconv.Itoa(i), nil
-	case uint, uint8, uint16, uint32, uint64:
+	case int8:
+		i := x.(int8)
+		return strconv.Itoa(int(i)), nil
+	case int16:
+		i := x.(int16)
+		return strconv.Itoa(int(i)), nil
+	case int32:
+		i := x.(int32)
+		return strconv.Itoa(int(i)), nil
+	case int64:
+		i := x.(int64)
+		return strconv.Itoa(int(i)), nil
+	case uint:
 		i := x.(uint)
+		return strconv.Itoa(int(i)), nil
+	case uint8:
+		i := x.(uint8)
+		return strconv.Itoa(int(i)), nil
+	case uint16:
+		i := x.(uint16)
+		return strconv.Itoa(int(i)), nil
+	case uint32:
+		i := x.(uint32)
+		return strconv.Itoa(int(i)), nil
+	case uint64:
+		i := x.(uint64)
 		return strconv.Itoa(int(i)), nil
 	default:
 		err := fmt.Errorf("Failed to convert.")
@@ -93,17 +120,17 @@ func ItfToStr(x interface{}) (string, error) {
 }
 
 func MapToJsonWithStrKey(m map[string]interface{}) ([]byte, error) {
-	var byteData []byte
 	if m == nil {
 		err := fmt.Errorf("The input map is nil.")
-		return byteData, err
+		return nil, err
 	}
 
 	var buf bytes.Buffer
 	if err := json.NewEncoder(&buf).Encode(m); err != nil {
-		return byteData, err
+		return nil, err
 	}
 
+	byteData := buf.Bytes()
 	return byteData, nil
 }
 
@@ -131,23 +158,4 @@ func MapKeysWithStr(x interface{}) []string {
 		keys = append(keys, v.String())
 	}
 	return keys
-}
-
-func MapKeysWithStrIter(x interface{}, depth int) []string {
-	var keys []string
-
-	t := reflect.TypeOf(x)
-	if t.Kind() != reflect.Map {
-		log.Println("Input param is not a map.")
-		return keys
-	}
-
-	for k := range m {
-		keys = append(keys, k)
-	}
-	return keys
-}
-
-func FlattenMap(m map[string]interface{}, depth int) map[string]interface{} {
-
 }

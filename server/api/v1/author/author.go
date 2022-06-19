@@ -32,9 +32,9 @@ func GetAuthorList(c *gin.Context) {
 		item := make(map[string]interface{})
 		err := util.StructToMapWithJSONKey(author, item, 1) // 有1层嵌套
 		// err := util.StructToMapWithJSONKey(author, item, 0) // 无嵌套
-		log.Println(item)
 		if err != nil {
 			log.Println(err)
+			return
 		} else {
 			if len(item) > 0 {
 				items = append(items, item)
@@ -45,11 +45,9 @@ func GetAuthorList(c *gin.Context) {
 	data["items"] = items
 
 	code = e.SUCCESS
-	c.JSON(http.StatusOK, gin.H{
-		"code":    code,
-		"message": e.GetMsg(code),
-		"data":    data,
-	})
+	resp := util.NeWReponseWithCode(code)
+	resp.Data = data
+	c.JSON(http.StatusOK, gin.H(resp.ToMap(0)))
 }
 
 func AddAuthor(c *gin.Context) {
@@ -61,7 +59,7 @@ func AddAuthor(c *gin.Context) {
 		return
 	}
 
-	err := models.AddAuthor(form.Name, form.Gender, form.Nation, form.BornIn, form.BornAt, form.Company)
+	err := models.AddAuthor(form)
 	var msg string
 	if err != nil {
 		code = e.ERROR_USER
@@ -114,21 +112,14 @@ func DeleteAuthorBatch(c *gin.Context) {
 
 func UpdateAuthor(c *gin.Context) {
 	var code int
-	form := struct {
-		Name    string `json:"name"`
-		Gender  string `json:"gender"`
-		Nation  string `json:"nation"`
-		BornIn  string `json:"bornin"`
-		BornAt  string `json:"bornat"`
-		Company string `json:"company"`
-	}{}
+	form := models.Author{}
 	if err := c.ShouldBind(&form); err != nil {
 		code = e.INVALID_PARAMS
 		c.JSON(http.StatusOK, gin.H(util.FailedResponseMap(code)))
 		return
 	}
 
-	err := models.AddAuthor(form.Name, form.Gender, form.Nation, form.BornIn, form.BornAt, form.Company)
+	err := models.AddAuthor(form)
 	var msg string
 	if err != nil {
 		code = e.ERROR_USER
