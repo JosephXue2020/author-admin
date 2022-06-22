@@ -9,7 +9,6 @@ import (
 	"regexp"
 
 	"github.com/astaxie/beego/validation"
-	"github.com/jinzhu/gorm"
 )
 
 type Author struct {
@@ -47,7 +46,10 @@ type Author struct {
 }
 
 type Entry struct {
-	gorm.Model
+	// gorm.Model
+	Model `json:"model"`
+	UUID  string `json:"uuid" es:"keyword"`
+
 	CDOI    string   `json:"cdoi" es:"keyword"`
 	Authors []Author `gorm:"many2many:author_entry;" json:"authors" es:"object"`
 	RawText string   `json:"rawtext" es:"text"`

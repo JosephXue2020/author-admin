@@ -28,6 +28,7 @@ var (
 	ESUser     string
 	ESPassword string
 	ESHosts    []string
+	DuraSecond int
 )
 
 type MysqlConf struct {
@@ -121,4 +122,6 @@ func LoadES() {
 	ESPassword = sec.Key("PASSWORD").MustString("elastic")
 	hosts := sec.Key("HOSTS").MustString("elastic")
 	ESHosts = strings.Split(hosts, ",")
+
+	DuraSecond = sec.Key("DURASECOND").MustInt(600)
 }
