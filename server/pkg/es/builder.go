@@ -27,33 +27,35 @@ func (b *Builder) SaveTimestamp() {
 	util.SaveGob(b.Path, b.Timestamp)
 }
 
-func (b *Builder) SingleRun() {
+func (b *Builder) RunOnce() {
 	newTimestamp := util.CurrentTimestamp()
 	var err error
 	for _, sc := range b.Scanners {
+		// process update
 		docs := sc.ScanUpdate(b.Timestamp, newTimestamp)
 		if docs != nil {
 			for _, doc := range docs {
 				err = CreateDoc(sc.IndexName(), doc, sc.Depth())
 			}
-
 		}
+		// process delete
 	}
 
-	if err == nil {
-		b.Timestamp = newTimestamp
-		b.SaveTimestamp()
-	} else {
-		log.Println("创建doc失败：", err)
+	if err != nil {
+		log.Println("Failed to update indices: ", err)
+		return
 	}
+
+	b.Timestamp = newTimestamp
+	b.SaveTimestamp()
 }
 
 func (b *Builder) run() {
 	for {
 		select {
 		case <-b.Ticker.C:
-			log.Println("index scanner将要运行：")
-			b.SingleRun()
+			log.Println("Indices builder runs once at ", time.Now().Format("2006-01-02 15:04:05"))
+			b.RunOnce()
 		default:
 		}
 	}
@@ -95,4 +97,9 @@ func NewBuilder(scs []Scanner) *Builder {
 	builder.Ticker = time.NewTicker(time.Second * time.Duration(builder.Period))
 
 	return builder
+}
+
+func Build(scs []Scanner) {
+	builder := NewBuilder(scs)
+	builder.Start()
 }

@@ -7,42 +7,58 @@ import (
 	"fmt"
 	"goweb/author-admin/server/dao"
 	"goweb/author-admin/server/pkg/util"
-	"io/ioutil"
-	"log"
 	"net/http"
 )
 
-func CreateDoc(indexName string, x interface{}, depth int) error {
+// StructToMapForES convert struct to flat map with given depth.
+// A better choice is always to use this function to make such a conversion.
+func StructToMapForES(x interface{}, depth int) (map[string]interface{}, error) {
 	m := make(map[string]interface{})
 	err := util.StructToFlattenMapWithJSONKey(x, m, depth)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	log.Println("map from doc is: ", m)
 
 	id, ok := m["id"]
 	if !ok {
-		return errors.New("db table lacks id field.")
+		err = errors.New("db table lacks id field.")
+		return nil, err
 	}
-	idStr, err := util.ItfToStr(id)
+
+	_, err = util.ItfToStr(id)
+	if err != nil {
+		return nil, err
+	}
+
+	return m, nil
+}
+
+func DocExists(indexName string, id string) bool {
+	_, err := dao.ES.Exists(indexName, id)
+	if err != nil {
+		return false
+	}
+	return true
+}
+
+func CreateDoc(indexName string, x interface{}, depth int) error {
+	m, err := StructToMapForES(x, depth)
 	if err != nil {
 		return err
 	}
+
+	idStr, _ := util.ItfToStr(m["id"])
 
 	var buf bytes.Buffer
 	if err := json.NewEncoder(&buf).Encode(m); err != nil {
 		return err
 	}
 
-	log.Println("index name:", indexName)
-	log.Println("idstr:", idStr)
 	resp, err := dao.ES.Create(indexName, idStr, &buf)
 	if err != nil {
 		return err
 	}
 	defer resp.Body.Close()
-	r, _ := ioutil.ReadAll(resp.Body)
-	log.Println(string(r))
 
 	if resp.StatusCode != http.StatusCreated {
 		err := fmt.Errorf("Wrong response code: %v\n", resp.StatusCode)
@@ -58,8 +74,41 @@ func CreateDocBatch(indexName string, x interface{}, depth int) error {
 }
 
 func UpdateDoc(indexName string, x interface{}, depth int) error {
+	m, err := StructToMapForES(x, depth)
+	if err != nil {
+		return err
+	}
+
+	idStr, _ := util.ItfToStr(m["id"])
+
+	var buf bytes.Buffer
+	if err := json.NewEncoder(&buf).Encode(m); err != nil {
+		return err
+	}
+
+	resp, err := dao.ES.Update(indexName, idStr, &buf)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
 
 	return nil
+}
+
+func CreateUpdate(indexName string, x interface{}, depth int) error {
+	m, err := StructToMapForES(x, depth)
+	if err != nil {
+		return err
+	}
+
+	idStr, _ := util.ItfToStr(m["id"])
+
+	exist := DocExists(indexName, idStr)
+	if !exist {
+		return CreateDoc(indexName, x, depth)
+	} else {
+		return UpdateDoc(indexName, x, depth)
+	}
 }
 
 func DeleteDocByID(indexName string, id int) error {
@@ -67,7 +116,12 @@ func DeleteDocByID(indexName string, id int) error {
 	return nil
 }
 
-func DeleteDocByIDBatch(indexName string, ids []int) error {
+func DeleteDoc(indexName string, x interface{}, depth int) error {
+
+	return nil
+}
+
+func DeleteDocBatch(indexName string, xs []interface{}) error {
 
 	return nil
 }

@@ -6,16 +6,17 @@ import (
 	"goweb/author-admin/server/pkg/util"
 )
 
-// All indices
+// Variable contains all indices.
 var Indices = make([]es.Scanner, 0)
 
-// Regist indices for creation.
+// Regist indices.
 // Indices must imply Scanner interface.
 func RegistIndices() {
 	Indices = append(Indices, &Author{})
 	// Indices = append(Indices, &Entry{})
 }
 
+// Creat indices if not exists.
 func AutoMigrate() error {
 	for _, scanner := range Indices {
 		err := es.CreateIndex(scanner)
@@ -26,6 +27,7 @@ func AutoMigrate() error {
 	return nil
 }
 
+// Init.
 func InitIndices() error {
 	RegistIndices()
 
@@ -34,8 +36,7 @@ func InitIndices() error {
 		return err
 	}
 
-	builder := es.NewBuilder(Indices)
-	builder.Start()
+	es.Build(Indices)
 
 	// // 测试
 	// test()
