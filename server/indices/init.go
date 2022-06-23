@@ -2,25 +2,23 @@ package indices
 
 import (
 	"fmt"
-	"goweb/author-admin/server/models"
-	"goweb/author-admin/server/pkg/esutil"
+	"goweb/author-admin/server/pkg/es"
 	"goweb/author-admin/server/pkg/util"
 )
 
 // All indices
-var Indices = make(map[string]Scanner)
+var Indices = make([]es.Scanner, 0)
 
-// regist indices for creation.
-// Indices can be raw DB models or defined from DB models.
-// Map keys must have same name with struct.
+// Regist indices for creation.
+// Indices must imply Scanner interface.
 func RegistIndices() {
-	Indices["author"] = NewORMScanner(models.Author{}, []models.Author{})
-	Indices["entry"] = &Entry{}
+	Indices = append(Indices, &Author{})
+	// Indices = append(Indices, &Entry{})
 }
 
 func AutoMigrate() error {
-	for _, v := range Indices {
-		err := esutil.CreateIndex(v)
+	for _, scanner := range Indices {
+		err := es.CreateIndex(scanner)
 		if err != nil {
 			return err
 		}
@@ -30,25 +28,29 @@ func AutoMigrate() error {
 
 func InitIndices() error {
 	RegistIndices()
+
 	err := AutoMigrate()
 	if err != nil {
 		return err
 	}
 
-	// 测试
-	test()
+	builder := es.NewBuilder(Indices)
+	builder.Start()
+
+	// // 测试
+	// test()
 
 	return nil
 }
 
 func test() {
-	builder := NewBuilder()
+	builder := es.NewBuilder(Indices)
 	fmt.Println(builder)
 
-	a := builder.Indices["Author"]
-	fmt.Printf("%#v\n", a)
+	scs := builder.Scanners
+	fmt.Printf("%#v\n", scs)
+	fmt.Printf("%#v\n", scs[0])
 	now := util.CurrentTimestamp()
-	r := a.ScanUpdate(0, now)
+	r := scs[0].ScanUpdate(0, now)
 	fmt.Println("扫描到得结果：", r)
-
 }

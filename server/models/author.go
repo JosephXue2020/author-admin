@@ -7,6 +7,7 @@ import (
 	"goweb/author-admin/server/pkg/util"
 	"log"
 	"regexp"
+	"time"
 
 	"github.com/astaxie/beego/validation"
 )
@@ -17,12 +18,12 @@ type Author struct {
 	UUID  string `json:"uuid" es:"keyword"`
 
 	// AuthorNature
-	Name    string `json:"name" es:"keyword"`
-	Gender  string `json:"gender" es:"keyword"`
-	Nation  string `json:"nation" es:"keyword"`
-	BornIn  string `json:"bornin" es:"text"`
-	BornAt  string `json:"bornat" es:"date"`
-	DeathAt string `json:"deathat" es:"date"`
+	Name    string    `json:"name" es:"keyword"`
+	Gender  string    `json:"gender" es:"keyword"`
+	Nation  string    `json:"nation" es:"keyword"`
+	BornIn  string    `json:"bornin" es:"text"`
+	BornAt  time.Time `json:"bornat" es:"date"`
+	DeathAt time.Time `json:"deathat" es:"date"`
 
 	// AuthorResume
 	GraduateAt string `json:"graduateat" es:"keyword"`

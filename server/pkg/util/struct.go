@@ -19,6 +19,20 @@ func IsStructOrStructPtr(t reflect.Type) bool {
 	return false
 }
 
+func GetStructName(x interface{}) string {
+	t := reflect.TypeOf(x)
+	if !IsStructOrStructPtr(t) {
+		log.Println("Parameter should be struct or struct pointer type.")
+		return ""
+	}
+
+	if t.Kind() == reflect.Ptr {
+		t = t.Elem()
+	}
+
+	return t.Name()
+}
+
 func GetStructFieldName(structName interface{}) []string {
 	t := reflect.TypeOf(structName)
 	if !IsStructOrStructPtr(t) {
