@@ -54,7 +54,7 @@ func (au *Author) ScanDelete(start, end int) []interface{} {
 
 // Entry is an index related to models.Entry
 type Entry struct {
-	models.Entry `json:"entry"`
+	models.Entry `json:"entry" unpack:"true"`
 	AuthorID     []int `json:"authorid" es:"object"`
 }
 

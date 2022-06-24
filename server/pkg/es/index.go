@@ -26,7 +26,7 @@ func DefaultSettings() map[string]interface{} {
 	return r
 }
 
-func FlattenMappings(x interface{}, m map[string]map[string]string, depth int) error {
+func FlatMappings(x interface{}, m map[string]map[string]string, depth int) error {
 	t := reflect.TypeOf(x)
 	v := reflect.ValueOf(x)
 	if t.Kind() == reflect.Ptr {
@@ -48,9 +48,10 @@ func FlattenMappings(x interface{}, m map[string]map[string]string, depth int) e
 		}
 		fv := vField.Interface()
 
-		if util.IsStructOrStructPtr(ft) && depth != 0 {
+		unpack := structField.Tag.Get("unpack")
+		if util.IsStructOrStructPtr(ft) && depth != 0 && unpack == "true" {
 			subm := make(map[string]map[string]string)
-			err := FlattenMappings(fv, subm, depth-1)
+			err := FlatMappings(fv, subm, depth-1)
 			if err != nil {
 				return err
 			}
@@ -75,6 +76,11 @@ func FlattenMappings(x interface{}, m map[string]map[string]string, depth int) e
 			m[key] = map[string]string{
 				"type": esType,
 			}
+
+			// 解决date类型兼容性
+			if esType == "date" {
+				m[key]["format"] = "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+			}
 		}
 	}
 
@@ -83,7 +89,7 @@ func FlattenMappings(x interface{}, m map[string]map[string]string, depth int) e
 
 func ESMappings(x interface{}, depth int) (map[string]map[string]map[string]string, error) {
 	m := make(map[string]map[string]string)
-	err := FlattenMappings(x, m, depth)
+	err := FlatMappings(x, m, depth)
 	if err != nil {
 		return nil, err
 	}

@@ -1,9 +1,7 @@
 package indices
 
 import (
-	"fmt"
 	"goweb/author-admin/server/pkg/es"
-	"goweb/author-admin/server/pkg/util"
 )
 
 // Variable contains all indices.
@@ -42,16 +40,4 @@ func InitIndices() error {
 	// test()
 
 	return nil
-}
-
-func test() {
-	builder := es.NewBuilder(Indices)
-	fmt.Println(builder)
-
-	scs := builder.Scanners
-	fmt.Printf("%#v\n", scs)
-	fmt.Printf("%#v\n", scs[0])
-	now := util.CurrentTimestamp()
-	r := scs[0].ScanUpdate(0, now)
-	fmt.Println("扫描到得结果：", r)
 }

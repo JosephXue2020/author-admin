@@ -27,6 +27,9 @@ func (b *Builder) SaveTimestamp() {
 	util.SaveGob(b.Path, b.Timestamp)
 }
 
+// RunOnce has 2 parts.
+// 1st: create if not exist; update if exist. Use Index api.
+// 2rd: delete docs.
 func (b *Builder) RunOnce() {
 	newTimestamp := util.CurrentTimestamp()
 	var err error
@@ -34,9 +37,7 @@ func (b *Builder) RunOnce() {
 		// process update
 		docs := sc.ScanUpdate(b.Timestamp, newTimestamp)
 		if docs != nil {
-			for _, doc := range docs {
-				err = CreateDoc(sc.IndexName(), doc, sc.Depth())
-			}
+			err = IndexDocBulk(sc.IndexName(), docs, sc.Depth())
 		}
 		// process delete
 	}

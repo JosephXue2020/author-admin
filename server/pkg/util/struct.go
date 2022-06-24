@@ -65,6 +65,7 @@ func GetStructJSONName(structName interface{}) []string {
 
 // Iterative
 // depth<0 for no limit; depth>0 for finite iterative depth; depth=0 for no iteration.
+// Tag unpack is a sign indicating if unpack the struct type field.
 func GetStructFieldNameIter(x interface{}, names []string, depth int) error {
 	var err error
 	if names == nil {
@@ -87,7 +88,8 @@ func GetStructFieldNameIter(x interface{}, names []string, depth int) error {
 			continue
 		}
 		fv := vField.Interface()
-		if IsStructOrStructPtr(ft) && depth != 0 {
+		unpack := structField.Tag.Get("unpack")
+		if IsStructOrStructPtr(ft) && depth != 0 && unpack == "true" {
 			err = GetStructFieldNameIter(fv, names, depth-1)
 			continue
 		}
@@ -121,7 +123,8 @@ func GetStructJSONNameIter(x interface{}, names []string, depth int) error {
 			continue
 		}
 		fv := vField.Interface()
-		if IsStructOrStructPtr(ft) && depth != 0 {
+		unpack := structField.Tag.Get("unpack")
+		if IsStructOrStructPtr(ft) && depth != 0 && unpack == "true" {
 			err = GetStructJSONNameIter(fv, names, depth-1)
 			continue
 		}
@@ -161,7 +164,8 @@ func StructToMapWithFieldKey(x interface{}, m map[string]interface{}, depth int)
 		}
 		fv := vField.Interface()
 
-		if IsStructOrStructPtr(ft) && depth != 0 {
+		unpack := structField.Tag.Get("unpack")
+		if IsStructOrStructPtr(ft) && depth != 0 && unpack == "true" {
 			subm := make(map[string]interface{})
 			err = StructToMapWithFieldKey(fv, subm, depth-1)
 			if err != nil {
@@ -206,7 +210,8 @@ func StructToMapWithJSONKey(x interface{}, m map[string]interface{}, depth int) 
 		}
 		fv := vField.Interface()
 
-		if IsStructOrStructPtr(ft) && depth != 0 {
+		unpack := structField.Tag.Get("unpack")
+		if IsStructOrStructPtr(ft) && depth != 0 && unpack == "true" {
 			subm := make(map[string]interface{})
 			err = StructToMapWithJSONKey(fv, subm, depth-1)
 			if err != nil {
@@ -223,7 +228,7 @@ func StructToMapWithJSONKey(x interface{}, m map[string]interface{}, depth int) 
 
 // Iterative
 // depth<0 for no limit; depth>0 for finite iterative depth; depth=0 for no iteration.
-func StructToFlattenMapWithFieldKey(x interface{}, m map[string]interface{}, depth int) error {
+func StructToFlatMapWithFieldKey(x interface{}, m map[string]interface{}, depth int) error {
 	var err error
 	if m == nil {
 		err = fmt.Errorf("Map parameter should not be nil before used.")
@@ -248,9 +253,10 @@ func StructToFlattenMapWithFieldKey(x interface{}, m map[string]interface{}, dep
 		}
 		fv := vField.Interface()
 
-		if IsStructOrStructPtr(ft) && depth != 0 {
+		unpack := structField.Tag.Get("unpack")
+		if IsStructOrStructPtr(ft) && depth != 0 && unpack == "true" {
 			subm := make(map[string]interface{})
-			err = StructToFlattenMapWithFieldKey(fv, subm, depth-1)
+			err = StructToFlatMapWithFieldKey(fv, subm, depth-1)
 			if err != nil {
 				return err
 			}
@@ -276,7 +282,7 @@ func StructToFlattenMapWithFieldKey(x interface{}, m map[string]interface{}, dep
 
 // Iterative
 // depth<0 for no limit; depth>0 for finite iterative depth; depth=0 for no iteration.
-func StructToFlattenMapWithJSONKey(x interface{}, m map[string]interface{}, depth int) error {
+func StructToFlatMapWithJSONKey(x interface{}, m map[string]interface{}, depth int) error {
 	var err error
 	if m == nil {
 		err = fmt.Errorf("Map parameter should not be nil before used.")
@@ -304,9 +310,10 @@ func StructToFlattenMapWithJSONKey(x interface{}, m map[string]interface{}, dept
 		}
 		fv := vField.Interface()
 
-		if IsStructOrStructPtr(ft) && depth != 0 {
+		unpack := structField.Tag.Get("unpack")
+		if IsStructOrStructPtr(ft) && depth != 0 && unpack == "true" {
 			subm := make(map[string]interface{})
-			err = StructToFlattenMapWithJSONKey(fv, subm, depth-1)
+			err = StructToFlatMapWithJSONKey(fv, subm, depth-1)
 			if err != nil {
 				return err
 			}

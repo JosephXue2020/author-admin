@@ -7,23 +7,22 @@ import (
 	"goweb/author-admin/server/pkg/util"
 	"log"
 	"regexp"
-	"time"
 
 	"github.com/astaxie/beego/validation"
 )
 
 type Author struct {
 	// gorm.Model
-	Model `json:"model"`
+	Model `json:"model" unpack:"true"`
 	UUID  string `json:"uuid" es:"keyword"`
 
 	// AuthorNature
-	Name    string    `json:"name" es:"keyword"`
-	Gender  string    `json:"gender" es:"keyword"`
-	Nation  string    `json:"nation" es:"keyword"`
-	BornIn  string    `json:"bornin" es:"text"`
-	BornAt  time.Time `json:"bornat" es:"date"`
-	DeathAt time.Time `json:"deathat" es:"date"`
+	Name    string  `json:"name" es:"keyword"`
+	Gender  string  `json:"gender" es:"keyword"`
+	Nation  string  `json:"nation" es:"keyword"`
+	BornIn  string  `json:"bornin" es:"text"`
+	BornAt  *string `json:"bornat" gorm:"type:date" es:"date"`
+	DeathAt *string `json:"deathat" gorm:"type:date" es:"date"`
 
 	// AuthorResume
 	GraduateAt string `json:"graduateat" es:"keyword"`
@@ -48,7 +47,7 @@ type Author struct {
 
 type Entry struct {
 	// gorm.Model
-	Model `json:"model"`
+	Model `json:"model" unpack:"true"`
 	UUID  string `json:"uuid" es:"keyword"`
 
 	CDOI    string   `json:"cdoi" es:"keyword"`
@@ -127,11 +126,11 @@ func ValidateAuthorCreation(a Author) (bool, int) {
 		return false, code
 	}
 
-	// 判断是否存在
-	if AuthorExist(a.Name) {
-		code = e.ERROR_USER_ALREADY_EXIST
-		return false, code
-	}
+	// // 判断是否存在
+	// if AuthorExist(a.Name) {
+	// 	code = e.ERROR_USER_ALREADY_EXIST
+	// 	return false, code
+	// }
 
 	return true, code
 }
@@ -144,8 +143,7 @@ func AddAuthor(a Author) error {
 		return err
 	}
 
-	dao.DB.Create(&a)
-	return nil
+	return dao.DB.Create(&a).Error
 }
 
 func DeleteAuthorByID(id int) error {
