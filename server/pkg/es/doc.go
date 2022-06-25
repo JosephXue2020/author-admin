@@ -9,81 +9,13 @@ import (
 	"goweb/author-admin/server/dao"
 	"goweb/author-admin/server/pkg/util"
 	"io"
-	"net/http"
-	"reflect"
 	"strings"
 
 	"github.com/elastic/go-elasticsearch/v8/esapi"
 	"github.com/elastic/go-elasticsearch/v8/esutil"
 )
 
-type DocMeta struct {
-	IndexName  string
-	ID         string
-	FlatMap    map[string]interface{}
-	Reader     io.Reader
-	ReadSeeker io.ReadSeeker
-}
-
-// StructToMapForES convert struct to flat map with given depth.
-// A better choice is always to use this function to make such a conversion.
-func StructToMapForES(x interface{}, depth int) (map[string]interface{}, error) {
-	m := make(map[string]interface{})
-	err := util.StructToFlatMapWithJSONKey(x, m, depth)
-	if err != nil {
-		return nil, err
-	}
-
-	id, ok := m["id"]
-	if !ok {
-		err = errors.New("db table lacks id field.")
-		return nil, err
-	}
-
-	_, err = util.ItfToStr(id)
-	if err != nil {
-		return nil, err
-	}
-
-	return m, nil
-}
-
-func NewDocMeta(indexName string, x interface{}, depth int) (*DocMeta, error) {
-	m, err := StructToMapForES(x, depth)
-	if err != nil {
-		return nil, err
-	}
-
-	id, ok := m["id"]
-	if !ok {
-		err = errors.New("db table lacks id field.")
-		return nil, err
-	}
-
-	idStr, err := util.ItfToStr(id)
-	if err != nil {
-		return nil, err
-	}
-
-	var buf bytes.Buffer
-	if err := json.NewEncoder(&buf).Encode(m); err != nil {
-		return nil, err
-	}
-
-	s := string(buf.Bytes())
-	readSeeker := strings.NewReader(s)
-
-	meta := &DocMeta{
-		IndexName:  indexName,
-		ID:         idStr,
-		FlatMap:    m,
-		Reader:     &buf,
-		ReadSeeker: readSeeker,
-	}
-	return meta, nil
-}
-
-func DocExists(indexName string, id string) bool {
+func DocExist(indexName string, id string) bool {
 	_, err := dao.ES.Exists(indexName, id)
 	if err != nil {
 		return false
@@ -91,59 +23,93 @@ func DocExists(indexName string, id string) bool {
 	return true
 }
 
-func CreateDoc(indexName string, x interface{}, depth int) error {
-	meta, err := NewDocMeta(indexName, x, depth)
-	if err != nil {
-		return err
-	}
-	// log.Println("meta:", meta.FlatMap)
+type Doc struct {
+	Idx        *Index
+	ID         string
+	FlatMap    map[string]interface{}
+	Reader     io.Reader
+	ReadSeeker io.ReadSeeker
+	Err        error
+}
 
-	resp, err := dao.ES.Create(indexName, meta.ID, meta.Reader)
+func (doc *Doc) GetFlatMap() map[string]interface{} {
+	m := make(map[string]interface{})
+	err := util.StructToFlatMapWithJSONKey(doc.Idx.IndexScanner, m, doc.Idx.Depth)
+	if err != nil {
+		doc.Err = err
+		return nil
+	}
+
+	doc.FlatMap = m
+	return m
+}
+
+func (doc *Doc) GetID() string {
+	idItf, ok := doc.FlatMap["id"]
+	if !ok {
+		doc.Err = errors.New("db table lacks id field.")
+		return ""
+	}
+
+	id, err := util.ItfToStr(idItf)
+	if err != nil {
+		doc.Err = err
+		return ""
+	}
+
+	return id
+}
+
+func (doc *Doc) GetReaderAndReadSeeker() {
+	var buf bytes.Buffer
+	if err := json.NewEncoder(&buf).Encode(doc.FlatMap); err != nil {
+		doc.Err = err
+		return
+	}
+	doc.Reader = &buf
+
+	s := string(buf.Bytes())
+	doc.ReadSeeker = strings.NewReader(s)
+	return
+}
+
+func (doc *Doc) DocExist() bool {
+	return DocExist(doc.Idx.Name, doc.ID)
+}
+
+func (doc *Doc) CreateDoc() error {
+	resp, err := dao.ES.Create(doc.Idx.Name, doc.ID, doc.Reader)
 	if err != nil {
 		return err
 	}
 	defer resp.Body.Close()
 
-	if resp.StatusCode != http.StatusCreated {
-		// err := fmt.Errorf("Wrong response code: %v\n", resp.StatusCode)
-		err := RespError(resp)
-		return err
+	if resp.IsError() {
+		return fmt.Errorf("Failed to create doc, response code: %v", resp.StatusCode)
 	}
 
 	return nil
 }
 
-func UpdateDoc(indexName string, x interface{}, depth int) error {
-	meta, err := NewDocMeta(indexName, x, depth)
-	if err != nil {
-		return err
-	}
-
-	resp, err := dao.ES.Update(indexName, meta.ID, meta.Reader)
+func (doc *Doc) UpdateDoc() error {
+	resp, err := dao.ES.Update(doc.Idx.Name, doc.ID, doc.Reader)
 	if err != nil {
 		return err
 	}
 	defer resp.Body.Close()
 
-	if resp.StatusCode != http.StatusOK {
-		err := fmt.Errorf("Wrong response code: %v\n", resp.StatusCode)
-		return err
+	if resp.IsError() {
+		return fmt.Errorf("Failed to update doc, response code: %v", resp.StatusCode)
 	}
 
 	return nil
 }
 
-// Create if not exist; update if exist.
-func IndexDoc(indexName string, x interface{}, depth int) error {
-	meta, err := NewDocMeta(indexName, x, depth)
-	if err != nil {
-		return err
-	}
-
+func (doc *Doc) IndexDoc() error {
 	req := esapi.IndexRequest{
-		Index:      indexName,
-		DocumentID: meta.ID,
-		Body:       meta.Reader,
+		Index:      doc.Idx.Name,
+		DocumentID: doc.ID,
+		Body:       doc.Reader,
 		Refresh:    "true",
 	}
 	resp, err := req.Do(context.Background(), dao.ES)
@@ -152,35 +118,51 @@ func IndexDoc(indexName string, x interface{}, depth int) error {
 	}
 	defer resp.Body.Close()
 
+	if resp.IsError() {
+		return fmt.Errorf("Failed to Index doc, response code: %v", resp.StatusCode)
+	}
 	return nil
+}
+
+func NewDoc(idx *Index) (doc *Doc) {
+	doc = &Doc{
+		Idx: idx,
+	}
+
+	doc.GetFlatMap()
+	if doc.Err != nil {
+		return
+	}
+
+	doc.GetID()
+	if doc.Err != nil {
+		return
+	}
+
+	doc.GetReaderAndReadSeeker()
+	if doc.Err != nil {
+		return
+	}
+
+	return
+}
+
+func NewDocFromScanner(sc Scanner) *Doc {
+	idx := NewDefaultIndex(sc)
+	return NewDoc(idx)
+}
+
+// Create if not exist; update if exist.
+func IndexDoc(doc *Doc) error {
+	return doc.IndexDoc()
 }
 
 // Create if not exist; update if exist.
 // Bulk operation.
-func IndexDocBulk(indexName string, xs interface{}, depth int) error {
-	var xSlc []interface{}
-	t := reflect.TypeOf(xs)
-	v := reflect.ValueOf(xs)
-	if t.Kind() == reflect.Ptr {
-		t = t.Elem()
-		v = v.Elem()
-	}
-	for i := 0; i < v.Len(); i++ {
-		xSlc = append(xSlc, v.Index(i).Interface())
-	}
-
-	var metas []*DocMeta
-	for _, x := range xSlc {
-		meta, err := NewDocMeta(indexName, x, depth)
-		if err != nil {
-			return err
-		}
-		metas = append(metas, meta)
-	}
-
+func IndexDocBulk(docs []*Doc, workers int) error {
 	// esutil.BulkIndexer()
 	cfg := esutil.BulkIndexerConfig{
-		NumWorkers: 10,
+		NumWorkers: workers,
 		Client:     dao.ES,
 		FlushBytes: 1,
 	}
@@ -189,16 +171,15 @@ func IndexDocBulk(indexName string, xs interface{}, depth int) error {
 		return err
 	}
 
-	for _, meta := range metas {
+	for _, doc := range docs {
 		err = bi.Add(context.Background(), esutil.BulkIndexerItem{
-			Index:      indexName,
-			DocumentID: meta.ID,
-			Body:       meta.ReadSeeker,
+			Index:      doc.Idx.Name,
+			DocumentID: doc.ID,
+			Body:       doc.ReadSeeker,
 		})
-		// log.Println(meta.FlatMap)
-	}
-	if err != nil {
-		return err
+		if err != nil {
+			return err
+		}
 	}
 
 	if err := bi.Close(context.Background()); err != nil {
@@ -208,7 +189,7 @@ func IndexDocBulk(indexName string, xs interface{}, depth int) error {
 	stats := bi.Stats()
 	// log.Printf("%#v\n", stats)
 	if stats.NumFailed != 0 {
-		err = fmt.Errorf("Number failed: %v / %v", stats.NumFailed, len(metas))
+		err = fmt.Errorf("Number failed: %v / %v", stats.NumFailed, len(docs))
 		return err
 	}
 	return nil

@@ -18,12 +18,12 @@ import (
 /**
 	All ES indices have flatten structure.
 	The structs will be transformed into flatten maps iteratively.
-	Attention: The iterative depth is set to 2, which means it can parse struct with embedding 2.
 **/
 
-func DefaultSettings() map[string]interface{} {
-	r := make(map[string]interface{})
-	return r
+// Scanner scan DB rows which have been updated or deleted.
+type Scanner interface {
+	ScanUpdate(int, int) []Scanner
+	ScanDelete(int, int) []Scanner
 }
 
 func FlatMappings(x interface{}, m map[string]map[string]string, depth int) error {
@@ -87,19 +87,6 @@ func FlatMappings(x interface{}, m map[string]map[string]string, depth int) erro
 	return nil
 }
 
-func ESMappings(x interface{}, depth int) (map[string]map[string]map[string]string, error) {
-	m := make(map[string]map[string]string)
-	err := FlatMappings(x, m, depth)
-	if err != nil {
-		return nil, err
-	}
-
-	r := map[string]map[string]map[string]string{
-		"properties": m,
-	}
-	return r, nil
-}
-
 func IndexExist(indexName string) bool {
 	ctx := context.Background()
 	req := esapi.IndicesExistsRequest{}
@@ -118,15 +105,58 @@ func IndexExist(indexName string) bool {
 	return true
 }
 
-func CreateIndex(sc Scanner) error {
-	indexName := sc.IndexName() // 已保证是lowecase
+func DefaultSettings() map[string]interface{} {
+	r := make(map[string]interface{})
+	return r
+}
 
-	exist := IndexExist(indexName)
+// Each Index instance defines an index in ES server.
+type Index struct {
+	IndexScanner Scanner
+	Name         string
+	// Depth indicate the iterative depth of Scanner instance.
+	Depth    int
+	Mappings map[string]map[string]map[string]string
+	Err      error
+}
+
+func (idx *Index) GetName() string {
+	if idx.IndexScanner == nil {
+		idx.Err = errors.New("Failed to get the index Name from Scanner.")
+		return ""
+	}
+
+	n := strings.ToLower(util.GetStructName(idx.IndexScanner))
+	idx.Name = n
+	return n
+}
+
+func (idx *Index) GetMappings() map[string]map[string]map[string]string {
+	m := make(map[string]map[string]string)
+	err := FlatMappings(idx.IndexScanner, m, idx.Depth)
+	if err != nil {
+		idx.Err = errors.New("Failed to get the index Mappings from Scanner.")
+		return nil
+	}
+
+	r := map[string]map[string]map[string]string{
+		"properties": m,
+	}
+	idx.Mappings = r
+	return r
+}
+
+func (idx *Index) IndexExist() bool {
+	return IndexExist(idx.Name)
+}
+
+func (idx *Index) CreateIndex() error {
+	exist := idx.IndexExist()
 	m := make(map[string]interface{})
 	if !exist {
-		mappings := sc.Mappings()
+		mappings := idx.GetMappings()
 		if mappings == nil {
-			return errors.New("Failed to get mappings from orm scanner.")
+			return idx.Err
 		}
 		m["mappings"] = mappings
 		m["settings"] = DefaultSettings()
@@ -136,7 +166,7 @@ func CreateIndex(sc Scanner) error {
 			return err
 		}
 		s := string(byteData)
-		resp, err := dao.ES.Indices.Create(indexName, dao.ES.Indices.Create.WithBody(strings.NewReader(s)))
+		resp, err := dao.ES.Indices.Create(idx.Name, dao.ES.Indices.Create.WithBody(strings.NewReader(s)))
 		if err != nil {
 			return err
 		}
@@ -150,9 +180,36 @@ func CreateIndex(sc Scanner) error {
 	return nil
 }
 
-func CreateIndices(scs ...Scanner) error {
-	for _, sc := range scs {
-		err := CreateIndex(sc)
+func (idx *Index) AutoMigrate() error {
+	return idx.AutoMigrate()
+}
+
+// Set default iteration depth to 10.
+func NewDefaultIndex(sc Scanner) *Index {
+	idx := &Index{
+		IndexScanner: sc,
+		Depth:        10,
+	}
+
+	idx.GetName()
+	if idx.Err != nil {
+		log.Println("Failed to create Index instance.")
+		return nil
+	}
+	return idx
+}
+
+func CreateIndex(idx *Index) error {
+	idx.CreateIndex()
+	if idx.Err != nil {
+		return idx.Err
+	}
+	return nil
+}
+
+func CreateIndices(ids ...Index) error {
+	for _, idx := range ids {
+		err := idx.CreateIndex()
 		if err != nil {
 			return err
 		}

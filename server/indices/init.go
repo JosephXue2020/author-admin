@@ -5,19 +5,25 @@ import (
 )
 
 // Variable contains all indices.
-var Indices = make([]es.Scanner, 0)
+var Indices []*es.Index
 
 // Regist indices.
-// Indices must imply Scanner interface.
 func RegistIndices() {
-	Indices = append(Indices, &Author{})
-	// Indices = append(Indices, &Entry{})
+	// Regist your structures here.
+	scs := []es.Scanner{
+		&Author{},
+	}
+
+	for _, sc := range scs {
+		idx := es.NewDefaultIndex(sc)
+		Indices = append(Indices, idx)
+	}
 }
 
 // Creat indices if not exists.
 func AutoMigrate() error {
-	for _, scanner := range Indices {
-		err := es.CreateIndex(scanner)
+	for _, idx := range Indices {
+		err := idx.AutoMigrate()
 		if err != nil {
 			return err
 		}
@@ -35,9 +41,6 @@ func InitIndices() error {
 	}
 
 	es.Build(Indices)
-
-	// // 测试
-	// test()
 
 	return nil
 }

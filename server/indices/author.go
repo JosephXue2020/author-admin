@@ -5,49 +5,30 @@ import (
 	"goweb/author-admin/server/models"
 	"goweb/author-admin/server/pkg/es"
 	"goweb/author-admin/server/pkg/util"
-	"log"
 	"strings"
 )
 
 // Author is an index related to models.Author
 type Author models.Author
 
-func (au *Author) IndexName() string {
-	return strings.ToLower(util.GetStructName(au))
-}
-
-func (au *Author) Depth() int {
-	return 2
-}
-
-func (au *Author) Mappings() map[string]map[string]map[string]string {
-	mappings, err := es.ESMappings(au, au.Depth())
-	if err != nil {
-		log.Println("Failed to get mappings from orm scanner: ", err)
-		return nil
-	}
-
-	return mappings
-}
-
-func (au *Author) ScanUpdate(start, end int) []interface{} {
+func (au *Author) ScanUpdate(start, end int) []es.Scanner {
 	authors := make([]Author, 0)
 	dao.DB.Where("updated_at > ? and updated_at <= ?", start, end).Find(&authors)
 
-	var res []interface{}
+	var res []es.Scanner
 	for _, v := range authors {
-		res = append(res, v)
+		res = append(res, &v)
 	}
 	return res
 }
 
-func (au *Author) ScanDelete(start, end int) []interface{} {
+func (au *Author) ScanDelete(start, end int) []es.Scanner {
 	authors := make([]Author, 0)
 	dao.DB.Unscoped().Where("updated_at > ? and updated_at <= ?", start, end).Find(&authors)
 
-	var res []interface{}
+	var res []es.Scanner
 	for _, v := range authors {
-		res = append(res, v)
+		res = append(res, &v)
 	}
 	return res
 }

@@ -8,19 +8,20 @@ import (
 )
 
 type Builder struct {
-	Scanners []Scanner
-
+	IDs []*Index
 	// Temp file stores timestamp.
 	Path string
-
 	// The timestamp of last scan of DB.
 	Timestamp int
-
 	// Scan period.
+	// The unit is second.
 	// It is loaded from config file.
 	Period int
-
-	Ticker *time.Ticker
+	// The unit is nanosecond.
+	Overlap int
+	Ticker  *time.Ticker
+	// worker number of bulk operation.
+	WorkerNum int
 }
 
 func (b *Builder) SaveTimestamp() {
@@ -33,11 +34,17 @@ func (b *Builder) SaveTimestamp() {
 func (b *Builder) RunOnce() {
 	newTimestamp := util.CurrentTimestamp()
 	var err error
-	for _, sc := range b.Scanners {
+	for _, idx := range b.IDs {
+		scanner := idx.IndexScanner
 		// process update
-		docs := sc.ScanUpdate(b.Timestamp, newTimestamp)
-		if docs != nil {
-			err = IndexDocBulk(sc.IndexName(), docs, sc.Depth())
+		scs := scanner.ScanUpdate(b.Timestamp-b.Overlap, newTimestamp)
+		if scs != nil {
+			var docs []*Doc
+			for _, sc := range scs {
+				doc := NewDocFromScanner(sc)
+				docs = append(docs, doc)
+			}
+			err = IndexDocBulk(docs, b.WorkerNum)
 		}
 		// process delete
 	}
@@ -66,17 +73,19 @@ func (b *Builder) Start() {
 	go b.run()
 }
 
-func NewBuilder(scs []Scanner) *Builder {
+func NewDefaultBuilder(ids []*Index) *Builder {
 	builder := &Builder{}
 
-	if scs == nil {
+	if ids == nil {
 		log.Println("No indices need to build.")
 		return nil
 	}
-	builder.Scanners = scs
+	builder.IDs = ids
 
 	builder.Path = "./var/timestamp.gob"
 	builder.Period = setting.DuraSecond
+	builder.Overlap = 1000
+	builder.WorkerNum = 10
 
 	if util.FileExist(builder.Path) {
 		x := new(int)
@@ -100,7 +109,7 @@ func NewBuilder(scs []Scanner) *Builder {
 	return builder
 }
 
-func Build(scs []Scanner) {
-	builder := NewBuilder(scs)
+func Build(ids []*Index) {
+	builder := NewDefaultBuilder(ids)
 	builder.Start()
 }
