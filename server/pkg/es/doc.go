@@ -10,6 +10,7 @@ import (
 	"goweb/author-admin/server/pkg/util"
 	"io"
 	"strings"
+	"time"
 
 	"github.com/elastic/go-elasticsearch/v8/esapi"
 	"github.com/elastic/go-elasticsearch/v8/esutil"
@@ -124,6 +125,24 @@ func (doc *Doc) IndexDoc() error {
 	return nil
 }
 
+func (doc *Doc) DeleteDoc() error {
+	req := esapi.DeleteRequest{
+		Index:      doc.Idx.Name,
+		DocumentID: doc.ID,
+		Refresh:    "true",
+	}
+	resp, err := req.Do(context.Background(), dao.ES)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	if resp.IsError() {
+		return fmt.Errorf("Failed to delete doc, response code: %v", resp.StatusCode)
+	}
+	return nil
+}
+
 func NewDoc(idx *Index) (doc *Doc) {
 	doc = &Doc{
 		Idx: idx,
@@ -160,7 +179,6 @@ func IndexDoc(doc *Doc) error {
 // Create if not exist; update if exist.
 // Bulk operation.
 func IndexDocBulk(docs []*Doc, workers int) error {
-	// esutil.BulkIndexer()
 	cfg := esutil.BulkIndexerConfig{
 		NumWorkers: workers,
 		Client:     dao.ES,
@@ -195,17 +213,106 @@ func IndexDocBulk(docs []*Doc, workers int) error {
 	return nil
 }
 
-func DeleteDocByID(indexName string, id int) error {
+func DeleteDoc(doc *Doc) error {
+	return doc.DeleteDoc()
+}
+
+func DeleteDocByID(indexName string, id string) error {
+	req := esapi.DeleteRequest{
+		Index:      indexName,
+		DocumentID: id,
+		Refresh:    "true",
+	}
+	resp, err := req.Do(context.Background(), dao.ES)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	if resp.IsError() {
+		return fmt.Errorf("Failed to delete doc, response code: %v", resp.StatusCode)
+	}
+	return nil
+}
+
+func CollectDocsInfoToDelete(docs []*Doc) []map[string]map[string]string {
+	var r []map[string]map[string]string
+	for _, doc := range docs {
+		m := make(map[string]map[string]string)
+		in := make(map[string]string)
+		in["_index"] = doc.Idx.Name
+		in["_id"] = doc.ID
+		m["delete"] = in
+		r = append(r, m)
+	}
+	return r
+}
+
+func DeleteDocBulk(docs []*Doc) error {
+	if docs == nil || len(docs) == 0 {
+		err := errors.New("There is no docs need to delete.")
+		return err
+	}
+
+	slc := CollectDocsInfoToDelete(docs)
+	byteData, err := json.Marshal(slc)
+	if err != nil {
+		return err
+	}
+
+	br := esapi.BulkRequest{
+		Index:   slc[0]["delete"]["_index"],
+		Body:    strings.NewReader(string(byteData)),
+		Timeout: time.Second * 15,
+	}
+
+	resp, err := br.Do(context.Background(), dao.ES)
+
+	if err != nil {
+		return err
+	}
+
+	if resp.IsError() {
+		err = fmt.Errorf("Failed to bulk delete docs with code: %v", resp.StatusCode)
+		return err
+	}
 
 	return nil
 }
 
-func DeleteDoc(indexName string, x interface{}, depth int) error {
+func DeleteDocBulkByIDS(indexName string, ids []string) error {
+	var slc []map[string]map[string]string
+	for _, id := range ids {
+		temp := map[string]map[string]string{
+			"delete": {
+				"_index": indexName,
+				"_id":    id,
+			},
+		}
+		slc = append(slc, temp)
+	}
 
-	return nil
-}
+	byteData, err := json.Marshal(slc)
+	if err != nil {
+		return err
+	}
 
-func DeleteDocBatch(indexName string, xs []interface{}) error {
+	br := esapi.BulkRequest{
+		Index:   slc[0]["delete"]["_index"],
+		Body:    strings.NewReader(string(byteData)),
+		Timeout: time.Second * 15,
+	}
+
+	resp, err := br.Do(context.Background(), dao.ES)
+
+	if err != nil {
+		return err
+	}
+
+	if resp.IsError() {
+		err = fmt.Errorf("Failed to bulk delete docs with code: %v", resp.StatusCode)
+		return err
+	}
 
 	return nil
 }

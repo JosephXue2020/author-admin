@@ -47,6 +47,7 @@ func (b *Builder) RunOnce() {
 			err = IndexDocBulk(docs, b.WorkerNum)
 		}
 		// process delete
+		// scs = scanner.ScanDelete(b.Timestamp-b.Overlap, newTimestamp)
 	}
 
 	if err != nil {
